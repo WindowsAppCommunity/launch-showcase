@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-
-namespace LaunchShowcase.Sdk.Services
+﻿namespace LaunchShowcase.Sdk
 {
     public interface ISerializer
     {

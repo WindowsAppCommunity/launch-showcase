@@ -30,11 +30,11 @@ namespace LaunchShowcase
         {
             var backend = new Sdk.Services.CommunityBackendService();
 
-            var launchProjects = await backend.ProjectsService.GetProjects();
+            var launchProjects = await backend.ProjectsService.GetLaunchProjects(2021);
 
-            foreach (var project in launchProjects)
+            foreach (var project in launchProjects.Projects)
             {
-                PART_RootStack.Children.Add(new TextBlock() { Text = project.AppName });
+                PART_RootStack.Children.Add(new TextBlock() { Text = $"{project.AppName}, {project.Description}" });
             }
         }
     }

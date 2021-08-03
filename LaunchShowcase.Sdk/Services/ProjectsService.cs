@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace LaunchShowcase.Sdk.Services
 {
@@ -13,85 +11,29 @@ namespace LaunchShowcase.Sdk.Services
     {
         private RestClient _restClient;
 
-        public ProjectsService()
+        public ProjectsService(RestClient client)
         {
-            _restClient = new RestClient(new Uri("https://uwpcommunity-site-backend.herokuapp.com"), NewtonsoftSerializer.Instance);
+            _restClient = client;
         }
 
-        public Task<List<Project>> GetProjects()
+        public Task<Project[]> GetProjects()
         {
-            return _restClient.SendAsync<List<Project>>("projects", HttpMethod.Get);
+            return _restClient.SendAsync<Project[]>("projects", HttpMethod.Get);
         }
 
-        /*        [Get("/projects/launch/{year}")]
-                public Task<Project[]> GetLaunchProjects(uint year);
-
-                [Get("/projects/images?projectId={projectId}")]
-                public Task<string[]> GetProjectImages(long projectId);
-
-                [Get("/projects/id/{projectId}")]
-                public Task<Project> GetProjectById(long projectId);*/
-    }
-
-    public class NewtonsoftSerializer : ISerializer
-    {
-        private readonly JsonSerializerSettings _settings;
-
-        public static NewtonsoftSerializer Instance { get; } = new NewtonsoftSerializer();
-
-        public NewtonsoftSerializer()
+        public Task<LaunchProjectsResponse> GetLaunchProjects(uint year)
         {
-            _settings = new JsonSerializerSettings
-            {
-                ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new CamelCaseNamingStrategy()
-                },
-                Formatting = Formatting.Indented
-            };
+            return _restClient.SendAsync<LaunchProjectsResponse>($"/projects/launch/{year}", HttpMethod.Get);
         }
 
-        public T Deserialize<T>(string data)
+        public Task<string[]> GetProjectImages(long projectId)
         {
-            return JsonConvert.DeserializeObject<T>(data, _settings);
+            return _restClient.SendAsync<string[]>($"/projects/images?projectId={projectId}", HttpMethod.Get);
         }
 
-        public string Serialize(object data)
+        public Task<Project> GetProjectById(long projectId)
         {
-            return JsonConvert.SerializeObject(data, _settings);
-        }
-    }
-
-    public class RestClient
-    {
-        private readonly HttpClient _client;
-        private readonly Uri _baseUri;
-        private readonly ISerializer _serializer;
-
-        public RestClient(Uri baseUri, ISerializer serializer)
-        {
-            _baseUri = baseUri;
-            _serializer = serializer;
-            _client = new HttpClient();
-        }
-
-        public RestClient(Uri baseUri, ISerializer serializer, HttpClientHandler handler)
-        {
-            _baseUri = baseUri;
-            _serializer = serializer;
-            _client = new HttpClient(handler);
-        }
-
-        public async Task<T> SendAsync<T>(string relativePath, HttpMethod method)
-        {
-            var reqMsg = new HttpRequestMessage(method, new Uri(_baseUri, relativePath));
-
-            var res = await _client.SendAsync(reqMsg);
-            res.EnsureSuccessStatusCode();
-
-            var content = await res.Content.ReadAsStringAsync();
-
-            return _serializer.Deserialize<T>(content);
+            return _restClient.SendAsync<Project>($"/projects/id/{projectId}", HttpMethod.Get);
         }
     }
 }

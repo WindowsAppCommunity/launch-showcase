@@ -11,9 +11,11 @@ namespace LaunchShowcase.Sdk.Services
     {
         public CommunityBackendService()
         {
+            var restClient = new RestClient(new Uri("https://uwpcommunity-site-backend.herokuapp.com"), NewtonsoftSerializer.Instance);
 
+            ProjectsService = new ProjectsService(restClient);
         }
 
-        public ProjectsService ProjectsService { get; set; } = new ProjectsService();
+        public ProjectsService ProjectsService { get; }
     }
 }
