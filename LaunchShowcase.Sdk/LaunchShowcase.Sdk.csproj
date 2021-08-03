@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="OwlCore" Version="0.0.21" />
-    <PackageReference Include="RestSharp" Version="106.12.0" />
   </ItemGroup>
 
 </Project>

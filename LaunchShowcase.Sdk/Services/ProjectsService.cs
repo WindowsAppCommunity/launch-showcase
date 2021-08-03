@@ -1,9 +1,10 @@
 ﻿using LaunchShowcase.Sdk.Models;
-using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace LaunchShowcase.Sdk.Services
 {
@@ -13,15 +14,12 @@ namespace LaunchShowcase.Sdk.Services
 
         public ProjectsService()
         {
-            _restClient = new RestClient("https://uwpcommunity-site-backend.herokuapp.com");
+            _restClient = new RestClient(new Uri("https://uwpcommunity-site-backend.herokuapp.com"), NewtonsoftSerializer.Instance);
         }
 
-        public async Task<List<Project>> GetProjects()
+        public Task<List<Project>> GetProjects()
         {
-            var request = new RestRequest("projects", Method.GET);
-            var res = await _restClient.ExecuteAsync<List<Project>>(request);
-
-            return res.Data;
+            return _restClient.SendAsync<List<Project>>("projects", HttpMethod.Get);
         }
 
         /*        [Get("/projects/launch/{year}")]
@@ -32,5 +30,53 @@ namespace LaunchShowcase.Sdk.Services
 
                 [Get("/projects/id/{projectId}")]
                 public Task<Project> GetProjectById(long projectId);*/
+    }
+
+    public class NewtonsoftSerializer : ISerializer
+    {
+        public static NewtonsoftSerializer Instance { get; } = new NewtonsoftSerializer();
+
+        public T Deserialize<T>(string data)
+        {
+            return JsonConvert.DeserializeObject<T>(data);
+        }
+
+        public string Serialize(object data)
+        {
+            return JsonConvert.SerializeObject(data);
+        }
+    }
+
+    public class RestClient
+    {
+        private readonly HttpClient _client;
+        private readonly Uri _baseUri;
+        private readonly ISerializer _serializer;
+
+        public RestClient(Uri baseUri, ISerializer serializer)
+        {
+            _baseUri = baseUri;
+            _serializer = serializer;
+            _client = new HttpClient();
+        }
+
+        public RestClient(Uri baseUri, ISerializer serializer, HttpClientHandler handler)
+        {
+            _baseUri = baseUri;
+            _serializer = serializer;
+            _client = new HttpClient(handler);
+        }
+
+        public async Task<T> SendAsync<T>(string relativePath, HttpMethod method)
+        {
+            var reqMsg = new HttpRequestMessage(method, new Uri(_baseUri, relativePath));
+
+            var res = await _client.SendAsync(reqMsg);
+            res.EnsureSuccessStatusCode();
+
+            var content = await res.Content.ReadAsStringAsync();
+
+            return _serializer.Deserialize<T>(content);
+        }
     }
 }

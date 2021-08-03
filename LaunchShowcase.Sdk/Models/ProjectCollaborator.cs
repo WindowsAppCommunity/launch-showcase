@@ -7,6 +7,10 @@
         {
         }
 
+        public ProjectCollaborator()
+        {
+        }
+
         public bool IsOwner { get; set; }
 
         public Role Role { get; set; }

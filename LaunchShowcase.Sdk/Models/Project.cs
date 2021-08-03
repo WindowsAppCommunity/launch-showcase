@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LaunchShowcase.Sdk.Models
 {
@@ -28,7 +26,7 @@ namespace LaunchShowcase.Sdk.Models
 
         public string AccentColor { get; set; }
 
-        public bool AwaitingLaunchApproval { get; set; }
+        public bool? AwaitingLaunchApproval { get; set; }
 
         public bool NeedsManualReview { get; set; }
 
