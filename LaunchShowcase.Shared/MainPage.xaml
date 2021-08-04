@@ -5,9 +5,54 @@
     xmlns:local="using:LaunchShowcase"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:vms="using:LaunchShowcase.Sdk.ViewModels"
     mc:Ignorable="d">
 
-    <StackPanel x:Name="PART_RootStack" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="10">
+            <TextBlock Text="// Launch 2021" FontSize="36" HorizontalAlignment="Center" />
+        </Grid>
         
-    </StackPanel>
+        <toolkit:AdaptiveGridView ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"
+                                  Grid.Row="2"
+                                  ItemHeight="310"
+                                  DesiredWidth="400"
+                                  HorizontalAlignment="Center">
+            <toolkit:AdaptiveGridView.ItemTemplate>
+                <DataTemplate x:DataType="vms:ProjectViewModel">
+                    <StackPanel Spacing="8" Margin="12" ToolTipService.ToolTip="{x:Bind Description}">
+                        <Image Source="{x:Bind HeroImage}" Height="215" Width="375"
+                               Stretch="UniformToFill" VerticalAlignment="Center" />
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{x:Bind AppIcon}" Grid.RowSpan="2" Height="45" Width="45" Margin="0,0,15,0" />
+                            
+                            <TextBlock Text="{x:Bind AppName}" FontSize="18"
+                                       Grid.Column="1" />
+                            
+                            <TextBlock Text="{x:Bind Description}" FontSize="12" MaxLines="2" Width="300" Opacity="0.5"
+                                       Grid.Column="1" Grid.Row="1" TextWrapping="WrapWholeWords" />
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </toolkit:AdaptiveGridView.ItemTemplate>
+        </toolkit:AdaptiveGridView>
+        
+        <ContentControl x:Name="PART_RootContent" />
+    </Grid>
 </Page>

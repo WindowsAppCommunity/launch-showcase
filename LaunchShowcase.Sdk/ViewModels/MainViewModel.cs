@@ -24,10 +24,10 @@ namespace LaunchShowcase.Sdk.ViewModels
         /// </summary>
         public static MainViewModel Instance { get; set; } = new MainViewModel();
 
-        /// <summary>
-        /// All projects participating in the event this year.
-        /// </summary>
-        public ObservableCollection<ProjectViewModel> LaunchProjects { get; set; }
+        public MainViewModel()
+        {
+            LaunchProjects = new ObservableCollection<ProjectViewModel>();
+        }
 
         /// <inheritdoc/>
         public bool IsInitialized { get; private set; }
@@ -39,6 +39,11 @@ namespace LaunchShowcase.Sdk.ViewModels
 
             return PopulateLaunchProjects();
         }
+
+        /// <summary>
+        /// All projects participating in the event this year.
+        /// </summary>
+        public ObservableCollection<ProjectViewModel> LaunchProjects { get; set; }
 
         public async Task PopulateLaunchProjects()
         {

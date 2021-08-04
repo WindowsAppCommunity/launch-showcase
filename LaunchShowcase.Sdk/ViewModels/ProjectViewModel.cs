@@ -32,7 +32,7 @@ namespace LaunchShowcase.Sdk.ViewModels
         public Task InitAsync()
         {
             IsInitialized = true;
-            return Task.CompletedTask;
+            return PopulateImages();
         }
 
         /// <inheritdoc/>
@@ -125,8 +125,10 @@ namespace LaunchShowcase.Sdk.ViewModels
 
         public bool HasMinimumInfoForLaunchShowcase()
         {
-            //todo
-            return false;
+            return !string.IsNullOrWhiteSpace(AppIcon) &&
+                   !string.IsNullOrWhiteSpace(AppName) &&
+                   !string.IsNullOrWhiteSpace(Description) &&
+                   !string.IsNullOrWhiteSpace(HeroImage);
         }
     }
 }

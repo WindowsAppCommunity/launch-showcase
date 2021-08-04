@@ -25,9 +25,11 @@ namespace LaunchShowcase
 
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             DataContext = MainViewModel.Instance;
+
+            _ = ViewModel.InitAsync();
         }
     }
 }
