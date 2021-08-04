@@ -9,50 +9,123 @@
     xmlns:vms="using:LaunchShowcase.Sdk.ViewModels"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Themes/CenteredPivotHeadersStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
-        <Grid Margin="10">
-            <TextBlock Text="// Launch 2021" FontSize="36" HorizontalAlignment="Center" />
-        </Grid>
-        
-        <toolkit:AdaptiveGridView ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"
-                                  Grid.Row="2"
-                                  ItemHeight="310"
-                                  DesiredWidth="400"
-                                  HorizontalAlignment="Center">
-            <toolkit:AdaptiveGridView.ItemTemplate>
-                <DataTemplate x:DataType="vms:ProjectViewModel">
-                    <StackPanel Spacing="8" Margin="12" ToolTipService.ToolTip="{x:Bind Description}">
-                        <Image Source="{x:Bind HeroImage}" Height="215" Width="375"
-                               Stretch="UniformToFill" VerticalAlignment="Center" />
+    <ScrollViewer>
+        <Grid Background="#1E1E23">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
 
-                            <Image Source="{x:Bind AppIcon}" Grid.RowSpan="2" Height="45" Width="45" Margin="0,0,15,0" />
-                            
-                            <TextBlock Text="{x:Bind AppName}" FontSize="18"
-                                       Grid.Column="1" />
-                            
-                            <TextBlock Text="{x:Bind Description}" FontSize="12" MaxLines="2" Width="300" Opacity="0.5"
-                                       Grid.Column="1" Grid.Row="1" TextWrapping="WrapWholeWords" />
-                        </Grid>
+
+            <TextBlock Grid.Row="0" FontWeight="Bold" TextAlignment="Center" Margin="15"
+                       Text="This showcase is WIP and for testing purposes only." Opacity="0.2"/>
+
+            <Grid Margin="40" MaxWidth="1000">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <Image Source="/Assets/Banner.png" Height="300"/>
+                </StackPanel>
+
+                <Grid Grid.Column="1" Margin="15,0,0,0" VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel VerticalAlignment="Center">
+
+                        <TextBlock Text="// Launch 2021" FontWeight="SemiLight"
+                                   FontSize="42" HorizontalAlignment="Right" />
+
+                        <TextBlock Text="Learn, develop, launch" FontWeight="SemiLight"
+                                   FontSize="18" HorizontalAlignment="Right" />
+
+                        <TextBlock Text="Devs, testers, translators, and users work together to Launch new and refreshed apps."
+                                   MaxWidth="375"
+                                   TextAlignment="Right" FontSize="16"
+                                   TextWrapping="WrapWholeWords"
+                                   Margin="0,25,0,0" HorizontalAlignment="Right" />
                     </StackPanel>
-                </DataTemplate>
-            </toolkit:AdaptiveGridView.ItemTemplate>
-        </toolkit:AdaptiveGridView>
-        
-        <ContentControl x:Name="PART_RootContent" />
-    </Grid>
+
+
+                    <TextBlock Grid.Row="1"
+                               Text="Hosted by the UWP Community" Opacity="0.4"
+                               HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Margin="25" Spacing="10"
+                        HorizontalAlignment="Center" MaxWidth="625">
+                <TextBlock Text="Today, as part of our annual Launch event, 31 projects are being released as either new or vNext, and are all free for you to start using."
+                           FontSize="17" TextWrapping="WrapWholeWords" />
+
+                <TextBlock Text="Launch 2021 is possible thanks to our community of nearly 4,000 strong. All of the developers and users in the UWP Community discord server have been discussing, collaborating, translating, testing and trading feedback for months, and it shows."
+                           FontSize="17" TextWrapping="WrapWholeWords" />
+
+                <TextBlock Text="Every year, we get exponentially more participants. To help you navigate through them all, each project has been scored in various categories by our judges."
+                           FontSize="17" TextWrapping="WrapWholeWords" />
+            </StackPanel>
+
+            <TextBlock Grid.Row="2" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,25" Opacity="0.8" FontSize="18" TextWrapping="WrapWholeWords" TextAlignment="Center"
+                       Text="If you do not see your project below, make sure you've followed the instructions given by the Launch Coordinators." />
+
+            <toolkit:AdaptiveGridView x:Name="PART_LaunchProjectsGridView"
+                                      ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"
+                                      Grid.Row="3"
+                                      ItemHeight="310"
+                                      DesiredWidth="500">
+                <toolkit:AdaptiveGridView.ItemTemplate>
+                    <DataTemplate x:DataType="vms:ProjectViewModel">
+                        <StackPanel Spacing="8" ToolTipService.ToolTip="{x:Bind Description}">
+                            <Image Source="{x:Bind HeroImage}" Height="215" Width="375"
+                                   Stretch="UniformToFill" VerticalAlignment="Center" />
+
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="{x:Bind AppIcon}" Grid.RowSpan="2" Height="45" Width="45" Margin="0,0,15,0" />
+
+                                <TextBlock Text="{x:Bind AppName}" FontSize="18"
+                                           Grid.Column="1" />
+
+                                <TextBlock Text="{x:Bind Description}" FontSize="12" MaxLines="2" Width="300" Opacity="0.5"
+                                           Grid.Column="1" Grid.Row="1" TextWrapping="WrapWholeWords" />
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </toolkit:AdaptiveGridView.ItemTemplate>
+            </toolkit:AdaptiveGridView>
+
+            <ContentControl x:Name="PART_RootContent" />
+        </Grid>
+
+    </ScrollViewer>
 </Page>
