@@ -12,12 +12,6 @@ namespace LaunchShowcase.Sdk.Models
             Name = name;
         }
 
-        public Tag(string name, List<Project> projects)
-        {
-            Projects = projects;
-            Name = name;
-        }
-
         public Tag()
         {
         }

@@ -1,3 +1,4 @@
+using LaunchShowcase.Sdk.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,22 +21,13 @@ namespace LaunchShowcase
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public MainViewModel ViewModel => (MainViewModel)DataContext;
+
         public MainPage()
         {
             this.InitializeComponent();
-            Loaded += MainPage_Loaded;
-        }
 
-        private async void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            var backend = new Sdk.Services.CommunityBackendService();
-
-            var launchProjects = await backend.ProjectsService.GetLaunchProjects(2021);
-
-            foreach (var project in launchProjects.Projects)
-            {
-                PART_RootStack.Children.Add(new TextBlock() { Text = $"{project.AppName}, {project.Description}" });
-            }
+            DataContext = MainViewModel.Instance;
         }
     }
 }
