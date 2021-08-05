@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:vms="using:LaunchShowcase.Sdk.ViewModels"
-    RequestedTheme="Light"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -33,6 +32,7 @@
     <ScrollViewer>
         <Grid Background="{ThemeResource MainPageBackgroundBrush}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -103,9 +103,48 @@
             <TextBlock Grid.Row="2" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,25" Opacity="0.8" FontSize="18" TextWrapping="WrapWholeWords" TextAlignment="Center"
                        Text="If you do not see your project below, make sure you've followed the instructions given by the Launch Coordinators." />
 
+            <StackPanel Background="Transparent" Grid.Row="3" Margin="50,15" HorizontalAlignment="Right"
+                        Orientation="Horizontal" Spacing="10">
+                <Button ToolTipService.ToolTip="Order" AutomationProperties.Name="Order" Background="Transparent">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <FontIcon Glyph="&#xE169;" />
+                            <TextBlock Text="Sort by category score" />
+                        </StackPanel>
+                    </Button.Content>
+                    
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Flexibility" />
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Empathy" />
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Beauty" />
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Potential" />
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Originality" />
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Accessiblity" />
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+
+                <Button ToolTipService.ToolTip="Sort" AutomationProperties.Name="Sort" Background="Transparent">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <FontIcon Glyph="&#xE174;" />
+                            <TextBlock Text="Sort direction" />
+                        </StackPanel>
+                    </Button.Content>
+                    
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Margin="10,2" Text="Ascending" Tag="ascending"/>
+                            <MenuFlyoutItem Margin="10,2" Text="Descending" Tag="descending"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel> 
+            
             <toolkit:AdaptiveGridView x:Name="PART_LaunchProjectsGridView"
                                       ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"
-                                      Grid.Row="3"
+                                      Grid.Row="4"
                                       ItemHeight="290"
                                       DesiredWidth="500">
                 <toolkit:AdaptiveGridView.ItemTemplate>
