@@ -1,4 +1,5 @@
 ﻿using LaunchShowcase.Sdk.Services;
+using OwlCore.Extensions;
 using OwlCore.Provisos;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,16 +50,16 @@ namespace LaunchShowcase.Sdk.ViewModels
         {
             var projectsRes = await _backendService.ProjectsService.GetLaunchProjects(LaunchYear);
 
-            foreach (var project in projectsRes.Projects)
+            await projectsRes.Projects.InParallel(async project =>
             {
                 var projectVm = new ProjectViewModel(project);
+                await projectVm.InitAsync();
 
                 if (projectVm.HasMinimumInfoForLaunchShowcase())
                 {
                     LaunchProjects.Add(projectVm);
-                    _ = projectVm.InitAsync();
                 }
-            }
+            });
         }
     }
 }

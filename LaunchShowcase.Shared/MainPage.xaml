@@ -93,7 +93,7 @@
             <toolkit:AdaptiveGridView x:Name="PART_LaunchProjectsGridView"
                                       ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"
                                       Grid.Row="3"
-                                      ItemHeight="310"
+                                      ItemHeight="290"
                                       DesiredWidth="500">
                 <toolkit:AdaptiveGridView.ItemTemplate>
                     <DataTemplate x:DataType="vms:ProjectViewModel">
@@ -117,7 +117,7 @@
                                            Grid.Column="1" />
 
                                 <TextBlock Text="{x:Bind Description}" FontSize="12" MaxLines="2" Width="300" Opacity="0.5"
-                                           Grid.Column="1" Grid.Row="1" TextWrapping="WrapWholeWords" />
+                                           Grid.Column="1" Grid.Row="1" TextWrapping="WrapWholeWords" TextTrimming="CharacterEllipsis" />
                             </Grid>
                         </StackPanel>
                     </DataTemplate>

@@ -32,7 +32,7 @@ namespace LaunchShowcase.Sdk.ViewModels
         public Task InitAsync()
         {
             IsInitialized = true;
-            return PopulateImages();
+            return PopulateFeatures();
         }
 
         /// <inheritdoc/>
@@ -125,7 +125,10 @@ namespace LaunchShowcase.Sdk.ViewModels
 
         public bool HasMinimumInfoForLaunchShowcase()
         {
-            return !string.IsNullOrWhiteSpace(AppIcon) &&
+            var hasEnoughFeaturesListed = Features.Count >= 2;
+
+            return hasEnoughFeaturesListed &&
+                   !string.IsNullOrWhiteSpace(AppIcon) &&
                    !string.IsNullOrWhiteSpace(AppName) &&
                    !string.IsNullOrWhiteSpace(Description) &&
                    !string.IsNullOrWhiteSpace(HeroImage);
