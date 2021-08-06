@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LaunchShowcase"
+    xmlns:services="using:LaunchShowcase.Sdk.Services"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -115,12 +116,53 @@
                     
                     <Button.Flyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem Margin="10,2" Text="Flexibility" />
-                            <ToggleMenuFlyoutItem Margin="10,2" Text="Empathy" />
-                            <ToggleMenuFlyoutItem Margin="10,2" Text="Beauty" />
-                            <ToggleMenuFlyoutItem Margin="10,2" Text="Potential" />
-                            <ToggleMenuFlyoutItem Margin="10,2" Text="Originality" />
-                            <ToggleMenuFlyoutItem Margin="10,2" Text="Accessiblity" />
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Flexibility"
+                                                  IsChecked="{x:Bind ViewModel.HasFlexibilitySortingMode, Mode=OneWay}"
+                                                  Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
+                                <ToggleMenuFlyoutItem.CommandParameter>
+                                    <services:LaunchScoringCategory>Flexibility</services:LaunchScoringCategory>
+                                </ToggleMenuFlyoutItem.CommandParameter>
+                            </ToggleMenuFlyoutItem>
+                            
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Empathy"
+                                                  IsChecked="{x:Bind ViewModel.HasEmpathySortingMode, Mode=OneWay}"
+                                                  Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
+                                <ToggleMenuFlyoutItem.CommandParameter>
+                                    <services:LaunchScoringCategory>Empathy</services:LaunchScoringCategory>
+                                </ToggleMenuFlyoutItem.CommandParameter>
+                            </ToggleMenuFlyoutItem>
+                            
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Beauty"
+                                                  IsChecked="{x:Bind ViewModel.HasBeautySortingMode, Mode=OneWay}"
+                                                  Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
+                                <ToggleMenuFlyoutItem.CommandParameter>
+                                    <services:LaunchScoringCategory>Beauty</services:LaunchScoringCategory>
+                                </ToggleMenuFlyoutItem.CommandParameter>
+                            </ToggleMenuFlyoutItem>
+                            
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Potential"
+                                                  IsChecked="{x:Bind ViewModel.HasPotentialSortingMode, Mode=OneWay}"
+                                                  Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
+                                <ToggleMenuFlyoutItem.CommandParameter>
+                                    <services:LaunchScoringCategory>Potential</services:LaunchScoringCategory>
+                                </ToggleMenuFlyoutItem.CommandParameter>
+                            </ToggleMenuFlyoutItem>
+                            
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Originality"
+                                                  IsChecked="{x:Bind ViewModel.HasOriginalitySortingMode, Mode=OneWay}"
+                                                  Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
+                                <ToggleMenuFlyoutItem.CommandParameter>
+                                    <services:LaunchScoringCategory>Originality</services:LaunchScoringCategory>
+                                </ToggleMenuFlyoutItem.CommandParameter>
+                            </ToggleMenuFlyoutItem>
+                            
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Accessiblity"
+                                                  IsChecked="{x:Bind ViewModel.HasAccessiblitySortingMode, Mode=OneWay}"
+                                                  Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
+                                <ToggleMenuFlyoutItem.CommandParameter>
+                                    <services:LaunchScoringCategory>Accessiblity</services:LaunchScoringCategory>
+                                </ToggleMenuFlyoutItem.CommandParameter>
+                            </ToggleMenuFlyoutItem>
                         </MenuFlyout>
                     </Button.Flyout>
                 </Button>
