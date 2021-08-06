@@ -1,4 +1,5 @@
-﻿using LaunchShowcase.Sdk.Services;
+﻿using LaunchShowcase.Sdk.Data;
+using LaunchShowcase.Sdk.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using OwlCore.Extensions;
@@ -22,6 +23,7 @@ namespace LaunchShowcase.Sdk.ViewModels
         private readonly CommunityBackendService _backendService = CommunityBackendService.Instance;
         private List<ProjectViewModel> _unsortedLaunchProjects;
         private LaunchScoringCategory _sortingMode;
+        private SortingDirection _sortingDirection;
 
         public static MainViewModel Instance { get; set; } = new MainViewModel();
 
@@ -31,6 +33,7 @@ namespace LaunchShowcase.Sdk.ViewModels
             LaunchProjects = new ObservableCollection<ProjectViewModel>();
 
             ToggleProjectsSortingModeCommand = new RelayCommand<LaunchScoringCategory>(ToggleProjectsSortingMode);
+            SetSortingDirectionCommand = new RelayCommand<SortingDirection>(SetSortingDirection);
         }
 
         /// <inheritdoc/>
@@ -51,11 +54,23 @@ namespace LaunchShowcase.Sdk.ViewModels
 
         public IRelayCommand<LaunchScoringCategory> ToggleProjectsSortingModeCommand { get; }
 
+        public IRelayCommand<SortingDirection> SetSortingDirectionCommand { get; }
+
         public LaunchScoringCategory SortingMode
         {
             get => _sortingMode;
             set => SetProperty(ref _sortingMode, value);
         }
+
+        public SortingDirection SortingDirection
+        {
+            get => _sortingDirection;
+            set => SetProperty(ref _sortingDirection, value);
+        }
+
+        public bool IsAscendingSortingDirection => SortingDirection == SortingDirection.Ascending;
+
+        public bool IsDescendingSortingDirection => SortingDirection == SortingDirection.Descending;
 
         public bool HasFlexibilitySortingMode => (SortingMode & LaunchScoringCategory.Flexibility) == LaunchScoringCategory.Flexibility;
 
@@ -94,10 +109,23 @@ namespace LaunchShowcase.Sdk.ViewModels
 
             var sortedProjects = GetProjectsSortedByCategoriesScore(category);
 
+            if (SortingDirection == SortingDirection.Descending)
+                sortedProjects.Reverse();
+
             foreach (var project in sortedProjects)
                 LaunchProjects.Add(project);
 
             UpdateHasSortingModeInpc();
+        }
+
+        private void SetSortingDirection(SortingDirection direction)
+        {
+            SortingDirection = direction;
+
+            OnPropertyChanged(nameof(IsAscendingSortingDirection));
+            OnPropertyChanged(nameof(IsDescendingSortingDirection));
+
+            ToggleProjectsSortingMode(SortingMode);
         }
 
         private List<ProjectViewModel> GetProjectsSortedByCategoriesScore(LaunchScoringCategory category)

@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LaunchShowcase"
     xmlns:services="using:LaunchShowcase.Sdk.Services"
+    xmlns:data="using:LaunchShowcase.Sdk.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -120,7 +121,7 @@
                                                   IsChecked="{x:Bind ViewModel.HasFlexibilitySortingMode, Mode=OneWay}"
                                                   Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
                                 <ToggleMenuFlyoutItem.CommandParameter>
-                                    <services:LaunchScoringCategory>Flexibility</services:LaunchScoringCategory>
+                                    <data:LaunchScoringCategory>Flexibility</data:LaunchScoringCategory>
                                 </ToggleMenuFlyoutItem.CommandParameter>
                             </ToggleMenuFlyoutItem>
                             
@@ -128,7 +129,7 @@
                                                   IsChecked="{x:Bind ViewModel.HasEmpathySortingMode, Mode=OneWay}"
                                                   Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
                                 <ToggleMenuFlyoutItem.CommandParameter>
-                                    <services:LaunchScoringCategory>Empathy</services:LaunchScoringCategory>
+                                    <data:LaunchScoringCategory>Empathy</data:LaunchScoringCategory>
                                 </ToggleMenuFlyoutItem.CommandParameter>
                             </ToggleMenuFlyoutItem>
                             
@@ -136,7 +137,7 @@
                                                   IsChecked="{x:Bind ViewModel.HasBeautySortingMode, Mode=OneWay}"
                                                   Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
                                 <ToggleMenuFlyoutItem.CommandParameter>
-                                    <services:LaunchScoringCategory>Beauty</services:LaunchScoringCategory>
+                                    <data:LaunchScoringCategory>Beauty</data:LaunchScoringCategory>
                                 </ToggleMenuFlyoutItem.CommandParameter>
                             </ToggleMenuFlyoutItem>
                             
@@ -144,7 +145,7 @@
                                                   IsChecked="{x:Bind ViewModel.HasPotentialSortingMode, Mode=OneWay}"
                                                   Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
                                 <ToggleMenuFlyoutItem.CommandParameter>
-                                    <services:LaunchScoringCategory>Potential</services:LaunchScoringCategory>
+                                    <data:LaunchScoringCategory>Potential</data:LaunchScoringCategory>
                                 </ToggleMenuFlyoutItem.CommandParameter>
                             </ToggleMenuFlyoutItem>
                             
@@ -152,7 +153,7 @@
                                                   IsChecked="{x:Bind ViewModel.HasOriginalitySortingMode, Mode=OneWay}"
                                                   Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
                                 <ToggleMenuFlyoutItem.CommandParameter>
-                                    <services:LaunchScoringCategory>Originality</services:LaunchScoringCategory>
+                                    <data:LaunchScoringCategory>Originality</data:LaunchScoringCategory>
                                 </ToggleMenuFlyoutItem.CommandParameter>
                             </ToggleMenuFlyoutItem>
                             
@@ -160,7 +161,7 @@
                                                   IsChecked="{x:Bind ViewModel.HasAccessiblitySortingMode, Mode=OneWay}"
                                                   Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
                                 <ToggleMenuFlyoutItem.CommandParameter>
-                                    <services:LaunchScoringCategory>Accessiblity</services:LaunchScoringCategory>
+                                    <data:LaunchScoringCategory>Accessiblity</data:LaunchScoringCategory>
                                 </ToggleMenuFlyoutItem.CommandParameter>
                             </ToggleMenuFlyoutItem>
                         </MenuFlyout>
@@ -177,8 +178,21 @@
                     
                     <Button.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Margin="10,2" Text="Ascending" Tag="ascending"/>
-                            <MenuFlyoutItem Margin="10,2" Text="Descending" Tag="descending"/>
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Ascending" 
+                                                  IsChecked="{x:Bind ViewModel.IsAscendingSortingDirection, Mode=OneWay}"
+                                                  Command="{x:Bind ViewModel.SetSortingDirectionCommand}">
+                                <ToggleMenuFlyoutItem.CommandParameter>
+                                    <data:SortingDirection>Ascending</data:SortingDirection>
+                                </ToggleMenuFlyoutItem.CommandParameter>
+                            </ToggleMenuFlyoutItem>
+                            
+                            <ToggleMenuFlyoutItem Margin="10,2" Text="Descending" 
+                                                  IsChecked="{x:Bind ViewModel.IsDescendingSortingDirection, Mode=OneWay}"
+                                                  Command="{x:Bind ViewModel.SetSortingDirectionCommand}">
+                                <ToggleMenuFlyoutItem.CommandParameter>
+                                    <data:SortingDirection>Descending</data:SortingDirection>
+                                </ToggleMenuFlyoutItem.CommandParameter>
+                            </ToggleMenuFlyoutItem>
                         </MenuFlyout>
                     </Button.Flyout>
                 </Button>

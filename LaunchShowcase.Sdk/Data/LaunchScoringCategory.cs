@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LaunchShowcase.Sdk.Services
+namespace LaunchShowcase.Sdk.Data
 {
     /// <summary>
     /// The categories that a project is judged on for the Launch event.
@@ -43,5 +43,4 @@ namespace LaunchShowcase.Sdk.Services
         /// </summary>
         Accessiblity = 32,
     }
-
 }

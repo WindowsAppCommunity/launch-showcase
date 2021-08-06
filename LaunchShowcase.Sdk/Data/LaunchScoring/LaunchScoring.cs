@@ -1,5 +1,4 @@
-﻿using LaunchShowcase.Sdk.Services;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LaunchShowcase.Sdk.Data.LaunchScoring
 {
