@@ -240,7 +240,7 @@
                                           DesiredWidth="500">
                     <toolkit:AdaptiveGridView.ItemTemplate>
                         <DataTemplate x:DataType="vms:ProjectViewModel">
-                            <StackPanel Spacing="8" ToolTipService.ToolTip="{x:Bind Description}">
+                            <StackPanel Spacing="8">
                                 <Image Source="{x:Bind HeroImage}" Height="215" Width="375"
                                        Stretch="UniformToFill" VerticalAlignment="Center" />
 
