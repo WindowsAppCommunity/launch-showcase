@@ -4,7 +4,7 @@ namespace LaunchShowcase.Sdk.Data.LaunchScoring
 {
     public static partial class LaunchData
     {
-        public static Dictionary<int, int> BeautyScoring = new Dictionary<int, int>
+        public static Dictionary<int, int> BeautyScoring { get; } = new Dictionary<int, int>
         {
             { LaunchProjects.Archon, 0 }, // example
         };

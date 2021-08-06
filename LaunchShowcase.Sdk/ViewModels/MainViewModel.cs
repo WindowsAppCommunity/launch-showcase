@@ -3,8 +3,10 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using OwlCore.Extensions;
 using OwlCore.Provisos;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -87,7 +89,56 @@ namespace LaunchShowcase.Sdk.ViewModels
         private void ToggleProjectsSortingMode(LaunchScoringCategory category)
         {
             SortingMode ^= category;
+
+            LaunchProjects.Clear();
+
+            var sortedProjects = GetProjectsSortedByCategoriesScore(category);
+
+            foreach (var project in sortedProjects)
+                LaunchProjects.Add(project);
+
             UpdateHasSortingModeInpc();
+        }
+
+        private List<ProjectViewModel> GetProjectsSortedByCategoriesScore(LaunchScoringCategory category)
+        {
+            if (category == LaunchScoringCategory.None)
+                return _unsortedLaunchProjects.ToList();
+
+            var activeFlags = GetFlags(category).Select(x => (LaunchScoringCategory)x);
+
+            var scoredProjects = new Dictionary<ProjectViewModel, double>();
+
+            // Per project
+            foreach (var project in _unsortedLaunchProjects)
+            {
+                var scores = new List<int>();
+
+                // Get score for each category
+                foreach (var flag in activeFlags)
+                {
+                    if (flag == LaunchScoringCategory.None)
+                        continue;
+
+                    var score = _backendService.ProjectsService.GetProjectCategoryScore(project.Id, flag & ~LaunchScoringCategory.None);
+
+                    scores.Add(score);
+                }
+
+                // Average the scores across all categories
+                var scoreAverage = scores.Average();
+                scoredProjects.Add(project, scoreAverage);
+            }
+
+            // Order projects by score
+            return scoredProjects.OrderBy(x => x.Value).Select(x => x.Key).ToList();
+        }
+
+        static IEnumerable<Enum> GetFlags(Enum input)
+        {
+            foreach (Enum value in Enum.GetValues(input.GetType()))
+                if (input.HasFlag(value))
+                    yield return value;
         }
 
         private void UpdateHasSortingModeInpc()
