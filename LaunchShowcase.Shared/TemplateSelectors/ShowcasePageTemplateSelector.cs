@@ -24,8 +24,11 @@ namespace LaunchShowcase.TemplateSelectors
                 return ThrowHelper.ThrowInvalidOperationException<DataTemplate>($"Key not found in the given resource dictionary. Make sure you've placed your template in the correct path, and given your template x:Key=\"{name}\"");
         }
 
-        protected override DataTemplate SelectTemplateCore(object item)
+        protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
         {
+            if (item is null)
+                return base.SelectTemplateCore(item);
+
             var project = (ProjectViewModel)item;
 
             return project.Id switch

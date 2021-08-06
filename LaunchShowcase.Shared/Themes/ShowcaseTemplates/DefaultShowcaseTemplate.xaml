@@ -4,7 +4,10 @@
     xmlns:viewmodels="using:LaunchShowcase.Sdk.ViewModels">
     
     <DataTemplate x:Key="DefaultShowcaseTemplate">
-        <TextBlock Text="{Binding AppName}" />
+        <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <!-- If you need code behind, create a user control and place it here. -->
+            <TextBlock Text="{Binding AppName}" />
+        </Grid>
     </DataTemplate>
     
 </ResourceDictionary>

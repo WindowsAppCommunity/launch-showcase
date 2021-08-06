@@ -34,7 +34,14 @@ namespace LaunchShowcase
 
         public void LaunchProjectsGridView_ItemClicked(object sender, ItemClickEventArgs e)
         {
+            PART_Overlay.Visibility = Visibility.Visible;
+            PART_ShowcasePresenter.Content = e.ClickedItem;
+        }
 
+        public void OverlayClose_Clicked(object sender, RoutedEventArgs e)
+        {
+            PART_Overlay.Visibility = Visibility.Collapsed;
+            PART_ShowcasePresenter.Content = null;
         }
     }
 }
