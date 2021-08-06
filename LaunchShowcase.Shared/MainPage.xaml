@@ -90,16 +90,46 @@
                 </Grid>
             </Grid>
 
-            <StackPanel Grid.Row="1" Margin="25" Spacing="10"
+            <StackPanel Grid.Row="1" Margin="25" Spacing="15"
                         HorizontalAlignment="Center" MaxWidth="625">
                 <TextBlock Text="Today, as part of our annual Launch event, 31 projects are being released as either new or vNext, and are all free for you to start using."
                            FontSize="17" TextWrapping="WrapWholeWords" />
 
-                <TextBlock Text="Launch 2021 is possible thanks to our community of nearly 4,000 strong. All of the developers and users in the UWP Community discord server have been discussing, collaborating, translating, testing and trading feedback for months, and it shows."
+                <TextBlock Text="Launch 2021 is possible thanks to our community of nearly 4,000 strong. All of the developers and users in the UWP Community discord server have been discussing, collaborating, translating, testing and trading feedback for months. These projects are the fruit of their efforts."
                            FontSize="17" TextWrapping="WrapWholeWords" />
 
-                <TextBlock Text="Every year, we get exponentially more participants. To help you navigate through them all, each project has been scored in various categories by our judges."
-                           FontSize="17" TextWrapping="WrapWholeWords" />
+                <TextBlock Text="To help you navigate through them all, each project has been scored by our judges in the following categories:"
+                           FontSize="17" TextWrapping="WrapWholeWords" Margin="0,0,0,15" />
+
+                <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                    <Run Text="Flexibility -" FontWeight="Bold" />
+                    <Run Text="A Fluent Design principle. Responsive layouts, adaptive input methods, and a natural UI fit on every device" />
+                </TextBlock>
+
+                <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                    <Run Text="Empathy -" FontWeight="Bold" />
+                    <Run Text="A Fluent Design principle. The user experience is stable, intuitive, and delightful to use." />
+                </TextBlock>
+
+                <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                    <Run Text="Beauty -" FontWeight="Bold" />
+                    <Run Text="A Fluent Design principle. The app is engaging and immersive. Shadows, animations, depth, general design." />
+                </TextBlock>
+
+                <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                    <Run Text="Potential -" FontWeight="Bold" />
+                    <Run Text="Apps are built on a great idea and have the potential to grow into something even bigger." />
+                </TextBlock>
+
+                <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                    <Run Text="Originality -" FontWeight="Bold" />
+                    <Run Text="Apps that do something very original, unique, or uncommon, or serves an unfilled niche. Yugen Mosaic is a good example of this." />
+                </TextBlock>
+
+                <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                    <Run Text="Accessibility -" FontWeight="Bold" />
+                    <Run Text="Screen reader support, localization, high contrast themes, and keyboard navigation make your app more accessible to users around the world." />
+                </TextBlock>
             </StackPanel>
 
             <TextBlock Grid.Row="2" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,25" Opacity="0.8" FontSize="18" TextWrapping="WrapWholeWords" TextAlignment="Center"
