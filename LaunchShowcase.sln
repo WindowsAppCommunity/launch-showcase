@@ -8,7 +8,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaunchShowcase.Uwp", "Launc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaunchShowcase.Wasm", "LaunchShowcase.Wasm\LaunchShowcase.Wasm.csproj", "{40EA03F7-8A22-4143-B251-79BAC3EB13D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaunchShowcase.Sdk", "LaunchShowcase.Sdk\LaunchShowcase.Sdk.csproj", "{7CA277AC-C0B1-46CD-BC8A-D037227D91F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaunchShowcase.Sdk", "LaunchShowcase.Sdk\LaunchShowcase.Sdk.csproj", "{7CA277AC-C0B1-46CD-BC8A-D037227D91F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D188C62A-F02A-4057-B15D-7F69A1BD89D5}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

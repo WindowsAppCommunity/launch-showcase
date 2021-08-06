@@ -1,4 +1,6 @@
-﻿using LaunchShowcase.Sdk.Models;
+﻿using LaunchShowcase.Sdk.Data;
+using LaunchShowcase.Sdk.Data.LaunchScoring;
+using LaunchShowcase.Sdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -47,11 +49,18 @@ namespace LaunchShowcase.Sdk.Services
         /// <summary>
         /// Retreives the judged score for a <paramref name="project"/> in a specific <paramref name="category"/>.
         /// </summary>
-        /// <returns>An integer between 0-100 indicating</returns>
+        /// <returns>An integer between 0-100 indicating the score given to the <paramref name="project"/> for the given <paramref name="category"/>.</returns>
         public int GetProjectCategoryScore(Project project, LaunchScoringCategory category)
         {
-            // TODO - pull from JSON, to be filled out after judging is complete.
-            return project.Id;
+            var projectRanking = LaunchData.Scoring[category];
+
+            foreach (var rankedProject in projectRanking)
+            {
+                if (rankedProject.Key == project.Id)
+                    return rankedProject.Value;
+            }
+
+            throw new ArgumentOutOfRangeException("Project was not found in data.");
         }
     }
 }
