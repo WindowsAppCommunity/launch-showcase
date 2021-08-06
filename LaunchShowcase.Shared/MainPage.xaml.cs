@@ -31,5 +31,10 @@ namespace LaunchShowcase
 
             _ = ViewModel.InitAsync();
         }
+
+        public void LaunchProjectsGridView_ItemClicked(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }

@@ -23,6 +23,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
   </ItemGroup>
   <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
     <!-- Workaround for https://github.com/unoplatform/uno/issues/3408 to get Refit 5+ to work alongside Uno SourceGeneration -->
     <RefitDisableGenerateRefitStubs Condition="'$(BuildingInsideUnoSourceGenerator)'!=''">true</RefitDisableGenerateRefitStubs>
   </PropertyGroup>

@@ -6,37 +6,37 @@
     /// <remarks>
     /// Primarily used for entering scoring data.
     /// </remarks>
-    internal static class LaunchProjects
+    public static class LaunchProjects
     {
-        public static int Guesio { get; } = 352;
-        public static int Yöti { get; } = 353;
-        public static int FluentSearch { get; } = 48;
-        public static int CryptoTracker { get; } = 112;
-        public static int FlowTeX { get; } = 295;
-        public static int SpecsAnalysis { get; } = 129;
-        public static int DynamicShell { get; } = 110;
-        public static int Glif { get; } = 121;
-        public static int JumpPoint { get; } = 120;
-        public static int VideoPokerClassics { get; } = 206;
-        public static int TranslucentTB { get; } = 146;
-        public static int FluentStore { get; } = 166;
-        public static int JitHub { get; } = 191;
-        public static int Stylophone { get; } = 165;
-        public static int Fiona { get; } = 293;
-        public static int ShresthaFilesPro { get; } = 176;
-        public static int PlayingwithPhysicsCompoundOscillations { get; } = 215;
-        public static int HomeServerConsole { get; } = 207;
-        public static int Storylines { get; } = 296;
-        public static int RedDeadCompanion { get; } = 297;
-        public static int Archon { get; } = 301;
-        public static int Fluetropdf { get; } = 302;
-        public static int YugenDJ { get; } = 303;
-        public static int DesignMe { get; } = 342;
-        public static int UWPSettingsEditor { get; } = 337;
-        public static int JA3DPlanner { get; } = 343;
-        public static int EventCountdowns { get; } = 345;
-        public static int Curensee { get; } = 349;
-        public static int ClipboardCanvas { get; } = 351;
-        public static int ExdPic { get; } = 355;
+        public const int Guesio  = 352;
+        public const int Yöti  = 353;
+        public const int FluentSearch  = 48;
+        public const int CryptoTracker  = 112;
+        public const int FlowTeX  = 295;
+        public const int SpecsAnalysis  = 129;
+        public const int DynamicShell  = 110;
+        public const int Glif  = 121;
+        public const int JumpPoint  = 120;
+        public const int VideoPokerClassics  = 206;
+        public const int TranslucentTB  = 146;
+        public const int FluentStore  = 166;
+        public const int JitHub  = 191;
+        public const int Stylophone  = 165;
+        public const int Fiona  = 293;
+        public const int ShresthaFilesPro  = 176;
+        public const int PlayingwithPhysicsCompoundOscillations  = 215;
+        public const int HomeServerConsole  = 207;
+        public const int Storylines  = 296;
+        public const int RedDeadCompanion  = 297;
+        public const int Archon = 301;
+        public const int Fluetropdf  = 302;
+        public const int YugenDJ  = 303;
+        public const int DesignMe  = 342;
+        public const int UWPSettingsEditor  = 337;
+        public const int JA3DPlanner  = 343;
+        public const int EventCountdowns  = 345;
+        public const int Curensee  = 349;
+        public const int ClipboardCanvas  = 351;
+        public const int ExdPic  = 355;
     }
 }
