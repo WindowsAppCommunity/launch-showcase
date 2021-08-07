@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="using:LaunchShowcase.Converters"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodels="using:LaunchShowcase.Sdk.ViewModels">
 
     <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
@@ -11,10 +12,11 @@
 
     <DataTemplate x:Key="DefaultShowcaseTemplate">
         <!-- To customize this template for your project, create a copy, rename it with your project name and modify ShowcasePageTemplateSelector -->
-        <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}">
-            <!-- If you need code behind, create a user control and place it here in your template. -->
+        <UserControl>
+            <!-- If you need code behind, create a user control and place it in your template. -->
             <ScrollViewer>
-                <Grid Margin="25">
+                <Grid Padding="25" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+
                     <StackPanel Spacing="10" Margin="25">
                         <StackPanel Orientation="Horizontal" Spacing="10">
                             <Image Source="{Binding AppIcon}" Height="64" />
@@ -30,7 +32,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            
+
                             <Image Source="{Binding HeroImage}" />
 
                             <StackPanel Spacing="10" Margin="20,0" Grid.Column="1">
@@ -72,20 +74,19 @@
                             </StackPanel>
                         </Grid>
 
-                        <ItemsControl ItemsSource="{Binding Images}" Grid.Row="1" Grid.ColumnSpan="2"
-                                        Visibility="{Binding Images, Converter={StaticResource CollectionAnyToVisibilityConverter}}">
-                            <ItemsControl.ItemTemplate>
+                        <controls:AdaptiveGridView x:Name="PART_Images"
+                                                   ItemsSource="{Binding Images}"
+                                                   Grid.Row="1" Grid.ColumnSpan="2"
+                                                   DesiredWidth="650"
+                                                   SelectionMode="None"
+                                                   Visibility="{Binding Images, Converter={StaticResource CollectionAnyToVisibilityConverter}}">
+                            <controls:AdaptiveGridView.ItemTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding}"/>
+                                    <Image Source="{Binding}" Margin="15" />
                                 </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <controls:WrapPanel VerticalSpacing="10" HorizontalSpacing="10"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                        
+                            </controls:AdaptiveGridView.ItemTemplate>
+                        </controls:AdaptiveGridView>
+
                         <StackPanel>
                             <TextBlock Text="Developers" FontSize="18" />
 
@@ -147,7 +148,7 @@
 
                 </Grid>
             </ScrollViewer>
-        </Grid>
+        </UserControl>
     </DataTemplate>
 
 </ResourceDictionary>
