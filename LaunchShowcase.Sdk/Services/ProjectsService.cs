@@ -42,6 +42,11 @@ namespace LaunchShowcase.Sdk.Services
             return _restClient.SendAsync<string[]>($"/projects/features?projectId={projectId}", HttpMethod.Get);
         }
 
+        public Task<ProjectCollaborator[]> GetProjectCollaborators(long projectId)
+        {
+            return _restClient.SendAsync<ProjectCollaborator[]>($"/projects/collaborators?projectId={projectId}", HttpMethod.Get);
+        }
+
         public Task<Project> GetProjectById(long projectId)
         {
             return _restClient.SendAsync<Project>($"/projects/id/{projectId}", HttpMethod.Get);

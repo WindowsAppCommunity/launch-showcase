@@ -22,7 +22,11 @@ namespace LaunchShowcase.Sdk.ViewModels
             Images = new ObservableCollection<string>();
             Features = new ObservableCollection<string>();
             Tags = new ObservableCollection<TagViewModel>(project.Tags.Select(x => new TagViewModel(x)));
+
             Collaborators = new ObservableCollection<ProjectCollaboratorViewModel>();
+            Developers = new ObservableCollection<ProjectCollaboratorViewModel>();
+            BetaTesters = new ObservableCollection<ProjectCollaboratorViewModel>();
+            Translators = new ObservableCollection<ProjectCollaboratorViewModel>();
 
             PopulateImagesCommand = new AsyncRelayCommand(PopulateImages);
             PopulateFeaturesCommand = new AsyncRelayCommand(PopulateFeatures);
@@ -86,6 +90,26 @@ namespace LaunchShowcase.Sdk.ViewModels
         /// <inheritdoc/>
         public ObservableCollection<ProjectCollaboratorViewModel> Collaborators { get; }
 
+        /// <summary>
+        /// The owner of the project.
+        /// </summary>
+        public ProjectCollaboratorViewModel ProjectOwner => Collaborators.First(x => x.IsOwner);
+
+        /// <summary>
+        /// All <see cref="Collaborators"/> who are a <see cref="Role.Developer"/>.
+        /// </summary>
+        public ObservableCollection<ProjectCollaboratorViewModel> Developers { get; private set; }
+
+        /// <summary>
+        /// All <see cref="Collaborators"/> who are a <see cref="Role.BetaTester"/>.
+        /// </summary>
+        public ObservableCollection<ProjectCollaboratorViewModel> BetaTesters { get; private set; }
+
+        /// <summary>
+        /// All <see cref="Collaborators"/> who are a <see cref="Role.Translator"/>.
+        /// </summary>
+        public ObservableCollection<ProjectCollaboratorViewModel> Translators { get; private set; }
+
         /// <inheritdoc/>
         public ObservableCollection<TagViewModel> Tags { get; }
 
@@ -118,9 +142,29 @@ namespace LaunchShowcase.Sdk.ViewModels
                 Features.Add(feature);
         }
 
-        public Task PopulateCollaborators()
+        public async Task PopulateCollaborators()
         {
-            throw new NotImplementedException();
+            var collaborators = await _backendService.ProjectsService.GetProjectCollaborators(Id);
+
+            Collaborators.Clear();
+            Developers.Clear();
+            BetaTesters.Clear();
+            Translators.Clear();
+
+            foreach (var collaborator in collaborators)
+            {
+                if (!string.IsNullOrWhiteSpace(collaborator.Name))
+                    Collaborators.Add(new ProjectCollaboratorViewModel(collaborator));
+            }
+
+            foreach (var developer in Collaborators.Where(x => x.Role == Role.Developer))
+                Developers.Add(developer);
+
+            foreach (var tester in Collaborators.Where(x => x.Role == Role.BetaTester))
+                BetaTesters.Add(tester);
+
+            foreach (var translator in Collaborators.Where(x => x.Role == Role.Translator))
+                Translators.Add(translator);
         }
 
         public bool HasMinimumInfoForLaunchShowcase()

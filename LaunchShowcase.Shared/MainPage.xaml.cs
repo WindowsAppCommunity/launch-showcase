@@ -32,10 +32,14 @@ namespace LaunchShowcase
             _ = ViewModel.InitAsync();
         }
 
-        public void LaunchProjectsGridView_ItemClicked(object sender, ItemClickEventArgs e)
+        public async void LaunchProjectsGridView_ItemClicked(object sender, ItemClickEventArgs e)
         {
+            var project = (ProjectViewModel)e.ClickedItem;
+
+            await project.PopulateCollaborators();
+
             PART_Overlay.Visibility = Visibility.Visible;
-            PART_ShowcasePresenter.Content = e.ClickedItem;
+            PART_ShowcasePresenter.Content = project;
         }
 
         public void OverlayClose_Clicked(object sender, RoutedEventArgs e)

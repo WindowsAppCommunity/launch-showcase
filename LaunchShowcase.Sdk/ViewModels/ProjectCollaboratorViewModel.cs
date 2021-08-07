@@ -9,6 +9,10 @@ namespace LaunchShowcase.Sdk.ViewModels
     {
         private readonly ProjectCollaborator _projectCollaborator;
 
+        public ProjectCollaboratorViewModel(ProjectCollaborator projectCollaborator)
+        {
+            _projectCollaborator = projectCollaborator;
+        }
 
         /// <inheritdoc/>
         public Task InitAsync()
