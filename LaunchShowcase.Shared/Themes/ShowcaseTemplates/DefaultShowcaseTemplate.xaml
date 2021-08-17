@@ -13,6 +13,37 @@
     <DataTemplate x:Key="DefaultShowcaseTemplate">
         <!-- To customize this template for your project, create a copy, rename it with your project name and modify ShowcasePageTemplateSelector -->
         <UserControl>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="Narrow">
+                    <VisualState>
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="PART_HeroImage.(Grid.ColumnSpan)" Value="2" />
+                            <Setter Target="PART_DetailsPanel.Margin" Value="0,0,0,10" />
+                            <Setter Target="PART_DetailsPanel.(Grid.ColumnSpan)" Value="2" />
+                            <Setter Target="PART_DetailsPanel.(Grid.Row)" Value="1" />
+                            <Setter Target="PART_DetailsPanel.(Grid.Column)" Value="0" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="Wide">
+                    <VisualState>
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="1000" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="PART_HeroImage.(Grid.ColumnSpan)" Value="1" />
+                            <Setter Target="PART_DetailsPanel.Margin" Value="0" />
+                            <Setter Target="PART_DetailsPanel.(Grid.ColumnSpan)" Value="1" />
+                            <Setter Target="PART_DetailsPanel.(Grid.Row)" Value="0" />
+                            <Setter Target="PART_DetailsPanel.(Grid.Column)" Value="1" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            
             <!-- If you need code behind, create a user control and place it in your template. -->
             <ScrollViewer>
                 <Grid Padding="25" Background="{ThemeResource SystemControlAcrylicElementBrush}">
@@ -33,9 +64,9 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Source="{Binding HeroImage}" />
+                            <Image x:Name="PART_HeroImage" Source="{Binding HeroImage}" />
 
-                            <StackPanel Spacing="10" Margin="20,0" Grid.Column="1">
+                            <StackPanel x:Name="PART_DetailsPanel" Spacing="10" Margin="20,0" Grid.Column="1">
                                 <TextBlock Text="{Binding Description}" FontSize="22"
                                            TextWrapping="WrapWholeWords"/>
 
