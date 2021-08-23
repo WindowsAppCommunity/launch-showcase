@@ -47,8 +47,8 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" FontWeight="Bold" TextAlignment="Center" Margin="15"
-                           Text="This showcase is WIP and for testing purposes only." Opacity="0.2"/>
-
+                           Text="For preview purposes only" Opacity="0.2"/>
+                
                 <Grid Margin="40" MaxWidth="1000">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -72,10 +72,10 @@
 
                         <StackPanel VerticalAlignment="Center">
 
-                            <TextBlock Text="// Launch 2021" FontWeight="SemiLight"
+                            <TextBlock Text="// Launch 2021" FontWeight="SemiLight" TextWrapping="WrapWholeWords"
                                        FontSize="42" HorizontalAlignment="Right" />
 
-                            <TextBlock Text="Learn, develop, launch" FontWeight="SemiLight"
+                            <TextBlock Text="Learn, develop, launch" FontWeight="SemiLight" TextWrapping="WrapWholeWords"
                                        FontSize="18" HorizontalAlignment="Right" />
 
                             <TextBlock Text="Devs, testers, translators, and users work together to Launch new and refreshed apps."

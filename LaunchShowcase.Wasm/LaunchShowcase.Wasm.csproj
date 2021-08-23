@@ -41,6 +41,7 @@
     <None Include="wwwroot\web.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Behaviors" Version="7.0.0" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls" Version="7.1.0-build.6.g97596da45a" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />

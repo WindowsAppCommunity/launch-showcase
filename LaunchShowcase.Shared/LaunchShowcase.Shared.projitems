@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CollectionAnyToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ItemClickedEventArgsToClickedItemConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NotNullOrEmptyToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
