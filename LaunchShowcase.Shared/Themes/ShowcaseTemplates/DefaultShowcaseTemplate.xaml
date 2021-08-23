@@ -183,39 +183,35 @@
                     </Grid>
                 </ScrollViewer>
 
-                <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}"
-                      Visibility="{Binding ElementName=PART_Images, Path=SelectedItem, Converter={StaticResource NullToVisibilityConverter}}">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.5*" />
-                        <RowDefinition Height="5*" />
-                        <RowDefinition Height="0.5*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*" />
-                        <ColumnDefinition Width="5*" />
-                        <ColumnDefinition Width="0.5*" />
-                    </Grid.ColumnDefinitions>
+                <Grid x:Name="PART_ImgOverlay" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"
+                      Visibility="{Binding ElementName=PART_Images, Path=SelectedItem, Converter={StaticResource NullToVisibilityConverter}}"
+                      Padding="75">
                     
                     <interactivity:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
                             <core:ChangePropertyAction TargetObject="{Binding ElementName=PART_Images}" PropertyName="SelectedItem" Value="{x:Null}" />
                         </core:EventTriggerBehavior>
                     </interactivity:Interaction.Behaviors>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="1" Grid.Column="1">
-                        <Button Background="Transparent" FontSize="18" Margin="10"
-                            Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets"
-                            HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Border>
+                        <Button Background="Transparent" FontSize="16" Margin="20"
+                                Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets"
+                                HorizontalAlignment="Right" VerticalAlignment="Top">
                             <interactivity:Interaction.Behaviors>
                                 <core:EventTriggerBehavior EventName="Click">
                                     <core:ChangePropertyAction TargetObject="{Binding ElementName=PART_Images}" PropertyName="SelectedItem" Value="{x:Null}" />
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
                         </Button>
+                    </Border>
 
-                        <Image Source="{Binding ElementName=PART_Images, Path=SelectedItem}" />
-                    </StackPanel>
+                    <Image x:Name="PART_OverlayImage" Grid.Row="1"
+                           Source="{Binding ElementName=PART_Images, Path=SelectedItem}" Stretch="Uniform" />
                 </Grid>
             </Grid>
         </UserControl>
