@@ -36,7 +36,7 @@ namespace LaunchShowcase.TemplateSelectors
                 // Example.
                 // Your ResourceDictionary's XAML file should be placed under /Themes/ShowcaseTemplates,
                 // and should match the x:Key given to the data template.
-                LaunchProjects.Archon => GetTemplateByName("DefaultShowcaseTemplate"), 
+                LaunchProjects.Stylophone => GetTemplateByName("StylophoneShowcaseTemplate"), 
                 _ => GetTemplateByName("DefaultShowcaseTemplate"),
             };
         }
