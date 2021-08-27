@@ -7,9 +7,9 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     xmlns:viewmodels="using:LaunchShowcase.Sdk.ViewModels">
-    
-    
-    
+
+
+
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
             <Style x:Key="LoginImage" TargetType="Image">
@@ -100,6 +100,7 @@
             </Style>
             <Style x:Key="P" TargetType="TextBlock">
                 <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="IsTextSelectionEnabled" Value="True"/>
             </Style>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Default">
@@ -117,16 +118,12 @@
             </Style>
             <Style x:Key="P" TargetType="TextBlock">
                 <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="IsTextSelectionEnabled" Value="True"/>
             </Style>
         </ResourceDictionary>
-        
+
     </ResourceDictionary.ThemeDictionaries>
-    
-    <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-    <converter:CollectionAnyToVisibilityConverter x:Key="CollectionAnyToVisibilityConverter" />
-    <converter:NotNullOrWhiteSpaceToVisibilityConverter x:Key="NotNullOrWhiteSpaceToVisibilityConverter" />
-    <converter:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
-    
+
     <DataTemplate x:Key="JitHubShowcaseTemplate">
         <!-- To customize this template for your project, create a copy, rename it with your project name and modify ShowcasePageTemplateSelector -->
         <UserControl>
@@ -143,6 +140,15 @@
                                 Source="{Binding HeroImage}"
                                 HorizontalAlignment="Stretch"/>
                         </Border>
+                        <StackPanel
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                            <HyperlinkButton NavigateUri="https://www.microsoft.com/en-ca/p/jithub/9mxrbjbb552v">
+                                <Image
+                                    Width="200"
+                                    Source="https://developer.microsoft.com/en-us/microsoft-store/badges/images/English_get-it-from-MS.png"/>
+                            </HyperlinkButton>
+                        </StackPanel>
                         <TextBlock
                             Style="{StaticResource H1}"
                             Text="A UWP GitHub Client"/>
