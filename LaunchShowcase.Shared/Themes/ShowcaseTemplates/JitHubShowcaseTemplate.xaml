@@ -1,0 +1,408 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="using:LaunchShowcase.Converters"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+    xmlns:viewmodels="using:LaunchShowcase.Sdk.ViewModels">
+    
+    
+    
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <Style x:Key="LoginImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/q0rzGs0/light-login.png"/>
+            </Style>
+            <Style x:Key="DashboardImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/GdG0CxB/light-dashboard.png"/>
+            </Style>
+            <Style x:Key="CodeImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/V29yBWP/light-code.png"/>
+            </Style>
+            <Style x:Key="IssueImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/QD6d32T/light-issue.png"/>
+            </Style>
+            <Style x:Key="IssueDetailImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/MpG0cgR/light-issue-detail.png"/>
+            </Style>
+            <Style x:Key="PRImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/rddkMTk/light-pr.png"/>
+            </Style>
+            <Style x:Key="PRDetailImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/f9Z2mBw/light-pr-detail.png"/>
+            </Style>
+            <Style x:Key="CommitsImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/rt8WMLg/light-commits.png"/>
+            </Style>
+            <Style x:Key="CommitsDetailImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/MRs3JNn/light-commits-detail.png"/>
+            </Style>
+
+
+            <Style x:Key="H1" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style x:Key="H2" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style x:Key="H3" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+            </Style>
+            <Style x:Key="P" TargetType="TextBlock">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <Style x:Key="LoginImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/LRDpD9k/dark-login.png"/>
+            </Style>
+            <Style x:Key="DashboardImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/r3NjvvJ/dark-dashboard.png"/>
+            </Style>
+            <Style x:Key="CodeImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/4YWmjvL/dark-code.png"/>
+            </Style>
+            <Style x:Key="IssueImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/9NqPrPf/dark-issue.png"/>
+            </Style>
+            <Style x:Key="IssueDetailImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/CtLB3CN/dark-issue-detail.png"/>
+            </Style>
+            <Style x:Key="PRImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/0ff5TXP/dark-pr.png"/>
+            </Style>
+            <Style x:Key="PRDetailImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/BTBCcY9/dark-pr-detail.png"/>
+            </Style>
+            <Style x:Key="CommitsImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/tHTVXGJ/dark-commits.png"/>
+            </Style>
+            <Style x:Key="CommitsDetailImage" TargetType="Image">
+                <Setter Property="Source" Value="https://i.ibb.co/Jk9vxLn/dark-commits-detail.png"/>
+            </Style>
+
+            <Style x:Key="H1" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style x:Key="H2" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style x:Key="H3" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+            </Style>
+            <Style x:Key="P" TargetType="TextBlock">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Default">
+            <Style x:Key="H1" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style x:Key="H2" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style x:Key="H3" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+            </Style>
+            <Style x:Key="P" TargetType="TextBlock">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+        </ResourceDictionary>
+        
+    </ResourceDictionary.ThemeDictionaries>
+    
+    <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <converter:CollectionAnyToVisibilityConverter x:Key="CollectionAnyToVisibilityConverter" />
+    <converter:NotNullOrWhiteSpaceToVisibilityConverter x:Key="NotNullOrWhiteSpaceToVisibilityConverter" />
+    <converter:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    
+    <DataTemplate x:Key="JitHubShowcaseTemplate">
+        <!-- To customize this template for your project, create a copy, rename it with your project name and modify ShowcasePageTemplateSelector -->
+        <UserControl>
+            <Grid
+                Background="{ThemeResource SystemControlAcrylicElementBrush}">
+                <ScrollViewer
+                    Padding="24">
+                    <StackPanel
+                        MaxWidth="960"
+                        Spacing="12">
+                        <Border
+                            CornerRadius="8">
+                            <Image
+                                Source="{Binding HeroImage}"
+                                HorizontalAlignment="Stretch"/>
+                        </Border>
+                        <TextBlock
+                            Style="{StaticResource H1}"
+                            Text="A UWP GitHub Client"/>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="It's not often for anyone to get a chance to announce a project coming to fruition. Well today is that day for me. I've been working on JitHub on and off for about a year and half now. It went from an idea that I just wanted to experiment with to a full-blown app that I can self-host. It took many late nights, personal time, and collaboration to be where JitHub is today. It's not a mature project by any means, and I still have tons, and I say tons, of ideas that I want to implement. Its future is still ahead of us, but, today, let me take you on a journey of how it came to be."/>
+                        <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="The Idea"/>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="I've always liked using GitHub. It's where all my code live, and it's the place where software development happens. However, the GitHub website has never felt like a modern web app, and there's no native first party GitHub app on Windows. Why don't I build one, I thought to myself. At the time, I didn't have much experience with UWP development, but I was already a big fan of it for its sand box nature, dynamic and fluid UI, a welcoming developer ecosystem and so much more. So here starts the project known as JitHub."/>
+                        <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="The Start"/>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="The start was not easy. The repository's first commit was in August 2020, but I actually have started the experiment of JitHub back in 2019. I didn't know where to start, so I went on GitHub (like this is why I love GitHub) and started to look for open-source projects to get some inspiration. And I sure did. I found CodeHub, a UWP GitHub app that's open source, and it has a lot of features too! So, I started reading it's code like bible, and soon enough, I started to see the challenges."/>
+                        <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="The challenges"/>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="First, GitHub has really good API documentation and SDK in many languages. As a .NET developer, I can use their Octokit.net library and have access to GitHub API in a .NET friendly way, but there are always challenges when developing software at this scale."/>
+                        <TextBlock
+                            Style="{StaticResource H3}"
+                            Text="Authentication"/>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="Like many identity service provider, GitHub doesn't allow authentication with just username and password. The one and only &quot;best practice&quot; is to use Web Authentication. As the developer, I have to redirect the user to GitHub's login page on the web, and if and when the user login successfully, I get a code for which I can request an authentication token with. This doesn't sound so hard, but there are a few ways to do it. The first way is to use the WebAuthentication service built into UWP, but that turned out to be a dead end because it's still powered by IE, which GitHub authentication doesn't support any more. Another way is to build a web authentication service myself, which is what CodeHub did. It works, but the UI is not elegant. Furthermore, the users don't get to use their password manager that's normally built into the default browser. This is why JitHub use the browser + protocol redirect to authenticate our users. You don't need to manually enter username and password if you already have logged in with your browser, and you don't need to enter anything into a third-party app to potentially compromise your credentials (not that JitHub is an insecure app, but you get the ease of mind)."/>
+                        <TextBlock
+                            Style="{StaticResource H3}"
+                            Text="Syntax Highlighting"/>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="A big part of GitHub is browsing code. While GitHub has really good syntax highlighting, it's not something available to third party apps. JitHub's design philosophy is to give the users the feeling of a code editor like experience when it comes to code viewing. That's why I have a lazy loading enabled file tree on the left side of the code viewer page, but syntax highlighting remains an issue I needed to solve. Initially I looked into how CodeHub does it, and it was really interesting. It uploads the code to a syntax highlighting web service which returns HTML and CSS that gets rendered to a WebView. The HTML and CSS provide the necessary style for the syntax highlighting, and for the most part, it looks alright. I was tempted to use this method as well at the beginning, but I quickly noticed a few drawbacks of this approach. First, it uploads one's code no matter if it's private repo or not. This could be a huge security problem for high profile repos. Secondly, it doesn't work offline, which I plan to support in JitHub in a future build. So, this method is definitely not sustainable. I needed something better, something that's more native and local. I then started to look at what code editor control is available on UWP, but it turns out there's basically no code editor control available for UWP. (There's Monaco for UWP, but it's WebView and so buggy for JitHub's use case) So for initial versions of JitHub, we are only supporting code viewing, and the syntax highlighting is supported by a markdown code block. In JitHub V2, we'll explore some crazy ideas around this area that will bring the code viewing/editing experience 10x better than the current one."/>
+                        <TextBlock
+                            Style="{StaticResource H3}"
+                            Text="Markdown Format"/>
+                        <TextBlock
+                            Style="{StaticResource P}">
+                            <Run
+                                Text="GitHub uses markdown in a lot of places. We can find them in various readmes, issue/pull request comments and more, and the worst part it, GitHub uses their own flavor of markdown specification known as GFM (GitHub Flavored Markdown). For JitHub to display all the things correctly, I needed a way to render GFM instead of the universal markdown format. This was hard because, normally for UWPs, we use the markdown control from the "/>
+                            <Hyperlink
+                                NavigateUri="https://github.com/CommunityToolkit/WindowsCommunityToolkit">
+                                community toolkit
+                            </Hyperlink>
+                            <Run
+                                Text=", but to support GFM, I would need to add custom parsers for the additional formats. While that's definitely something I should do to provide a native experience for the users, I simply don't have the time if I were to shoot for launching JitHub V1 with "/>
+                            <Hyperlink
+                                NavigateUri="https://uwpcommunity.com/launch/2021/">
+                                Launch 2021
+                            </Hyperlink>
+                            <Run
+                                Text=". So for now, I use a great markdown parser called "/>
+                            <Hyperlink
+                                NavigateUri="https://github.com/xoofx/markdig">
+                                markdig
+                            </Hyperlink>
+                            <Run
+                                Text=" to render the markdown text to a GFM supported HTML/CSS document and render them in a WebView. This is not ideal, and it's certainly one of the areas I want to do a quick follow post launch."/>
+                        </TextBlock>
+                        <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="Design"/>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="After solving the initial challenges, I started rapid development as all there's left is to transform my thoughts into code. However, I didn't want to do what CodeHub did which is to make the UI layout completely from scratch. While it's a good app with many features, I felt lost using it as a GitHub user, so I thought to myself, I need to make JitHub familiar to GitHub users on the web. So I started to note down all the features and layouts that GitHub web uses and translate them into what would look and feel more like a native UWP app but still maintaining the GitHub DNA. You will notice, when using JitHub, everything feels familiar for both Windows users ang GitHub users. JitHub uses the latest Fluent Design powered by WinUI 2.6, and the UI just flows like water when navigating through different parts of the app."/>
+                        <TextBlock
+                            Style="{StaticResource H3}"
+                            Text="Logo"/>
+                        <TextBlock
+                            Style="{StaticResource P}">
+                            <Run
+                                Text="Every app needs a logo, but it's just not something I know how to do. I could just slap a letter &quot;J&quot; to a transparent PNG and call it a day, but that would mean instance failure for JitHub. The logo is the first thing the users see no matter it's for acquisition or day to day use, and it's among the most important elements that provide an identity to the app. A lot of apps don't get any attraction because the developer got lazy on the logo. So JitHub needs a great logo. Introducing our logo designer: "/>
+                            <Hyperlink
+                                NavigateUri="https://www.linkedin.com/in/kejiaxu/">
+                                Keira Xu
+                            </Hyperlink>
+                        </TextBlock>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Width="160"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Source="https://nerocui.files.wordpress.com/2021/08/keiraprofile.jpg"/>
+                            <TextBlock
+                                Grid.Column="1"
+                                Style="{StaticResource P}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Text="Keira is a Product Designer at Microsoft, ex-EA, with a passion for interaction UI/UX design, prototyping and video creation. She received the 2017 Red Dot Award for her innovative designs."/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock
+                                Grid.Column="0"
+                                Style="{StaticResource P}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Text="Our design philosophy for the logo is the same as that of the app. We want it to be familiar for both GitHub users and Windows users. So, it has design elements from both products. The JitHub octopus represents the professional feature set with fast and fluid UI, and we got our inspiration for the color scheme from GitHub Desktop's logo. The JitHub logo also follows Fluent Design principles, making it feels like home on Windows."/>
+                            <Image
+                                Grid.Column="1"
+                                Width="160"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Source="https://nerocui.files.wordpress.com/2021/08/jithublogo.png"/>
+                        </Grid>
+                        <TextBlock
+                            Text="Here's some early design concept for our logo."/>
+                        <FlipView
+                            MaxHeight="600">
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/1.jpg"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/2.jpg"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/3.jpg"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/4.jpg"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/5.jpg"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/6.jpg"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/7.jpg"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/8.jpg"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/9.jpg"/>
+                        </FlipView>
+                        <TextBlock
+                            Style="{StaticResource H3}"
+                            Text="App UI Design"/>
+                        <TextBlock
+                            Style="{StaticResource P}">
+                            <Run Text="Another big part of the design story is the UI itself. I spent most of the development time designing the UI myself as I code along, and the result was … bad. I had very inconsistent UI design that doesn't look like a Windows app, and there's just so many details that are wrong from font size, color scheme, inconsistent corner radius and so much more. Lucky for me, a UI designer who also loves the product reached out to me, and JitHub was saved! Introducing out UI designer: "/>
+                            <Hyperlink
+                                NavigateUri="https://twitter.com/AlurDesign">
+                                Jakub Bugajski
+                            </Hyperlink>
+                        </TextBlock>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Width="160"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Source="https://nerocui.files.wordpress.com/2021/08/jakubprofile.png"/>
+                            <TextBlock
+                                Grid.Column="1"
+                                Style="{StaticResource P}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+                                <Run
+                                    Text="Jakub is a 13-year-old UI/UX designer from Poland. He got featured on "/>
+                                <Hyperlink
+                                    NavigateUri="https://www.theverge.com/2021/4/15/22385247/windows-file-explorer-design-concept-tabs-nested-folders">
+                                    The Verge
+                                </Hyperlink>
+                                <Run
+                                    Text=" and many other sites for his File Explorer design."/>
+                                <LineBreak/>
+                                <Run
+                                    Text="Jakub's design has helped JitHub to be consistent, beautiful and align with both Windows and GitHub's design principle. His passion in JitHub has also translated to many bugs reported and fixed. JitHub would not have been the state it's in right now without his talent and dedication."/>
+                            </TextBlock>
+                        </Grid>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="Here's some early design concept of JitHub's app UI."/>
+                        <FlipView MaxHeight="600">
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/repo-1.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/commits.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/commits-1.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/home.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/home-1.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/issues.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/issues-1.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/issues-2.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/new_issue.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/no_issues_found.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/repo.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/repo-1.png"/>
+                            <Image Source="https://nerocui.files.wordpress.com/2021/08/commits.png"/>
+                        </FlipView>
+                        <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="Feature Set"/>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="Now let's talk about the actual feature set of JitHub. The purpose of JitHub is to have close to 100% of GitHub website's feature in a native UWP on Windows. It should represent the best GitHub development tool for Windows users. Although we are nowhere near 100% of the features on the website, we have plans to grow into our goal with even more custom features that GitHub's website doesn't have. But currently, we provide a decent set of features for anyone who wants to browser code, manage issues, and pull requests, view commits and stay up to date on the activity feed."/>
+                        <FlipView MaxHeight="600">
+                            <Image Style="{ThemeResource LoginImage}"/>
+                            <Image Style="{ThemeResource DashboardImage}"/>
+                            <Image Style="{ThemeResource CodeImage}"/>
+                            <Image Style="{ThemeResource IssueImage}"/>
+                            <Image Style="{ThemeResource IssueDetailImage}"/>
+                            <Image Style="{ThemeResource PRImage}"/>
+                            <Image Style="{ThemeResource PRDetailImage}"/>
+                            <Image Style="{ThemeResource CommitsImage}"/>
+                            <Image Style="{ThemeResource CommitsDetailImage}"/>
+                        </FlipView>
+                        <TextBlock
+                            Style="{StaticResource P}"
+                            Text="But didn't I mention that we have custom features that even GitHub's website doesn't have? Introducing JitHub Pro!"/>
+                        <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="Pro Features"/>
+                        <TextBlock
+                            Style="{StaticResource P}">
+                            <Run
+                                Text="While JitHub shoots to provide all GitHub's features for free, we also provide a set of pro features that greatly improves your GitHub related productivity. For a fixed price of 9.99 USD, you can get JitHub Pro. With it, we have features like tab management in the top level so you can open multiple repos. Tab management in the code viewer so you can switch between different code files without losing context. We also have repo bulk delete, so you don't have to go into each of your dead projects and type out the name just to delete them. And there are many more (and exciting) pro features to come! And the best part is, "/>
+                            <Run
+                                FontWeight="Bold"
+                                Text="JitHub Pro is complete free for today only (September 1st, 2021) in celebration of Launch 2021!"/>
+                        </TextBlock>
+                        <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="Shameless plugs~"/>
+                        <TextBlock Style="{StaticResource P}">
+                            <Run
+                                Text="And that's a wrap on the first introduction of JitHub! Please go "/>
+                            <Hyperlink
+                                NavigateUri="https://www.microsoft.com/en-ca/p/jithub/9mxrbjbb552v">
+                                download it today
+                            </Hyperlink>
+                            <Run
+                                Text=" if you are interested. A huge shout out to the "/>
+                            <Hyperlink NavigateUri="https://uwpcommunity.com/">
+                                UWP community
+                            </Hyperlink>
+                            <Run
+                                Text=" and all the mods (especially Arlo) for hosting this event. Thanks to the annual Launch event, apps like JitHub can have a platform to show to the world what we have to offer. Also, a huge shout out to "/>
+                            <Hyperlink NavigateUri="https://platform.uno/">
+                                Uno Platform
+                            </Hyperlink>
+                            <Run
+                                Text=" for sponsoring this event. Launch 2021 wouldn't be this big and exciting without your contribution! Please feel free to "/>
+                            <Hyperlink NavigateUri="https://twitter.com/zhuowencui">
+                                follow me on twitter
+                            </Hyperlink>
+                            <Run
+                                Text=" for more updates on JitHub's development. Also please check out our designers' profile pages to follow their latest work. JitHub wouldn't be here without the massive help from "/>
+                            <Hyperlink NavigateUri="https://www.linkedin.com/in/kejiaxu/">
+                                Keira
+                            </Hyperlink>
+                            <Run
+                                Text=" and "/>
+                            <Hyperlink
+                                NavigateUri="https://twitter.com/AlurDesign">
+                                Jakub
+                            </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </UserControl>
+    </DataTemplate>
+</ResourceDictionary>
