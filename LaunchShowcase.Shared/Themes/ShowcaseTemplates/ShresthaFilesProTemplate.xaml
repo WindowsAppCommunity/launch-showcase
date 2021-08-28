@@ -78,7 +78,7 @@
                                     Visibility="{Binding DownloadLink, Converter={StaticResource NotNullOrWhiteSpaceToVisibilityConverter}}">
                                         <!--<HyperlinkButton NavigateUri="{Binding DownloadLink}">-->
                                         <!--Adding the cid to measure the impact-->
-                                        <HyperlinkButton NavigateUri="https://www.microsoft.com/store/apps/9npnffsv2hqm?cid=Launch2021">
+                                        <HyperlinkButton ToolTipService.ToolTip="Download from MS Store" NavigateUri="https://www.microsoft.com/store/apps/9npnffsv2hqm?cid=Launch2021">
                                             <Path Fill="{ThemeResource ApplicationForegroundThemeBrush}" Stretch="Fill" Height="25" Width="25" Data="M382.56,233.376C379.968,227.648,374.272,224,368,224h-64V16c0-8.832-7.168-16-16-16h-64c-8.832,0-16,7.168-16,16v208h-64    c-6.272,0-11.968,3.68-14.56,9.376c-2.624,5.728-1.6,12.416,2.528,17.152l112,128c3.04,3.488,7.424,5.472,12.032,5.472    c4.608,0,8.992-2.016,12.032-5.472l112-128C384.192,245.824,385.152,239.104,382.56,233.376z M432,352v96H80v-96H16v128c0,17.696,14.336,32,32,32h416c17.696,0,32-14.304,32-32V352H432z"
                                       VerticalAlignment="Center" HorizontalAlignment="Center" />
                                         </HyperlinkButton>
@@ -90,7 +90,7 @@
                                             </HyperlinkButton.Content>
                                         </HyperlinkButton>-->
 
-                                        <HyperlinkButton NavigateUri="{Binding ExternalLink}"
+                                        <HyperlinkButton  ToolTipService.ToolTip="Visit Home Page" NavigateUri="{Binding ExternalLink}"
                                              Visibility="{Binding ExternalLink, Converter={StaticResource NotNullOrWhiteSpaceToVisibilityConverter}}">
                                             <HyperlinkButton.Content>
                                                 <FontIcon FontWeight="Black" FontSize="22" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE167;" />
@@ -99,7 +99,7 @@
 
 
                                         <!--<HyperlinkButton NavigateUri="https://www.youtube.com/channel/UC6DW3fXV4eu4T9B1RX_Q4oA">-->
-                                        <HyperlinkButton NavigateUri="https://youtu.be/fOKNh0Mdl_I">
+                                        <HyperlinkButton ToolTipService.ToolTip="Watch a Video Overview" NavigateUri="https://youtu.be/fOKNh0Mdl_I">
                                             <HyperlinkButton.Content>
                                                 <Path Fill="{ThemeResource ApplicationForegroundThemeBrush}" Stretch="Fill" Height="25" Width="30" 
                                                       Data="M297.917,64.645c-11.19-13.302-31.85-18.728-71.306-18.728H83.386c-40.359,0-61.369,5.776-72.517,19.938
@@ -110,10 +110,10 @@
 		C204.394,157.263,202.325,160.684,199.021,162.41z"/>
                                             </HyperlinkButton.Content>
                                         </HyperlinkButton>
-                                        
 
 
-                                        <HyperlinkButton NavigateUri="https://twitter.com/AppsJpt">
+
+                                        <HyperlinkButton  ToolTipService.ToolTip="Follow Us on Twitter" NavigateUri="https://twitter.com/AppsJpt">
                                             <HyperlinkButton.Content>
                                                 <Path Fill="{ThemeResource ApplicationForegroundThemeBrush}" Stretch="Fill" Height="25" Width="30" 
                                                       Data="M500.398,94.784c-8.043,3.567-16.313,6.578-24.763,9.023c10.004-11.314,17.631-24.626,22.287-39.193
@@ -131,7 +131,7 @@
                                             </HyperlinkButton.Content>
                                         </HyperlinkButton>
 
-                                        <HyperlinkButton NavigateUri="mailto:JPTGamesAndApps@Outlook.Com?subject=Shrestha Files Version 1.0 Launch 2021">
+                                        <HyperlinkButton  ToolTipService.ToolTip="Email Us" NavigateUri="mailto:JPTGamesAndApps@Outlook.Com?subject=Shrestha Files Version 1.0 Launch 2021">
                                             <HyperlinkButton.Content>
                                                 <Path Fill="{ThemeResource ApplicationForegroundThemeBrush}" Stretch="Fill" Height="25" Width="30" 
                                                       Data="M66.097,12.089h-56.9C4.126,12.089,0,16.215,0,21.286v32.722c0,5.071,4.126,9.197,9.197,9.197h56.9
@@ -196,10 +196,10 @@
                                 <TextBlock TextWrapping="WrapWholeWords">
                                     Shrestha Files Pro is a modern dual pane file manager with tabs and colorful themes. It offers everything that majority of the Windows users will expect from a file manager. Plus, it has built-in text viewer, image viewer, audio player, and video player. These internal viewers/players can show users the files faster than Microsoft’s built-in solutions, i.e., Windows File Explorer plus built-in apps such as Notepad, Photos, Movies and TV.
                                 </TextBlock>
-                                <HyperlinkButton NavigateUri="https://youtu.be/V09G9u-RAR4" Content="• [Speed Test] Windows File Explorer and Notepad vs Shrestha Files and Internal Text Viewer"/>
-                                <HyperlinkButton NavigateUri="https://youtu.be/oFsOza1OU0M" Content="• [Speed Test] Windows File Explorer and Photos vs Shrestha Files and Internal Photo Viewer"/>
-                                <HyperlinkButton NavigateUri="https://youtu.be/ZVTDLhgIqWg" Content="• [Speed Test] Windows File Explorer and Movies and TV vs Shrestha Files Pro and Internal Video Player"/>
-                                <HyperlinkButton NavigateUri="https://youtu.be/gTBngQdT3Gw" Content="• [Speed Test] Windows File Explorer and VLC vs Shrestha Files and Internal Video Player"/>
+                                <HyperlinkButton NavigateUri="https://youtu.be/V09G9u-RAR4" Content="• [Speed Tets] Windows File Explorer and Notepad vs Shrestha Files and Internal Text Viewer"/>
+                                <HyperlinkButton NavigateUri="https://youtu.be/oFsOza1OU0M" Content="• [Speed Tets] Windows File Explorer and Photos vs Shrestha Files and Internal Photo Viewer"/>
+                                <HyperlinkButton NavigateUri="https://youtu.be/ZVTDLhgIqWg" Content="• [Speed Tets] Windows File Explorer and Movies and TV vs Shrestha Files Pro and Internal Video Player"/>
+                                <HyperlinkButton NavigateUri="https://youtu.be/gTBngQdT3Gw" Content="• [Speed Tets] Windows File Explorer and VLC vs Shrestha Files and Internal Video Player"/>
 
 
 
@@ -296,6 +296,18 @@
                                 </ItemsControl>
                             </StackPanel>
 
+
+
+                            <HyperlinkButton  ToolTipService.ToolTip="Download from Microsoft Store" NavigateUri="https://www.microsoft.com/store/apps/9npnffsv2hqm?cid=Launch2021">
+                                <HyperlinkButton.Content>
+                                    <Image Source="https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png" />
+                                </HyperlinkButton.Content>
+                            </HyperlinkButton>
+                            
+                            
+                            
+                            
+                            
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>
