@@ -20,7 +20,7 @@ namespace LaunchShowcase.Sdk.ViewModels
     {
         private const int LAUNCH_YEAR = 2021;
 
-        private readonly CommunityBackendService _backendService = CommunityBackendService.Instance;
+        private CommunityBackendService _backendService;
         private List<ProjectViewModel> _unsortedLaunchProjects;
         private LaunchScoringCategory _sortingMode;
         private SortingDirection _sortingDirection;
@@ -35,6 +35,11 @@ namespace LaunchShowcase.Sdk.ViewModels
             ToggleProjectsSortingModeCommand = new RelayCommand<LaunchScoringCategory>(ToggleProjectsSortingMode);
             SetSortingDirectionCommand = new RelayCommand<SortingDirection>(SetSortingDirection);
             PopulateProjectsAsyncCommand = new AsyncRelayCommand(PopulateLaunchProjects);
+        }
+
+        public void SetupCacheFolder(string cachePath)
+        {
+            _backendService = new CommunityBackendService(cachePath);
         }
 
         /// <inheritdoc/>
