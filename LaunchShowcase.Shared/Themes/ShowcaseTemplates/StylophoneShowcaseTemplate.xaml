@@ -15,56 +15,22 @@
     <DataTemplate x:Key="StylophoneShowcaseTemplate">
         <UserControl>
             <UserControl.Resources>
-                <x:String x:Key="DevStoryMD"  xml:space="preserve"> 
-                    
-Stylophone has been out for almost a year now, and has received as warm a welcome as I could've hoped in the (very) niche world of MPD clients.  
-There's been more than 400 trials, and about 100 paid users, which makes this the first time I got any significant form of money from the Microsoft Store. 💰💰💰  
-                    
-# Windows 11 Redesign                      
-         
-![](https://tvc-16.science/images/stylophone/v2-stylophone4.jpg)  
-                    
-In Stylophone 2, I spaced most of the UI elements further, both to fit the new **card-inspired** design language of Windows 11 and to give some elements the extra breathing room they really needed.  
-This comes at the loss of a bit of vertical space for the content, but I felt it was fine. (And if it's not, you can always enable compact sizing in the settings 🙌)  
-                    
-I've also updated the icon!  
-![](https://tvc-16.science/images/stylophone/v2-icon.png)  
-I liked v1's icon a lot, but it looked a bit too much like the MS Office icons. (A recurring theme for third-party Fluent Design apps at the time for some reason)   
-It also looked kinda muddy at small sizes, so I've cleared it up and changed the shape to something...still generic, but more legible at small sizes.  
-The "S" is much less noticeable, which I think is fine since it's kinda just a signature.  
-                 
-# (Re)building the app
-                    
-The structure of the app has switched from **2** projects to about **5**:  
-Alongside the existing _MpcNET_ library that's used to handle all the communication with MPD servers and the UWP project itself, I've split most of the core business functionality into a separate _.NET Standard_ class library, which can be reused outside of UWP easily.  
-                    
-The main goal behind this was to **port the app** to other platforms.  
-I tried Uno Platform, sadly walked back dissatisfied with the results (forced solution structure, lots of time wasted installing nuget package clones, etc), and tried elsewhere.  
-                    
-My first look was at Xamarin Forms/MAUI: I quickly reached a working prototype but felt I wouldn't be happy with the UI options available and stopped there.  
-(Besides, I don't really care about Android)  
-![ah yes, good old boring material design v1](https://tvc-16.science/images/stylophone/v2-xamarinforms.jpg)  
-I briefly considered Avalonia, but I generally don't like UI frameworks that don't try to look native to the platform they're running on.  
-(This has been greatly improved recently! I might take another stab at it one day.)  
 
-## 👉 In the end, I decided to try a port to **iOS/UIKit**, using Xamarin.iOS whose macOS variant I was already familiar with.  
-Y'know, just 'cause it'd be funny to port a UWP app to run on Apple's own twist on Universal Apps.  
-
-![my brain is about 200 years old probably](https://tvc-16.science/images/stylophone/v2-uikit.jpg)  
-                    
-As you might see, I got a lot further with this port!  
-This is all native iOS UI, powered by the **same** .NET Standard core as the UWP app.  
-I learned iOS development from scratch while doing this, which probably led to some bad decisions on the way. 😛  
-
-![](https://tvc-16.science/images/stylophone/v2-uikit3.jpg)  
-
-This is where I'd normally drop a surprise App Store link, but I'm not sure if the app actually looks good enough/would be successful on Apple devices?    
-So, consider those screenshots kind of a pitch from me for the time being. 😅  
-
-It's open source just like the UWP variant, so if you like what you see, compile it and give it a try! It's about **80% finished**.  
-I might come back to it when Xamarin adds support for Mac Catalyst, as it'd allow me to target three platforms with this port.           
-                    
-</x:String>
+                <Style x:Key="H1" TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+                <Style x:Key="H2" TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+                <Style x:Key="H3" TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                </Style>
+                <Style x:Key="P" TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                </Style>
             </UserControl.Resources>
             <Grid>
                 <!--  If you need code behind, create a user control and place it in your template.  -->
@@ -154,7 +120,106 @@ I might come back to it when Xamarin adds support for Mac Catalyst, as it'd allo
                             </Grid>
 
                             <Border BorderBrush="#333333" CornerRadius="4" BorderThickness="1">
-                                <controls:MarkdownTextBlock Padding="8" Background="#22FFFFFF" ImageMaxWidth="800" Text="{StaticResource DevStoryMD}"/>
+                                <StackPanel Padding="12" Spacing="16" Background="#99FFFFFF">
+                                    <TextBlock
+                            Style="{StaticResource P}">
+                                        <Run>Stylophone has been out for almost a year now, and has received as warm a welcome as I could've hoped in the (very) niche world of MPD clients.  </Run>
+                                        <LineBreak/>There's been more than 400 trials, and about 100 paid users, which makes this the first time I got any significant form of money from the Microsoft Store. 💰💰💰</TextBlock>
+                                    <TextBlock
+                            Style="{StaticResource H1}"
+                            Text="Windows 11 Redesign"/>
+
+                                        <Image MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-stylophone4.jpg"/>
+
+                                        <TextBlock
+                            Style="{StaticResource P}">
+                                        <Run>In Stylophone 2, I spaced most of the UI elements further, both to fit the new </Run> <Run FontWeight="Bold">card-inspired</Run>
+                                        <Run> design language of Windows 11 and to give some elements the extra breathing room they really needed.</Run>
+                                        <LineBreak/>This comes at the loss of a bit of vertical space for the content, but I felt it was fine. (And if it's not, you can always enable compact sizing in the settings 🙌)
+                                        <LineBreak/><LineBreak/>I've also updated the icon!
+                                    </TextBlock>
+                                    <Image MaxWidth="200" Source="https://tvc-16.science/images/stylophone/v2-icon.png"/>
+
+                                    <TextBlock
+                                    Style="{StaticResource P}">
+                                        <Run>I liked v1's icon a lot, but it looked a bit too much like the MS Office icons. (A </Run> 
+                                        <Hyperlink
+                                            NavigateUri="https://www.microsoft.com/en-gb/p/quarrel-unofficial-discord-client/9nbrwj777c8r">
+                                            recurring theme
+                                        </Hyperlink><Run Text=" for"/>
+                                        <Hyperlink
+                                            NavigateUri="https://www.microsoft.com/fr-fr/p/flowpad/9pmt6j2wvb10?rtc">
+                                            third-party 
+                                        </Hyperlink> <Run Text="Fluent Design"/> 
+                                        <Hyperlink
+                                            NavigateUri="https://www.microsoft.com/fr-fr/p/yugen-mosaic/9pf0s24cx0d4">
+                                            apps 
+                                        </Hyperlink><Run Text=" at the time for some reason)"/>   
+                                         <LineBreak/>It also looked kinda muddy at small sizes, so I've cleared it up and changed the shape to something...still generic, but more legible at small sizes.  
+                                         <LineBreak/>The "S" is much less noticeable, which I think is fine since it's kinda just a signature.    
+                                         <LineBreak/><LineBreak/><Run> If you preferred the old icon, well, how about buying </Run> <Hyperlink
+                                            NavigateUri="https://ko-fi.com/s/9fcf421b6e">
+                                            a sticker  
+                                        </Hyperlink><Run Text=" of it to reminisce about the good old days? 😉"/>
+                                    </TextBlock>
+
+                                    <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="(Re)building the app"/>
+                                    
+                                    <TextBlock
+                            Style="{StaticResource P}">
+                                        <Run>The structure of the app has switched from 2 projects to about </Run> <Run FontWeight="Bold">5</Run>:
+                                        <LineBreak/>
+                                        <Run> Alongside the existing  </Run> <Run FontStyle="Italic" Text="MpcNET"/>  library that's used to handle all the communication with MPD servers and the UWP project itself, 
+                                        I've split most of the core business functionality into a separate <Run FontStyle="Italic" Text=".NET Standard"/> class library, which can be reused outside of UWP easily.  
+                                        <LineBreak/>The main goal behind this was to <Run FontWeight="Bold">port the app</Run> to other platforms.  
+                                        I tried Uno Platform, sadly walked back dissatisfied with the results (forced solution structure, lots of time wasted installing nuget package clones, etc), and tried elsewhere.  
+                                        <LineBreak/><LineBreak/>My first look was at Xamarin Forms/MAUI: I quickly reached a working prototype but felt I wouldn't be happy with the UI options available and stopped there.
+                                        (Besides, I don't really care about Android)
+                                    </TextBlock>
+
+                                    <Image MaxWidth="600" Source="https://tvc-16.science/images/stylophone/v2-xamarinforms.jpg"/>
+
+                                    <TextBlock
+                            Style="{StaticResource P}">
+                                        <Run>I briefly considered Avalonia, but I generally don't like UI frameworks that don't try to look native to the platform they're running on.</Run>  
+                                        <LineBreak/>(This has been greatly improved recently! I might take another stab at it one day.)
+                                    </TextBlock>
+                                    
+                                    <TextBlock
+                            Style="{StaticResource H3}"
+                            Text="👉 In the end, I decided to try a port to iOS/UIKit, using Xamarin.iOS whose macOS variant I was already familiar with."/>
+
+                                    <Image MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-uikit.jpg"/>
+
+                                    <TextBlock
+                            Style="{StaticResource P}">
+                                    As you might see, I got a lot further with this port! This is all native iOS UI, powered by the <Run FontWeight="Bold">same</Run> .NET Standard core as the UWP app.  
+                                    <LineBreak/>I learned iOS development from scratch while doing this, which probably led to some bad decisions on the way. 😛
+                                    </TextBlock>
+
+                                    <Image MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-uikit3.jpg"/>
+
+                                    <TextBlock
+                            Style="{StaticResource P}">
+                                    <LineBreak/>This is where I'd normally drop a surprise App Store link, but I'm not sure if the app actually looks good enough/would be successful on Apple devices? 
+                                    <LineBreak/><Run FontSize="10">And if I'd eventually make back the 90$ a year Apple charges for a developer license, good lord Microsoft has spoiled me with the one-time 100$ payment which I didn't even pay since I got a student deal back in 2013</Run>
+                                    <LineBreak/>So, consider those screenshots kind of a pitch from me for the time being. 😅 
+                                    <LineBreak/>
+                                    <LineBreak/>It's open source just like the UWP variant, so if you like what you see, 
+                                        <Hyperlink
+                                            NavigateUri="https://github.com/Difegue/Stylophone/tree/dev/Sources/Stylophone.iOS">
+                                            compile it 
+                                        </Hyperlink> and give it a try! It's about <Run FontWeight="Bold">80% finished</Run>.  
+                                    <LineBreak/>I might come back to it when Xamarin adds support for 
+                                        <Hyperlink
+                                            NavigateUri="https://github.com/xamarin/xamarin-macios/issues/6210">
+                                            Mac Catalyst 
+                                        </Hyperlink>, as it'd allow me to target three platforms with this port.
+                                    </TextBlock>
+                                </StackPanel>
+                                
                             </Border>
                             
 
