@@ -124,6 +124,8 @@
 
     </ResourceDictionary.ThemeDictionaries>
 
+    <converter:CollectionAnyToVisibilityConverter x:Key="CollectionAnyToVisibilityConverter" />
+
     <DataTemplate x:Key="JitHubShowcaseTemplate">
         <!-- To customize this template for your project, create a copy, rename it with your project name and modify ShowcasePageTemplateSelector -->
         <UserControl>
@@ -140,15 +142,26 @@
                                 Source="{Binding HeroImage}"
                                 HorizontalAlignment="Stretch"/>
                         </Border>
-                        <StackPanel
-                            HorizontalAlignment="Right"
-                            Orientation="Horizontal">
-                            <HyperlinkButton NavigateUri="https://www.microsoft.com/en-ca/p/jithub/9mxrbjbb552v">
+                        <Grid
+                            HorizontalAlignment="Stretch">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left">
+                                <Run
+                                    Text="Author:"/>
+                                <Hyperlink
+                                    NavigateUri="https://nerocui.com">
+                                    Nero Cui
+                                </Hyperlink>
+                            </TextBlock>
+                            <HyperlinkButton
+                                HorizontalAlignment="Right"
+                                NavigateUri="https://www.microsoft.com/en-ca/p/jithub/9mxrbjbb552v">
                                 <Image
                                     Width="200"
                                     Source="https://developer.microsoft.com/en-us/microsoft-store/badges/images/English_get-it-from-MS.png"/>
                             </HyperlinkButton>
-                        </StackPanel>
+                        </Grid>
                         <TextBlock
                             Style="{StaticResource H1}"
                             Text="A UWP GitHub Client"/>
@@ -234,12 +247,16 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Image
+                            <Border
                                 Grid.Column="0"
-                                Width="160"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Source="https://nerocui.files.wordpress.com/2021/08/keiraprofile.jpg"/>
+                                CornerRadius="80">
+                                <Image
+                                    Width="160"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Source="https://nerocui.files.wordpress.com/2021/08/keiraprofile.jpg"/>
+                            </Border>
+                            
                             <TextBlock
                                 Grid.Column="1"
                                 Style="{StaticResource P}"
@@ -296,12 +313,15 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Image
+                            <Border
                                 Grid.Column="0"
-                                Width="160"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Source="https://nerocui.files.wordpress.com/2021/08/jakubprofile.png"/>
+                                CornerRadius="80">
+                                <Image
+                                    Width="160"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Source="https://nerocui.files.wordpress.com/2021/08/jakubprofile.png"/>
+                            </Border>
                             <TextBlock
                                 Grid.Column="1"
                                 Style="{StaticResource P}"
@@ -406,6 +426,29 @@
                                 Jakub
                             </Hyperlink>
                         </TextBlock>
+                        <TextBlock
+                            Style="{StaticResource H2}"
+                            Text="Special Thanks To The Beta Testers"/>
+                        <winui:ItemsRepeater
+                            Visibility="{Binding BetaTesters, Converter={StaticResource CollectionAnyToVisibilityConverter}}"
+                            ItemsSource="{Binding BetaTesters, Mode=OneWay}">
+                            <winui:ItemsRepeater.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
+                                        Padding="16 2"
+                                        Margin="0 0 8 4"
+                                        CornerRadius="4"
+                                        BorderBrush="{StaticResource SystemControlForegroundChromeGrayBrush}"
+                                        BorderThickness="1">
+                                        <TextBlock Text="{Binding Name, Mode=OneWay}"/>
+                                    </Border>
+                                </DataTemplate>
+                            </winui:ItemsRepeater.ItemTemplate>
+                            <winui:ItemsRepeater.Layout>
+                                <controls:WrapLayout/>
+                            </winui:ItemsRepeater.Layout>
+                        </winui:ItemsRepeater>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
