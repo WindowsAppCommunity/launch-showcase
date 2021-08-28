@@ -39,6 +39,7 @@ namespace LaunchShowcase.TemplateSelectors
                 LaunchProjects.JitHub => GetTemplateByName("JitHubShowcaseTemplate"),
                 LaunchProjects.FluentStore => GetTemplateByName("FluentStoreShowcaseTemplate"),
                 LaunchProjects.TranslucentTB => GetTemplateByName("TranslucentTBShowcaseTemplate"),
+                LaunchProjects.ShresthaFilesPro => GetTemplateByName("ShresthaFilesProTemplate"),
                 _ => GetTemplateByName("DefaultShowcaseTemplate"),
             };
         }
