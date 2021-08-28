@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using OwlCore.Net.HttpClientHandlers;
 using OwlCore.Provisos;
 
 namespace LaunchShowcase.Sdk.Services

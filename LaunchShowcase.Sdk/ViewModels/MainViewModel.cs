@@ -34,6 +34,7 @@ namespace LaunchShowcase.Sdk.ViewModels
 
             ToggleProjectsSortingModeCommand = new RelayCommand<LaunchScoringCategory>(ToggleProjectsSortingMode);
             SetSortingDirectionCommand = new RelayCommand<SortingDirection>(SetSortingDirection);
+            PopulateProjectsAsyncCommand = new AsyncRelayCommand(PopulateLaunchProjects);
         }
 
         /// <inheritdoc/>
@@ -55,6 +56,8 @@ namespace LaunchShowcase.Sdk.ViewModels
         public IRelayCommand<LaunchScoringCategory> ToggleProjectsSortingModeCommand { get; }
 
         public IRelayCommand<SortingDirection> SetSortingDirectionCommand { get; }
+
+        public IAsyncRelayCommand PopulateProjectsAsyncCommand { get; }
 
         public LaunchScoringCategory SortingMode
         {
@@ -88,6 +91,8 @@ namespace LaunchShowcase.Sdk.ViewModels
         {
             var projectsRes = await _backendService.ProjectsService.GetLaunchProjects(LAUNCH_YEAR);
 
+            var projectsToAdd = new List<ProjectViewModel>();
+
             await projectsRes.Projects.InParallel(async project =>
             {
                 var projectVm = new ProjectViewModel(project);
@@ -95,10 +100,15 @@ namespace LaunchShowcase.Sdk.ViewModels
 
                 if (projectVm.HasMinimumInfoForLaunchShowcase())
                 {
-                    _unsortedLaunchProjects.Add(projectVm);
-                    LaunchProjects.Add(projectVm);
+                    projectsToAdd.Add(projectVm);
                 }
             });
+
+            foreach(var project in projectsToAdd)
+            {
+                _unsortedLaunchProjects.Add(project);
+                LaunchProjects.Add(project);
+            }
         }
 
         private void ToggleProjectsSortingMode(LaunchScoringCategory category)

@@ -4,12 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LaunchShowcase"
     xmlns:services="using:LaunchShowcase.Sdk.Services"
+    xmlns:converter="using:LaunchShowcase.Converters"
     xmlns:data="using:LaunchShowcase.Sdk.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:templateselectors="using:LaunchShowcase.TemplateSelectors"
     xmlns:vms="using:LaunchShowcase.Sdk.ViewModels"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -31,10 +34,17 @@
             </ResourceDictionary.ThemeDictionaries>
 
             <templateselectors:ShowcasePageTemplateSelector x:Key="ShowcasePageTemplateSelector" />
+            <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         </ResourceDictionary>
     </Page.Resources>
 
     <Grid Background="{ThemeResource MainPageBackgroundBrush}">
+        <interactivity:Interaction.Behaviors>
+            <core:EventTriggerBehavior EventName="Loaded">
+                <core:InvokeCommandAction Command="{x:Bind ViewModel.PopulateProjectsAsyncCommand}" />
+            </core:EventTriggerBehavior>
+        </interactivity:Interaction.Behaviors>
+        
         <ScrollViewer>
             <Grid>
                 <Grid.RowDefinitions>
@@ -228,7 +238,10 @@
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>
-                </StackPanel> 
+                </StackPanel>
+
+                <TextBlock Text="Loading projects, please wait..." Grid.Row="4" HorizontalAlignment="Center" FontSize="18"
+                           Visibility="{x:Bind ViewModel.PopulateProjectsAsyncCommand.IsRunning, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
             
                 <toolkit:AdaptiveGridView x:Name="PART_LaunchProjectsGridView"
                                           ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"

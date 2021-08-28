@@ -28,8 +28,6 @@ namespace LaunchShowcase
             InitializeComponent();
 
             DataContext = MainViewModel.Instance;
-
-            _ = ViewModel.InitAsync();
         }
 
         public async void LaunchProjectsGridView_ItemClicked(object sender, ItemClickEventArgs e)

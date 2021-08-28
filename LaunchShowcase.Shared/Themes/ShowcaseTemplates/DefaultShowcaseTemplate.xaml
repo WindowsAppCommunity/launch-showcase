@@ -128,7 +128,8 @@
                                 <ItemsControl ItemsSource="{Binding Developers}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                            <StackPanel CornerRadius="4" BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1"
+                                                        Orientation="Horizontal" Padding="5">
                                                 <TextBlock Text="{Binding Name}"/>
                                             </StackPanel>
                                         </DataTemplate>
@@ -147,14 +148,15 @@
                                 <ItemsControl ItemsSource="{Binding BetaTesters}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Spacing="5" Margin="0,0,10,0">
+                                            <StackPanel CornerRadius="4" BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1"
+                                                        Orientation="Horizontal" Padding="5">
                                                 <TextBlock Text="{Binding Name}"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <controls:WrapPanel Orientation="Horizontal" />
+                                            <controls:WrapPanel Orientation="Horizontal" HorizontalSpacing="5" />
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                 </ItemsControl>
@@ -166,14 +168,15 @@
                                 <ItemsControl ItemsSource="{Binding Translators}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Spacing="5" Margin="0,0,10,0">
-                                                <TextBlock Text="{Binding Name}" />
+                                            <StackPanel CornerRadius="4" BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1"
+                                                        Orientation="Horizontal" Padding="5">
+                                                <TextBlock Text="{Binding Name}"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <controls:WrapPanel Orientation="Horizontal" />
+                                            <controls:WrapPanel Orientation="Horizontal" HorizontalSpacing="5" />
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                 </ItemsControl>
