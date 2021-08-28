@@ -35,6 +35,10 @@
 
             <templateselectors:ShowcasePageTemplateSelector x:Key="ShowcasePageTemplateSelector" />
             <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+            <SolidColorBrush x:Key="ToggleButtonBackgroundChecked" Color="Transparent" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPointerOver" Color="Gray" />
+            <SolidColorBrush x:Key="ToggleButtonBackgroundCheckedPressed" Color="DarkGray" />
         </ResourceDictionary>
     </Page.Resources>
 
@@ -44,7 +48,7 @@
                 <core:InvokeCommandAction Command="{x:Bind ViewModel.PopulateProjectsAsyncCommand}" />
             </core:EventTriggerBehavior>
         </interactivity:Interaction.Behaviors>
-        
+
         <ScrollViewer>
             <Grid>
                 <Grid.RowDefinitions>
@@ -54,11 +58,10 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" FontWeight="Bold" TextAlignment="Center" Margin="15"
-                           Text="For preview purposes only" Opacity="0.2"/>
-                
                 <Grid Margin="40" MaxWidth="1000">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -88,7 +91,7 @@
                             <TextBlock Text="Learn, develop, launch" FontWeight="SemiLight" TextWrapping="WrapWholeWords"
                                        FontSize="18" HorizontalAlignment="Right" />
 
-                            <TextBlock Text="Devs, testers, translators, and users work together to Launch new and refreshed apps."
+                            <TextBlock Text="Users, developers, testers and translators work together to Launch and re-launch their projects."
                                        MaxWidth="375"
                                        TextAlignment="Right" FontSize="16"
                                        TextWrapping="WrapWholeWords"
@@ -96,58 +99,13 @@
                         </StackPanel>
 
 
-                        <TextBlock Grid.Row="1"
-                                   Text="Hosted by the UWP Community" Opacity="0.4"
+                        <TextBlock Grid.Row="1" Margin="0,20,0,0"
+                                   Text="Hosted by the UWP Community" Opacity="0.4" TextWrapping="WrapWholeWords"
                                    HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                     </Grid>
                 </Grid>
 
-                <StackPanel Grid.Row="1" Margin="25" Spacing="15"
-                            HorizontalAlignment="Center" MaxWidth="625">
-                    <TextBlock Text="Today, as part of our annual Launch event, 31 projects are being released as either new or vNext, and are all free for you to start using."
-                               FontSize="17" TextWrapping="WrapWholeWords" />
-
-                    <TextBlock Text="Launch 2021 is possible thanks to our community of nearly 4,000 strong. All of the developers and users in the UWP Community discord server have been discussing, collaborating, translating, testing and trading feedback for months. These projects are the fruit of their efforts."
-                               FontSize="17" TextWrapping="WrapWholeWords" />
-
-                    <TextBlock Text="To help you navigate through them all, each project has been scored by our judges in the following categories:"
-                               FontSize="17" TextWrapping="WrapWholeWords" Margin="0,0,0,15" />
-
-                    <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
-                        <Run Text="Flexibility -" FontWeight="Bold" />
-                        <Run Text="A Fluent Design principle. Responsive layouts, adaptive input methods, and a natural UI fit on every device" />
-                    </TextBlock>
-
-                    <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
-                        <Run Text="Empathy -" FontWeight="Bold" />
-                        <Run Text="A Fluent Design principle. The user experience is stable, intuitive, and delightful to use." />
-                    </TextBlock>
-
-                    <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
-                        <Run Text="Beauty -" FontWeight="Bold" />
-                        <Run Text="A Fluent Design principle. The app is engaging and immersive. Shadows, animations, depth, general design." />
-                    </TextBlock>
-
-                    <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
-                        <Run Text="Potential -" FontWeight="Bold" />
-                        <Run Text="Apps are built on a great idea and have the potential to grow into something even bigger." />
-                    </TextBlock>
-
-                    <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
-                        <Run Text="Originality -" FontWeight="Bold" />
-                        <Run Text="Apps that do something very original, unique, or uncommon, or serves an unfilled niche. Yugen Mosaic is a good example of this." />
-                    </TextBlock>
-
-                    <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
-                        <Run Text="Accessibility -" FontWeight="Bold" />
-                        <Run Text="Screen reader support, localization, high contrast themes, and keyboard navigation make your app more accessible to users around the world." />
-                    </TextBlock>
-                </StackPanel>
-
-                <TextBlock Grid.Row="2" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,25" Opacity="0.8" FontSize="18" TextWrapping="WrapWholeWords" TextAlignment="Center"
-                           Text="If you do not see your project below, make sure you've followed the instructions given by the Launch Coordinators." />
-
-                <StackPanel Background="Transparent" Grid.Row="3" Margin="50,15" HorizontalAlignment="Right"
+                <StackPanel Background="Transparent" Grid.Row="2" Margin="50,15" HorizontalAlignment="Right"
                             Orientation="Horizontal" Spacing="10">
                     <Button ToolTipService.ToolTip="Order" AutomationProperties.Name="Order" Background="Transparent">
                         <Button.Content>
@@ -156,7 +114,7 @@
                                 <TextBlock Text="Sort by category score" />
                             </StackPanel>
                         </Button.Content>
-                    
+
                         <Button.Flyout>
                             <MenuFlyout>
                                 <ToggleMenuFlyoutItem Margin="10,2" Text="Flexibility"
@@ -166,7 +124,7 @@
                                         <data:LaunchScoringCategory>Flexibility</data:LaunchScoringCategory>
                                     </ToggleMenuFlyoutItem.CommandParameter>
                                 </ToggleMenuFlyoutItem>
-                            
+
                                 <ToggleMenuFlyoutItem Margin="10,2" Text="Empathy"
                                                       IsChecked="{x:Bind ViewModel.HasEmpathySortingMode, Mode=OneWay}"
                                                       Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
@@ -174,7 +132,7 @@
                                         <data:LaunchScoringCategory>Empathy</data:LaunchScoringCategory>
                                     </ToggleMenuFlyoutItem.CommandParameter>
                                 </ToggleMenuFlyoutItem>
-                            
+
                                 <ToggleMenuFlyoutItem Margin="10,2" Text="Beauty"
                                                       IsChecked="{x:Bind ViewModel.HasBeautySortingMode, Mode=OneWay}"
                                                       Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
@@ -182,7 +140,7 @@
                                         <data:LaunchScoringCategory>Beauty</data:LaunchScoringCategory>
                                     </ToggleMenuFlyoutItem.CommandParameter>
                                 </ToggleMenuFlyoutItem>
-                            
+
                                 <ToggleMenuFlyoutItem Margin="10,2" Text="Potential"
                                                       IsChecked="{x:Bind ViewModel.HasPotentialSortingMode, Mode=OneWay}"
                                                       Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
@@ -190,7 +148,7 @@
                                         <data:LaunchScoringCategory>Potential</data:LaunchScoringCategory>
                                     </ToggleMenuFlyoutItem.CommandParameter>
                                 </ToggleMenuFlyoutItem>
-                            
+
                                 <ToggleMenuFlyoutItem Margin="10,2" Text="Originality"
                                                       IsChecked="{x:Bind ViewModel.HasOriginalitySortingMode, Mode=OneWay}"
                                                       Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
@@ -198,7 +156,7 @@
                                         <data:LaunchScoringCategory>Originality</data:LaunchScoringCategory>
                                     </ToggleMenuFlyoutItem.CommandParameter>
                                 </ToggleMenuFlyoutItem>
-                            
+
                                 <ToggleMenuFlyoutItem Margin="10,2" Text="Accessiblity"
                                                       IsChecked="{x:Bind ViewModel.HasAccessiblitySortingMode, Mode=OneWay}"
                                                       Command="{x:Bind ViewModel.ToggleProjectsSortingModeCommand}">
@@ -217,7 +175,7 @@
                                 <TextBlock Text="Sort direction" />
                             </StackPanel>
                         </Button.Content>
-                    
+
                         <Button.Flyout>
                             <MenuFlyout>
                                 <ToggleMenuFlyoutItem Margin="10,2" Text="Ascending" 
@@ -227,7 +185,7 @@
                                         <data:SortingDirection>Ascending</data:SortingDirection>
                                     </ToggleMenuFlyoutItem.CommandParameter>
                                 </ToggleMenuFlyoutItem>
-                            
+
                                 <ToggleMenuFlyoutItem Margin="10,2" Text="Descending" 
                                                       IsChecked="{x:Bind ViewModel.IsDescendingSortingDirection, Mode=OneWay}"
                                                       Command="{x:Bind ViewModel.SetSortingDirectionCommand}">
@@ -242,45 +200,160 @@
 
                 <TextBlock Text="Loading projects, please wait..." Grid.Row="4" HorizontalAlignment="Center" FontSize="18"
                            Visibility="{x:Bind ViewModel.PopulateProjectsAsyncCommand.IsRunning, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
-            
-                <toolkit:AdaptiveGridView x:Name="PART_LaunchProjectsGridView"
-                                          ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"
-                                          SelectionMode="None"
-                                          IsItemClickEnabled="True"
-                                          ItemClick="LaunchProjectsGridView_ItemClicked"
-                                          Grid.Row="4"
-                                          ItemHeight="290"
-                                          DesiredWidth="500">
-                    <toolkit:AdaptiveGridView.ItemTemplate>
-                        <DataTemplate x:DataType="vms:ProjectViewModel">
-                            <StackPanel Spacing="8">
-                                <Image Source="{x:Bind HeroImage}" Height="215" Width="375"
-                                       Stretch="UniformToFill" VerticalAlignment="Center" />
 
-                                <Grid HorizontalAlignment="Center">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="4">
 
-                                    <Image Source="{x:Bind AppIcon}" Grid.RowSpan="2" Height="45" Width="45" Margin="0,0,15,0" />
+                    <toolkit:AdaptiveGridView x:Name="PART_LaunchProjectsGridView"
+                                              ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"
+                                              SelectionMode="None"
+                                              IsItemClickEnabled="True"
+                                              ItemClick="LaunchProjectsGridView_ItemClicked"
+                                              ItemHeight="290"
+                                              DesiredWidth="500">
+                        <toolkit:AdaptiveGridView.ItemTemplate>
+                            <DataTemplate x:DataType="vms:ProjectViewModel">
+                                <StackPanel Spacing="8">
+                                    <Image Source="{x:Bind HeroImage}" Height="215" Width="375"
+                                           Stretch="UniformToFill" VerticalAlignment="Center" />
 
-                                    <TextBlock Text="{x:Bind AppName}" FontSize="18"
-                                               Grid.Column="1" />
+                                    <Grid HorizontalAlignment="Center">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="{x:Bind Description}" FontSize="12" MaxLines="2" Width="300" Opacity="0.5"
-                                               Grid.Column="1" Grid.Row="1" TextWrapping="WrapWholeWords" TextTrimming="CharacterEllipsis" />
-                                </Grid>
-                            </StackPanel>
-                        </DataTemplate>
-                    </toolkit:AdaptiveGridView.ItemTemplate>
-                </toolkit:AdaptiveGridView>
+                                        <Image Source="{x:Bind AppIcon}" Grid.RowSpan="2" Height="45" Width="45" Margin="0,0,15,0" />
+
+                                        <TextBlock Text="{x:Bind AppName}" FontSize="18"
+                                                   Grid.Column="1" />
+
+                                        <TextBlock Text="{x:Bind Description}" FontSize="12" MaxLines="2" Width="300" Opacity="0.5"
+                                                   Grid.Column="1" Grid.Row="1" TextWrapping="WrapWholeWords" TextTrimming="CharacterEllipsis" />
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </toolkit:AdaptiveGridView.ItemTemplate>
+                    </toolkit:AdaptiveGridView>
+                </StackPanel>
+
+                <StackPanel Spacing="10" HorizontalAlignment="Center" Grid.Row="5" Margin="20,20" MaxWidth="875">
+                    <TextBlock Text="Honorable Mentions" FontSize="26" Width="875" />
+
+                    <TextBlock Text="Put to a community vote, these projects weren't quite ready in time and deserve a mention in the showcase."  TextWrapping="WrapWholeWords"
+                               FontSize="14"/>
+
+                    <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" >
+                        <TextBlock Text="Files" FontSize="18" />
+
+                        <TextBlock />
+                    </StackPanel>
+
+                    <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" >
+                        <TextBlock Text="Oxidized" FontSize="18" />
+
+                        <TextBlock />
+                    </StackPanel>
+
+                    <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" >
+                        <TextBlock Text="Strix Music" FontSize="18" />
+
+                        <TextBlock />
+                    </StackPanel>
+                </StackPanel>
+
+
+                <StackPanel Grid.Row="6" Spacing="10" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="875" Margin="15">
+                    <TextBlock FontSize="26" Text="About Launch 2021" Margin="0,0,0,0"/>
+
+                    <TextBlock FontSize="20" Text="What is it?" Margin="0,10,0,0" />
+
+                    <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" Spacing="15">
+
+                        <TextBlock Text="Launch 2021 is the third annual Launch event where users, developers, beta testers and translators work together to bring their ideas to life, and Launch their projects as a community."
+                                   FontSize="16" TextWrapping="WrapWholeWords" />
+
+                        <TextBlock Text="Participants are encouraged to tap into the power of the community we've built on Discord to collaborate in real time with each other to push and improve their projects."
+                                   FontSize="16" TextWrapping="WrapWholeWords" />
+
+                        <TextBlock Text="As part of the annual event, 31 projects are being released as either new or vNext, and are all free for you to start using."
+                                   FontSize="16" TextWrapping="WrapWholeWords" />
+
+                        <TextBlock Text="Our panel of judges has personally tried and scored each project in different categories, to help you sort through them.  "
+                                   FontSize="16" TextWrapping="WrapWholeWords" />
+
+                        <TextBlock Text="Thanks to a sponsorship from Nventive's Uno Platform, the top 5 projects on Windows and top 5 cross-platform apps built on Uno will receive a prize for their work."
+                                   FontSize="16" TextWrapping="WrapWholeWords" />
+                    </StackPanel>
+
+                    <TextBlock Text="Scoring categories:"
+                                   FontSize="20" TextWrapping="WrapWholeWords" Margin="0,10,0,0" />
+
+                    <StackPanel Spacing="10" BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3">
+
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                                <Run Text="Flexibility -" FontWeight="Bold" />
+                                <Run Text="A Fluent Design principle. Responsive layouts, adaptive input methods, and a natural UI fit on every device" />
+                        </TextBlock>
+
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                                <Run Text="Empathy -" FontWeight="Bold" />
+                                <Run Text="A Fluent Design principle. The user experience is stable, intuitive, and delightful to use." />
+                        </TextBlock>
+
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                                <Run Text="Beauty -" FontWeight="Bold" />
+                                <Run Text="A Fluent Design principle. The app is engaging and immersive. Shadows, animations, depth, general design." />
+                        </TextBlock>
+
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                                <Run Text="Potential -" FontWeight="Bold" />
+                                <Run Text="Apps are built on a great idea and have the potential to grow into something even bigger." />
+                        </TextBlock>
+
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                                <Run Text="Originality -" FontWeight="Bold" />
+                                <Run Text="Apps that do something very original, unique, or uncommon, or serves an unfilled niche." />
+                        </TextBlock>
+
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                            <Run Text="Accessibility -" FontWeight="Bold" />
+                            <Run Text="Screen reader support, localization, high contrast themes, and keyboard navigation make your app more accessible to users around the world." />
+                        </TextBlock>
+                    </StackPanel>
+
+
+                    <TextBlock FontSize="20" TextWrapping="WrapWholeWords" Margin="0,10,0,0">
+                        <Run Text="Thanks to our community of nearly 4,000 strong. "/>
+                    </TextBlock>
+
+                    <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" Spacing="10">
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                            <Run Text="All of the developers and users in the UWP Community Discord server have been discussing, collaborating, translating, testing and trading feedback for months on the projects you see here today."/>
+                        </TextBlock>
+
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                            <Run Text="These projects are the fruit of our efforts."/>
+                        </TextBlock>
+                    </StackPanel>
+
+                    <TextBlock FontSize="20" Text="Sponsored by Uno Platform" Margin="0,10,0,0" />
+
+                    <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" Spacing="10">
+                        <TextBlock Text="Uno Platform sponsored Launch this year, providing the prizes for our top projects."
+                                   FontSize="14" TextWrapping="WrapWholeWords" />
+
+                        <TextBlock Text="Lorep ipsum dolor sey manet."
+                                   FontSize="14" TextWrapping="WrapWholeWords" />
+
+                        <TextBlock Text="Lorep ipsum has been the default placeholder text since the printing press was invented in 1604."
+                                   FontSize="14" TextWrapping="WrapWholeWords" />
+                    </StackPanel>
+                </StackPanel>
             </Grid>
-
         </ScrollViewer>
 
         <Grid x:Name="PART_Overlay" Visibility="Collapsed">
