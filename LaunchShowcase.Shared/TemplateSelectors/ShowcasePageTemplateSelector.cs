@@ -37,7 +37,7 @@ namespace LaunchShowcase.TemplateSelectors
                 // and should match the x:Key given to the data template.
                 LaunchProjects.Archon => GetTemplateByName("DefaultShowcaseTemplate"), 
                 LaunchProjects.JitHub => GetTemplateByName("JitHubShowcaseTemplate"),
-                LaunchProjects.FluentStore => GetTemplateByName("FluentStore"),
+                // LaunchProjects.FluentStore => GetTemplateByName("FluentStore"), // Disabled, glitchy in WASM.
                 LaunchProjects.TranslucentTB => GetTemplateByName("TranslucentTBShowcaseTemplate"),
                 _ => GetTemplateByName("DefaultShowcaseTemplate"),
             };
