@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -26,14 +27,16 @@ namespace LaunchShowcase.Themes.ShowcaseTemplates
             this.InitializeComponent();
         }
 
+        private ProjectViewModel Project => (ProjectViewModel)DataContext;
+
         private async void MoreButton_Click(object sender, RoutedEventArgs e)
         {
-            ProjectViewModel project = (ProjectViewModel)DataContext;
+            
             var dialog = new ContentDialog()
             {
                 Title = new TextBlock()
                 {
-                    Text = project.AppName,
+                    Text = Project.AppName,
                     FontSize = 24,
                     FontWeight = FontWeights.Bold
                 },
@@ -41,7 +44,7 @@ namespace LaunchShowcase.Themes.ShowcaseTemplates
                 {
                     Content = new TextBlock()
                     {
-                        Text = project.Description,
+                        Text = Project.Description,
                         TextWrapping = TextWrapping.Wrap
                     }
                 },
@@ -72,6 +75,21 @@ namespace LaunchShowcase.Themes.ShowcaseTemplates
             // or at the bottom of the page (whichever places the card higher up)
             double offset = Math.Min(imageElem.ActualHeight - cardHeight, ActualHeight - cardHeight);
             HeroImageSpacer.Height = Math.Max(offset, 0);
+        }
+
+        private async void DownloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri(Project.DownloadLink));
+        }
+
+        private async void GithubButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri(Project.GithubLink));
+        }
+
+        private async void WebsiteButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Launcher.LaunchUriAsync(new Uri(Project.ExternalLink));
         }
     }
 }
