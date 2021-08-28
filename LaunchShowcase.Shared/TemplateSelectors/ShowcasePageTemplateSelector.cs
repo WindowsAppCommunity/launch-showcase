@@ -36,8 +36,9 @@ namespace LaunchShowcase.TemplateSelectors
                 // Your ResourceDictionary's XAML file should be placed under /Themes/ShowcaseTemplates,
                 // and should match the x:Key given to the data template.
                 LaunchProjects.Stylophone => GetTemplateByName("StylophoneShowcaseTemplate"), 
-                LaunchProjects.Archon => GetTemplateByName("DefaultShowcaseTemplate"),
-                LaunchProjects.FluentStore => GetTemplateByName("FluentStore"),
+                LaunchProjects.Archon => GetTemplateByName("DefaultShowcaseTemplate"), 
+                LaunchProjects.JitHub => GetTemplateByName("JitHubShowcaseTemplate"),
+                // LaunchProjects.FluentStore => GetTemplateByName("FluentStore"), // Disabled, glitchy in WASM.
                 LaunchProjects.TranslucentTB => GetTemplateByName("TranslucentTBShowcaseTemplate"),
                 _ => GetTemplateByName("DefaultShowcaseTemplate"),
             };

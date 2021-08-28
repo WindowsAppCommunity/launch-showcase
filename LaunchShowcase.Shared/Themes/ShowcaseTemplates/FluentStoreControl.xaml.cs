@@ -60,11 +60,6 @@ namespace LaunchShowcase.Themes.ShowcaseTemplates
             UpdateHeroImageSpacer((FrameworkElement)sender);
         }
 
-        private void InfoCard_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            UpdateHeroImageSpacer(HeroImage);
-        }
-
         private void UpdateHeroImageSpacer(FrameworkElement imageElem)
         {
             // Height of the card including padding and spacing
