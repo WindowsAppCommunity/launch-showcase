@@ -14,7 +14,7 @@
     <converter:NotNullOrWhiteSpaceToVisibilityConverter x:Key="NotNullOrWhiteSpaceToVisibilityConverter" />
     <converter:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
 
-    <DataTemplate x:Key="FluentStore">
+    <DataTemplate x:Key="FluentStoreShowcaseTemplate">
         <UserControl>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="Narrow">
