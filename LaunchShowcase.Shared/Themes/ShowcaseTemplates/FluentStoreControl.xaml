@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <ParallaxView Source="{x:Bind ContentScroller}" VerticalShift="200" VerticalSourceOffsetKind="Absolute">
-            <Border x:Name="HeroImage" SizeChanged="HeroImage_SizeChanged"
+            <Border x:Name="PART_HeroImage" SizeChanged="HeroImage_SizeChanged"
                     VerticalAlignment="Top" HorizontalAlignment="Left">
                 <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stretch="Uniform"
                        Source="{Binding HeroImage}"/>
@@ -36,8 +36,7 @@
                 <StackPanel Spacing="20">
                     <Border x:Name="HeroImageSpacer"/>
                     <Grid Padding="20" ColumnSpacing="20" Margin="20,0" MaxHeight="300"
-                          x:Name="InfoCard" CornerRadius="4" HorizontalAlignment="Stretch"
-                          SizeChanged="InfoCard_SizeChanged">
+                          x:Name="InfoCard" CornerRadius="4" HorizontalAlignment="Stretch">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
