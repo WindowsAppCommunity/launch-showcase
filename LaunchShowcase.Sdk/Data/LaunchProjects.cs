@@ -10,6 +10,9 @@
     {
         public const int Guesio  = 352;
         public const int Yöti  = 353;
+        public const int FlairMax = 58;
+        public const int Ambie = 173;
+        public const int FluentScreenRecorder = 156;
         public const int FluentSearch  = 48;
         public const int CryptoTracker  = 112;
         public const int FlowTeX  = 295;

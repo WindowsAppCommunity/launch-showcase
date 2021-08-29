@@ -155,7 +155,7 @@ namespace LaunchShowcase.Sdk.ViewModels
             // Per project
             foreach (var project in _unsortedLaunchProjects)
             {
-                var scores = new List<int>();
+                var scores = new List<double>();
 
                 // Get score for each category
                 foreach (var flag in activeFlags)
