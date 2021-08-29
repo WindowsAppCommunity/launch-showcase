@@ -56,14 +56,21 @@ namespace LaunchShowcase.Sdk.Services
         /// Retreives the judged score for a <paramref name="projectId"/> in a specific <paramref name="category"/>.
         /// </summary>
         /// <returns>An integer between 0-100 indicating the score given to the <paramref name="projectId"/> for the given <paramref name="category"/>.</returns>
-        public int GetProjectCategoryScore(long projectId, LaunchScoringCategory category)
+        public double GetProjectCategoryScore(long projectId, LaunchScoringCategory category)
         {
             var projectRanking = LaunchData.Scoring[category];
+
 
             foreach (var rankedProject in projectRanking)
             {
                 if (rankedProject.Key == projectId)
-                    return rankedProject.Value;
+                {
+                    // Scale scores for each category to be out of 100.
+                    var res = rankedProject.Value;
+                    var ratio = 100 / LaunchData.MaxScoringPoints[category];
+
+                    return ratio * res;
+                }
             }
 
             Debug.WriteLine($"ERROR: ProjectId {projectId} was not found in scoring data. Returning 0 as a fallback");

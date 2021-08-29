@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,9 +28,9 @@ namespace LaunchShowcase
         {
             InitializeComponent();
 
-            DataContext = MainViewModel.Instance;
+            MainViewModel.Instance.SetupCacheFolder(ApplicationData.Current.LocalFolder.Path);
 
-            _ = ViewModel.InitAsync();
+            DataContext = MainViewModel.Instance;
         }
 
         public async void LaunchProjectsGridView_ItemClicked(object sender, ItemClickEventArgs e)

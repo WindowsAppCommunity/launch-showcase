@@ -17,7 +17,6 @@ namespace LaunchShowcase.Sdk
                 {
                     NamingStrategy = new CamelCaseNamingStrategy()
                 },
-                Formatting = Formatting.Indented
             };
         }
 
