@@ -346,11 +346,11 @@
                             <winui:ItemsRepeater.ItemTemplate>
                                 <DataTemplate>
                                     <Border
-                                        Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
+                                        Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
                                         Padding="16 2"
                                         Margin="0 0 8 4"
                                         CornerRadius="4"
-                                        BorderBrush="{StaticResource SystemControlForegroundChromeGrayBrush}"
+                                        BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}"
                                         BorderThickness="1">
                                         <TextBlock Text="{Binding Name, Mode=OneWay}"/>
                                     </Border>
