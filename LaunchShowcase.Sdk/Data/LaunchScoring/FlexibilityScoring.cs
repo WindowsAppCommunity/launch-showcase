@@ -6,7 +6,7 @@ namespace LaunchShowcase.Sdk.Data.LaunchScoring
     {
         public static Dictionary<int, double> FlexibilityScoring { get; } = new Dictionary<int, double>
         {
-            { LaunchProjects.FluentSearch, 31.5 },
+            { LaunchProjects.FluentSearch, 18 },
             { LaunchProjects.FlairMax, 17 },
             { LaunchProjects.CryptoTracker, 25 },
             { LaunchProjects.Glif, 21 },
