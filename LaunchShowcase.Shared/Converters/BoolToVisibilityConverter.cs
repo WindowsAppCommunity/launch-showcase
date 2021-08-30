@@ -20,10 +20,12 @@ namespace LaunchShowcase.Converters
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Visibility Convert(bool data) => data ? Visibility.Visible : Visibility.Collapsed;
 
+        public bool Invert { get; set; }
+
         /// <inheritdoc/>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return Convert(value is bool bValue && bValue);
+            return Convert(value is bool bValue && (Invert ? !bValue : bValue));
         }
 
         /// <inheritdoc/>

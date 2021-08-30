@@ -45,6 +45,16 @@ namespace LaunchShowcase
             PART_ShowcasePresenter.Content = project;
         }
 
+        public void LaunchProjectGrid_PointerOver(object sender, PointerRoutedEventArgs e)
+        {
+            Window.Current.CoreWindow.PointerCursor = new Windows.UI.Core.CoreCursor(Windows.UI.Core.CoreCursorType.Hand, e.Pointer.PointerId);
+        }
+
+        public void LaunchProjectGrid_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Window.Current.CoreWindow.PointerCursor = new Windows.UI.Core.CoreCursor(Windows.UI.Core.CoreCursorType.Arrow, e.Pointer.PointerId);
+        }
+
         public void OverlayClose_Clicked(object sender, RoutedEventArgs e)
         {
             PART_Overlay.Visibility = Visibility.Collapsed;
