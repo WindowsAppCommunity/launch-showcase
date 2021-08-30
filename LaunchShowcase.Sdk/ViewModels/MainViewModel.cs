@@ -113,6 +113,10 @@ namespace LaunchShowcase.Sdk.ViewModels
                 if (projectVm.HasMinimumInfoForLaunchShowcase())
                 {
                     projectsToAdd.Add(projectVm);
+                } 
+                else
+                {
+                    
                 }
             });
 
@@ -132,7 +136,7 @@ namespace LaunchShowcase.Sdk.ViewModels
 
             LaunchProjects.Clear();
 
-            var sortedProjects = GetProjectsSortedByCategoriesScore(category);
+            var sortedProjects = GetProjectsSortedByCategoriesScore(SortingMode);
 
             if (SortingDirection == SortingDirection.Ascending) // reversed, otherwise smallest score is shown first.
                 sortedProjects.Reverse();
@@ -158,7 +162,7 @@ namespace LaunchShowcase.Sdk.ViewModels
             if (category == LaunchScoringCategory.None)
                 return _unsortedLaunchProjects.ToList();
 
-            var activeFlags = GetFlags(category).Select(x => (LaunchScoringCategory)x);
+            var activeFlags = GetFlags(category);
 
             var scoredProjects = new Dictionary<ProjectViewModel, double>();
 
@@ -187,11 +191,12 @@ namespace LaunchShowcase.Sdk.ViewModels
             return scoredProjects.OrderBy(x => x.Value).Select(x => x.Key).ToList();
         }
 
-        static IEnumerable<Enum> GetFlags(Enum input)
+        static IEnumerable<T> GetFlags<T>(T input)
+            where T : Enum
         {
             foreach (Enum value in Enum.GetValues(input.GetType()))
                 if (input.HasFlag(value))
-                    yield return value;
+                    yield return (T)value;
         }
 
         private void UpdateHasSortingModeInpc()
