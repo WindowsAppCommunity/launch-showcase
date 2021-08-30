@@ -2,6 +2,7 @@
 using LaunchShowcase.Sdk.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using OwlCore;
 using OwlCore.Extensions;
 using OwlCore.Provisos;
 using System;
@@ -100,7 +101,13 @@ namespace LaunchShowcase.Sdk.ViewModels
 
             await projectsRes.Projects.InParallel(async project =>
             {
-                var projectVm = new ProjectViewModel(project);
+                ProjectViewModel projectVm;
+
+                using (Threading.PrimaryContext)
+                {
+                    projectVm = new ProjectViewModel(project);
+                }
+
                 await projectVm.InitAsync();
 
                 if (projectVm.HasMinimumInfoForLaunchShowcase())
@@ -109,10 +116,13 @@ namespace LaunchShowcase.Sdk.ViewModels
                 }
             });
 
-            foreach(var project in projectsToAdd)
+            foreach (var project in projectsToAdd)
             {
-                _unsortedLaunchProjects.Add(project);
-                LaunchProjects.Add(project);
+                using (Threading.PrimaryContext)
+                {
+                    _unsortedLaunchProjects.Add(project);
+                    LaunchProjects.Add(project);
+                }
             }
         }
 

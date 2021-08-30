@@ -12,7 +12,7 @@
     xmlns:templateselectors="using:LaunchShowcase.TemplateSelectors"
     xmlns:vms="using:LaunchShowcase.Sdk.ViewModels"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core" xmlns:winui="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -203,16 +203,11 @@
 
                 <StackPanel Grid.Row="4">
 
-                    <toolkit:AdaptiveGridView x:Name="PART_LaunchProjectsGridView"
-                                              ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}"
-                                              SelectionMode="None"
-                                              IsItemClickEnabled="True"
-                                              ItemClick="LaunchProjectsGridView_ItemClicked"
-                                              ItemHeight="290"
-                                              DesiredWidth="500">
-                        <toolkit:AdaptiveGridView.ItemTemplate>
+                    <winui:ItemsRepeater x:Name="PART_LaunchProjectsGridView" HorizontalAlignment="Center" MaxWidth="1600"
+                                              ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}">
+                        <winui:ItemsRepeater.ItemTemplate>
                             <DataTemplate x:DataType="vms:ProjectViewModel">
-                                <StackPanel Spacing="8">
+                                <StackPanel Spacing="8" Tapped="LaunchProjectsGrid_ItemClicked" DataContext="{x:Bind}">
                                     <Image Source="{x:Bind HeroImage}" Height="215" Width="375"
                                            Stretch="UniformToFill" VerticalAlignment="Center" />
 
@@ -236,8 +231,11 @@
                                     </Grid>
                                 </StackPanel>
                             </DataTemplate>
-                        </toolkit:AdaptiveGridView.ItemTemplate>
-                    </toolkit:AdaptiveGridView>
+                        </winui:ItemsRepeater.ItemTemplate>
+                            <winui:ItemsRepeater.Layout>
+                                <toolkit:WrapLayout VerticalSpacing="25" HorizontalSpacing="25" />
+                            </winui:ItemsRepeater.Layout>
+                        </winui:ItemsRepeater>
                 </StackPanel>
 
                 <StackPanel Spacing="10" HorizontalAlignment="Center" Grid.Row="5" Margin="20,20" MaxWidth="875">
@@ -248,7 +246,7 @@
 
                     <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" >
                         <TextBlock Text="Files" FontSize="18" />
-
+                        <Image Source="https://uwpcommunity.com/launch/2021/assets/files.png" />
                         <TextBlock />
                     </StackPanel>
 

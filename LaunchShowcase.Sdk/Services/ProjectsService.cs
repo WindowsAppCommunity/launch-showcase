@@ -22,34 +22,34 @@ namespace LaunchShowcase.Sdk.Services
             _restClient = client;
         }
 
-        public Task<Project[]> GetProjects()
+        public async Task<Project[]> GetProjects()
         {
-            return _restClient.SendAsync<Project[]>("projects", HttpMethod.Get);
+            return await _restClient.SendAsync<Project[]>("projects", HttpMethod.Get);
         }
 
-        public Task<LaunchProjectsResponse> GetLaunchProjects(uint year)
+        public async Task<LaunchProjectsResponse> GetLaunchProjects(uint year)
         {
-            return _restClient.SendAsync<LaunchProjectsResponse>($"/projects/launch/{year}", HttpMethod.Get);
+            return await _restClient.SendAsync<LaunchProjectsResponse>($"/projects/launch/{year}", HttpMethod.Get).ConfigureAwait(false);
         }
 
-        public Task<string[]> GetProjectImages(long projectId)
+        public async Task<string[]> GetProjectImages(long projectId)
         {
-            return _restClient.SendAsync<string[]>($"/projects/images?projectId={projectId}", HttpMethod.Get);
+            return await _restClient.SendAsync<string[]>($"/projects/images?projectId={projectId}", HttpMethod.Get).ConfigureAwait(false);
         }
 
-        public Task<string[]> GetProjectFeatures(long projectId)
+        public async Task<string[]> GetProjectFeatures(long projectId)
         {
-            return _restClient.SendAsync<string[]>($"/projects/features?projectId={projectId}", HttpMethod.Get);
+            return await _restClient.SendAsync<string[]>($"/projects/features?projectId={projectId}", HttpMethod.Get).ConfigureAwait(false);
         }
 
-        public Task<ProjectCollaborator[]> GetProjectCollaborators(long projectId)
+        public async Task<ProjectCollaborator[]> GetProjectCollaborators(long projectId)
         {
-            return _restClient.SendAsync<ProjectCollaborator[]>($"/projects/collaborators?projectId={projectId}", HttpMethod.Get);
+            return await _restClient.SendAsync<ProjectCollaborator[]>($"/projects/collaborators?projectId={projectId}", HttpMethod.Get).ConfigureAwait(false);
         }
 
-        public Task<Project> GetProjectById(long projectId)
+        public async Task<Project> GetProjectById(long projectId)
         {
-            return _restClient.SendAsync<Project>($"/projects/id/{projectId}", HttpMethod.Get);
+            return await _restClient.SendAsync<Project>($"/projects/id/{projectId}", HttpMethod.Get).ConfigureAwait(false);
         }
 
         /// <summary>

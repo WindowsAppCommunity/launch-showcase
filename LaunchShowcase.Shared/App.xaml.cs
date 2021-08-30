@@ -1,9 +1,11 @@
 using Microsoft.Extensions.Logging;
+using OwlCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -96,6 +98,9 @@ namespace LaunchShowcase
                     // configuring the new page by passing required information as a navigation
                     // parameter
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
+
+                    Threading.SetPrimarySynchronizationContext(SynchronizationContext.Current);
+                    Threading.SetPrimaryThreadInvokeHandler(a => Window.Current.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => a()).AsTask());
                 }
                 // Ensure the current window is active
                 _window.Activate();

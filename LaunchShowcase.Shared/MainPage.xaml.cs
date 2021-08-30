@@ -1,4 +1,5 @@
 using LaunchShowcase.Sdk.ViewModels;
+using OwlCore.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,9 +34,10 @@ namespace LaunchShowcase
             DataContext = MainViewModel.Instance;
         }
 
-        public async void LaunchProjectsGridView_ItemClicked(object sender, ItemClickEventArgs e)
+        public async void LaunchProjectsGrid_ItemClicked(object sender, RoutedEventArgs e)
         {
-            var project = (ProjectViewModel)e.ClickedItem;
+            var datacontext = sender.Cast<FrameworkElement>().DataContext;
+            var project = datacontext.Cast<ProjectViewModel>();
 
             await project.PopulateCollaborators();
 
