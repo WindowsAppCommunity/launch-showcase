@@ -113,10 +113,6 @@ namespace LaunchShowcase.Sdk.ViewModels
                 if (projectVm.HasMinimumInfoForLaunchShowcase())
                 {
                     projectsToAdd.Add(projectVm);
-                } 
-                else
-                {
-                    
                 }
             });
 
@@ -128,6 +124,8 @@ namespace LaunchShowcase.Sdk.ViewModels
                     LaunchProjects.Add(project);
                 }
             }
+
+            await Task.Delay(2000);
         }
 
         private void ToggleProjectsSortingMode(LaunchScoringCategory category)
