@@ -119,8 +119,11 @@
                                 </StackPanel>
                             </Grid>
 
-                            <Border BorderBrush="#333333" CornerRadius="4" BorderThickness="1">
-                                <StackPanel Padding="12" Spacing="16" Background="#99FFFFFF">
+                            <Border BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}" CornerRadius="4" BorderThickness="1">
+                                <StackPanel Padding="12" Spacing="16" >
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="{ThemeResource SystemAltMediumColor}" Opacity="0.6"/>
+                                    </StackPanel.Background>
                                     <TextBlock
                             Style="{StaticResource P}">
                                         <Run>Stylophone has been out for almost a year now, and has received as warm a welcome as I could've hoped in the (very) niche world of MPD clients.  </Run>
