@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="using:LaunchShowcase.Converters"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:jithub="using:LaunchShowcase.Themes.ShowcaseTemplates.JitHubControls"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
@@ -12,35 +13,6 @@
 
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
-            <Style x:Key="LoginImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/q0rzGs0/light-login.png"/>
-            </Style>
-            <Style x:Key="DashboardImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/GdG0CxB/light-dashboard.png"/>
-            </Style>
-            <Style x:Key="CodeImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/V29yBWP/light-code.png"/>
-            </Style>
-            <Style x:Key="IssueImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/QD6d32T/light-issue.png"/>
-            </Style>
-            <Style x:Key="IssueDetailImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/MpG0cgR/light-issue-detail.png"/>
-            </Style>
-            <Style x:Key="PRImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/rddkMTk/light-pr.png"/>
-            </Style>
-            <Style x:Key="PRDetailImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/f9Z2mBw/light-pr-detail.png"/>
-            </Style>
-            <Style x:Key="CommitsImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/rt8WMLg/light-commits.png"/>
-            </Style>
-            <Style x:Key="CommitsDetailImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/MRs3JNn/light-commits-detail.png"/>
-            </Style>
-
-
             <Style x:Key="H1" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="24"/>
                 <Setter Property="FontWeight" Value="Bold"/>
@@ -58,34 +30,6 @@
             </Style>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
-            <Style x:Key="LoginImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/LRDpD9k/dark-login.png"/>
-            </Style>
-            <Style x:Key="DashboardImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/r3NjvvJ/dark-dashboard.png"/>
-            </Style>
-            <Style x:Key="CodeImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/4YWmjvL/dark-code.png"/>
-            </Style>
-            <Style x:Key="IssueImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/9NqPrPf/dark-issue.png"/>
-            </Style>
-            <Style x:Key="IssueDetailImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/CtLB3CN/dark-issue-detail.png"/>
-            </Style>
-            <Style x:Key="PRImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/0ff5TXP/dark-pr.png"/>
-            </Style>
-            <Style x:Key="PRDetailImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/BTBCcY9/dark-pr-detail.png"/>
-            </Style>
-            <Style x:Key="CommitsImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/tHTVXGJ/dark-commits.png"/>
-            </Style>
-            <Style x:Key="CommitsDetailImage" TargetType="Image">
-                <Setter Property="Source" Value="https://i.ibb.co/Jk9vxLn/dark-commits-detail.png"/>
-            </Style>
-
             <Style x:Key="H1" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="24"/>
                 <Setter Property="FontWeight" Value="Bold"/>
@@ -249,6 +193,7 @@
                             </Grid.ColumnDefinitions>
                             <Border
                                 Grid.Column="0"
+                                Margin="0 0 24 0"
                                 CornerRadius="80">
                                 <Image
                                     Width="160"
@@ -285,18 +230,7 @@
                         </Grid>
                         <TextBlock
                             Text="Here's some early design concept for our logo."/>
-                        <FlipView
-                            MaxHeight="600">
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/1.jpg"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/2.jpg"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/3.jpg"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/4.jpg"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/5.jpg"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/6.jpg"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/7.jpg"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/8.jpg"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/9.jpg"/>
-                        </FlipView>
+                        <jithub:LogosControl/>
                         <TextBlock
                             Style="{StaticResource H3}"
                             Text="App UI Design"/>
@@ -315,6 +249,7 @@
                             </Grid.ColumnDefinitions>
                             <Border
                                 Grid.Column="0"
+                                Margin="0 0 24 0"
                                 CornerRadius="80">
                                 <Image
                                     Width="160"
@@ -343,38 +278,14 @@
                         <TextBlock
                             Style="{StaticResource P}"
                             Text="Here's some early design concept of JitHub's app UI."/>
-                        <FlipView MaxHeight="600">
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/repo-1.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/commits.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/commits-1.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/home.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/home-1.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/issues.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/issues-1.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/issues-2.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/new_issue.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/no_issues_found.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/repo.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/repo-1.png"/>
-                            <Image Source="https://nerocui.files.wordpress.com/2021/08/commits.png"/>
-                        </FlipView>
+                        <jithub:DesignControl/>
                         <TextBlock
                             Style="{StaticResource H2}"
                             Text="Feature Set"/>
                         <TextBlock
                             Style="{StaticResource P}"
                             Text="Now let's talk about the actual feature set of JitHub. The purpose of JitHub is to have close to 100% of GitHub website's feature in a native UWP on Windows. It should represent the best GitHub development tool for Windows users. Although we are nowhere near 100% of the features on the website, we have plans to grow into our goal with even more custom features that GitHub's website doesn't have. But currently, we provide a decent set of features for anyone who wants to browser code, manage issues, and pull requests, view commits and stay up to date on the activity feed."/>
-                        <FlipView MaxHeight="600">
-                            <Image Style="{ThemeResource LoginImage}"/>
-                            <Image Style="{ThemeResource DashboardImage}"/>
-                            <Image Style="{ThemeResource CodeImage}"/>
-                            <Image Style="{ThemeResource IssueImage}"/>
-                            <Image Style="{ThemeResource IssueDetailImage}"/>
-                            <Image Style="{ThemeResource PRImage}"/>
-                            <Image Style="{ThemeResource PRDetailImage}"/>
-                            <Image Style="{ThemeResource CommitsImage}"/>
-                            <Image Style="{ThemeResource CommitsDetailImage}"/>
-                        </FlipView>
+                        <jithub:ScreenshotsControl/>
                         <TextBlock
                             Style="{StaticResource P}"
                             Text="But didn't I mention that we have custom features that even GitHub's website doesn't have? Introducing JitHub Pro!"/>
@@ -435,11 +346,11 @@
                             <winui:ItemsRepeater.ItemTemplate>
                                 <DataTemplate>
                                     <Border
-                                        Background="{StaticResource SystemControlAcrylicElementMediumHighBrush}"
+                                        Background="{ThemeResource SystemControlAcrylicElementMediumHighBrush}"
                                         Padding="16 2"
                                         Margin="0 0 8 4"
                                         CornerRadius="4"
-                                        BorderBrush="{StaticResource SystemControlForegroundChromeGrayBrush}"
+                                        BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}"
                                         BorderThickness="1">
                                         <TextBlock Text="{Binding Name, Mode=OneWay}"/>
                                     </Border>

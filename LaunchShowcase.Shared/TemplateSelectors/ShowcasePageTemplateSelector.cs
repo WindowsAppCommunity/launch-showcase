@@ -38,8 +38,9 @@ namespace LaunchShowcase.TemplateSelectors
                 LaunchProjects.Stylophone => GetTemplateByName("StylophoneShowcaseTemplate"), 
                 LaunchProjects.Archon => GetTemplateByName("DefaultShowcaseTemplate"), 
                 LaunchProjects.JitHub => GetTemplateByName("JitHubShowcaseTemplate"),
-                // LaunchProjects.FluentStore => GetTemplateByName("FluentStore"), // Disabled, glitchy in WASM.
+                LaunchProjects.FluentStore => GetTemplateByName("FluentStoreShowcaseTemplate"),
                 LaunchProjects.TranslucentTB => GetTemplateByName("TranslucentTBShowcaseTemplate"),
+                LaunchProjects.ShresthaFilesPro => GetTemplateByName("ShresthaFilesProTemplate"),
                 _ => GetTemplateByName("DefaultShowcaseTemplate"),
             };
         }

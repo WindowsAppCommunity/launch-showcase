@@ -8,7 +8,15 @@
 		<type fullname="System.Linq.Expressions*" />
 	</assembly>
 
+	<assembly fullname="Microsoft.Toolkit.Diagnostics">
+		<type fullname="Microsoft.Toolkit.Diagnostics*" />
+	</assembly>
+
 	<assembly fullname="LaunchShowcase.Sdk">
 		<type fullname="LaunchShowcase.Sdk*" />
+	</assembly>
+
+	<assembly fullname="OwlCore">
+		<type fullname="OwlCore*" />
 	</assembly>
 </linker>

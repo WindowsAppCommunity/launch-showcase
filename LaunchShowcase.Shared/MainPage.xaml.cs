@@ -1,4 +1,5 @@
 using LaunchShowcase.Sdk.ViewModels;
+using OwlCore.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,19 +29,30 @@ namespace LaunchShowcase
         {
             InitializeComponent();
 
-            DataContext = MainViewModel.Instance;
+            MainViewModel.Instance.SetupCacheFolder(ApplicationData.Current.LocalFolder.Path);
 
-            _ = ViewModel.InitAsync();
+            DataContext = MainViewModel.Instance;
         }
 
-        public async void LaunchProjectsGridView_ItemClicked(object sender, ItemClickEventArgs e)
+        public async void LaunchProjectsGrid_ItemClicked(object sender, RoutedEventArgs e)
         {
-            var project = (ProjectViewModel)e.ClickedItem;
+            var datacontext = sender.Cast<FrameworkElement>().DataContext;
+            var project = datacontext.Cast<ProjectViewModel>();
 
             await project.PopulateCollaborators();
 
             PART_Overlay.Visibility = Visibility.Visible;
             PART_ShowcasePresenter.Content = project;
+        }
+
+        public void LaunchProjectGrid_PointerOver(object sender, PointerRoutedEventArgs e)
+        {
+            Window.Current.CoreWindow.PointerCursor = new Windows.UI.Core.CoreCursor(Windows.UI.Core.CoreCursorType.Hand, e.Pointer.PointerId);
+        }
+
+        public void LaunchProjectGrid_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            Window.Current.CoreWindow.PointerCursor = new Windows.UI.Core.CoreCursor(Windows.UI.Core.CoreCursorType.Arrow, e.Pointer.PointerId);
         }
 
         public void OverlayClose_Clicked(object sender, RoutedEventArgs e)

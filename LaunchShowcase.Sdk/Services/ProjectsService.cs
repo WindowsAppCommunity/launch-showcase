@@ -22,48 +22,55 @@ namespace LaunchShowcase.Sdk.Services
             _restClient = client;
         }
 
-        public Task<Project[]> GetProjects()
+        public async Task<Project[]> GetProjects()
         {
-            return _restClient.SendAsync<Project[]>("projects", HttpMethod.Get);
+            return await _restClient.SendAsync<Project[]>("projects", HttpMethod.Get);
         }
 
-        public Task<LaunchProjectsResponse> GetLaunchProjects(uint year)
+        public async Task<LaunchProjectsResponse> GetLaunchProjects(uint year)
         {
-            return _restClient.SendAsync<LaunchProjectsResponse>($"/projects/launch/{year}", HttpMethod.Get);
+            return await _restClient.SendAsync<LaunchProjectsResponse>($"/projects/launch/{year}", HttpMethod.Get).ConfigureAwait(false);
         }
 
-        public Task<string[]> GetProjectImages(long projectId)
+        public async Task<string[]> GetProjectImages(long projectId)
         {
-            return _restClient.SendAsync<string[]>($"/projects/images?projectId={projectId}", HttpMethod.Get);
+            return await _restClient.SendAsync<string[]>($"/projects/images?projectId={projectId}", HttpMethod.Get).ConfigureAwait(false);
         }
 
-        public Task<string[]> GetProjectFeatures(long projectId)
+        public async Task<string[]> GetProjectFeatures(long projectId)
         {
-            return _restClient.SendAsync<string[]>($"/projects/features?projectId={projectId}", HttpMethod.Get);
+            return await _restClient.SendAsync<string[]>($"/projects/features?projectId={projectId}", HttpMethod.Get).ConfigureAwait(false);
         }
 
-        public Task<ProjectCollaborator[]> GetProjectCollaborators(long projectId)
+        public async Task<ProjectCollaborator[]> GetProjectCollaborators(long projectId)
         {
-            return _restClient.SendAsync<ProjectCollaborator[]>($"/projects/collaborators?projectId={projectId}", HttpMethod.Get);
+            return await _restClient.SendAsync<ProjectCollaborator[]>($"/projects/collaborators?projectId={projectId}", HttpMethod.Get).ConfigureAwait(false);
         }
 
-        public Task<Project> GetProjectById(long projectId)
+        public async Task<Project> GetProjectById(long projectId)
         {
-            return _restClient.SendAsync<Project>($"/projects/id/{projectId}", HttpMethod.Get);
+            return await _restClient.SendAsync<Project>($"/projects/id/{projectId}", HttpMethod.Get).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Retreives the judged score for a <paramref name="projectId"/> in a specific <paramref name="category"/>.
         /// </summary>
         /// <returns>An integer between 0-100 indicating the score given to the <paramref name="projectId"/> for the given <paramref name="category"/>.</returns>
-        public int GetProjectCategoryScore(long projectId, LaunchScoringCategory category)
+        public double GetProjectCategoryScore(long projectId, LaunchScoringCategory category)
         {
             var projectRanking = LaunchData.Scoring[category];
+
 
             foreach (var rankedProject in projectRanking)
             {
                 if (rankedProject.Key == projectId)
-                    return rankedProject.Value;
+                {
+                    // Scale scores for each category to be out of 100.
+                    var res = rankedProject.Value;
+                    var ratio = 100 / LaunchData.MaxScoringPoints[category];
+
+                    return ratio * res;
+                }
             }
 
             Debug.WriteLine($"ERROR: ProjectId {projectId} was not found in scoring data. Returning 0 as a fallback");

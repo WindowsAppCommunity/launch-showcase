@@ -10,6 +10,9 @@
 			-->
       <Version>6.2.11</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
+      <Version>7.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>7.0.2</Version>
     </PackageReference>
