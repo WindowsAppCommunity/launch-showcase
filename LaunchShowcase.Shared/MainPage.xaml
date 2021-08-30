@@ -227,7 +227,7 @@
 
                                         <Image Source="{x:Bind AppIcon}" Grid.RowSpan="2" Height="45" Width="45" Margin="0,0,15,0" />
 
-                                        <TextBlock Text="{x:Bind AppName}" FontSize="18"
+                                        <TextBlock Text="{x:Bind AppName}" FontSize="18" TextTrimming="CharacterEllipsis" Width="300"
                                                    Grid.Column="1" />
 
                                         <TextBlock Text="{x:Bind Description}" FontSize="12" MaxLines="2" Width="300" Opacity="0.5"
