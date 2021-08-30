@@ -19,7 +19,7 @@ namespace LaunchShowcase.Sdk.Services
         public CommunityBackendService(string cachePath)
         {
             Instance = this;
-            _restClient = new RestClient(_backendUri, NewtonsoftSerializer.Instance, new CachedHttpClientHandler(cachePath, TimeSpan.FromDays(9999), (x, y) => true, (x, y) => true));
+            _restClient = new RestClient(_backendUri, NewtonsoftSerializer.Instance);
             ProjectsService = new ProjectsService(_restClient);
         }
 
