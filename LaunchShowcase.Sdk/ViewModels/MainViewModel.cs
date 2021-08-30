@@ -134,7 +134,7 @@ namespace LaunchShowcase.Sdk.ViewModels
 
             var sortedProjects = GetProjectsSortedByCategoriesScore(category);
 
-            if (SortingDirection == SortingDirection.Descending)
+            if (SortingDirection == SortingDirection.Ascending) // reversed, otherwise smallest score is shown first.
                 sortedProjects.Reverse();
 
             foreach (var project in sortedProjects)
