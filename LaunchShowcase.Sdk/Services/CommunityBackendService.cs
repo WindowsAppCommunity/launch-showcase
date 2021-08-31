@@ -16,10 +16,10 @@ namespace LaunchShowcase.Sdk.Services
 
         public static CommunityBackendService Instance { get; set; }
 
-        public CommunityBackendService(string cachePath)
+        public CommunityBackendService(HttpClient client)
         {
             Instance = this;
-            _restClient = new RestClient(_backendUri, NewtonsoftSerializer.Instance);
+            _restClient = new RestClient(_backendUri, NewtonsoftSerializer.Instance, client);
             ProjectsService = new ProjectsService(_restClient);
         }
 

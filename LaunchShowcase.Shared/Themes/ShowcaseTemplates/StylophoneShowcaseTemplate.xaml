@@ -4,6 +4,7 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:converter="using:LaunchShowcase.Converters"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:local="using:LaunchShowcase"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     >
 
@@ -38,7 +39,7 @@
                     <Grid Padding="25" Background="{ThemeResource SystemControlAcrylicElementBrush}">
                         <StackPanel Margin="25" Spacing="10">
                             <StackPanel Orientation="Horizontal" Spacing="10">
-                                <Image Height="64" Source="{Binding AppIcon}" />
+                                <local:CachingImage Height="64" Source="{Binding AppIcon}" />
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     FontSize="36"
@@ -55,7 +56,7 @@
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
 
-                                <Image
+                                <local:CachingImage
                                     x:Name="PART_HeroImage"
                                     Grid.ColumnSpan="2"
                                     Source="{Binding HeroImage}" />
@@ -77,7 +78,7 @@
                                         Visibility="{Binding DownloadLink, Converter={StaticResource NotNullOrWhiteSpaceToVisibilityConverter}}">
                                         <HyperlinkButton NavigateUri="https://www.microsoft.com/store/apps/9NCB693428T8?cid=launch2021&amp;ocid=badge">
 
-                                            <Image
+                                            <local:CachingImage
                                                 Width="142"
                                                 Height="52"
                                                 Source="https://developer.microsoft.com/en-us/microsoft-store/badges/images/English_get-it-from-MS.png" />
@@ -132,7 +133,7 @@
                             Style="{StaticResource H1}"
                             Text="Windows 11 Redesign"/>
 
-                                        <Image MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-stylophone4.jpg"/>
+                                        <local:CachingImage MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-stylophone4.jpg"/>
 
                                         <TextBlock
                             Style="{StaticResource P}">
@@ -141,7 +142,7 @@
                                         <LineBreak/>This comes at the loss of a bit of vertical space for the content, but I felt it was fine. (And if it's not, you can always enable compact sizing in the settings 🙌)
                                         <LineBreak/><LineBreak/>I've also updated the icon!
                                     </TextBlock>
-                                    <Image MaxWidth="200" Source="https://tvc-16.science/images/stylophone/v2-icon.png"/>
+                                    <local:CachingImage MaxWidth="200" Source="https://tvc-16.science/images/stylophone/v2-icon.png"/>
 
                                     <TextBlock
                                     Style="{StaticResource P}">
@@ -182,7 +183,7 @@
                                         (Besides, I don't really care about Android)
                                     </TextBlock>
 
-                                    <Image MaxWidth="600" Source="https://tvc-16.science/images/stylophone/v2-xamarinforms.jpg"/>
+                                    <local:CachingImage MaxWidth="600" Source="https://tvc-16.science/images/stylophone/v2-xamarinforms.jpg"/>
 
                                     <TextBlock
                             Style="{StaticResource P}">
@@ -194,7 +195,7 @@
                             Style="{StaticResource H3}"
                             Text="👉 In the end, I decided to try a port to iOS/UIKit, using Xamarin.iOS whose macOS variant I was already familiar with."/>
 
-                                    <Image MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-uikit.jpg"/>
+                                    <local:CachingImage MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-uikit.jpg"/>
 
                                     <TextBlock
                             Style="{StaticResource P}">
@@ -202,7 +203,7 @@
                                     <LineBreak/>I learned iOS development from scratch while doing this, which probably led to some bad decisions on the way. 😛
                                     </TextBlock>
 
-                                    <Image MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-uikit3.jpg"/>
+                                    <local:CachingImage MaxWidth="800" Source="https://tvc-16.science/images/stylophone/v2-uikit3.jpg"/>
 
                                     <TextBlock
                             Style="{StaticResource P}">
@@ -236,7 +237,7 @@
                                 Visibility="{Binding Images, Converter={StaticResource CollectionAnyToVisibilityConverter}}">
                                 <controls:AdaptiveGridView.ItemTemplate>
                                     <DataTemplate>
-                                        <Image Margin="15" Source="{Binding}" />
+                                        <local:CachingImage Margin="15" Source="{Binding}" />
                                     </DataTemplate>
                                 </controls:AdaptiveGridView.ItemTemplate>
                             </controls:AdaptiveGridView>
@@ -348,7 +349,7 @@
                         </Button>
                     </Border>
 
-                    <Image
+                    <local:CachingImage
                         x:Name="PART_OverlayImage"
                         Grid.Row="1"
                         Source="{Binding ElementName=PART_Images, Path=SelectedItem}"

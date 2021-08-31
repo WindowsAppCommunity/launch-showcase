@@ -2,7 +2,7 @@
     x:Class="LaunchShowcase.Themes.ShowcaseTemplates.JitHubControls.JitHubFlipView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:LaunchShowcase.Themes.ShowcaseTemplates"
+    xmlns:local="using:LaunchShowcase"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -16,7 +16,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <Image
+        <local:CachingImage
             Grid.Column="1"
             x:Name="MyImage"/>
         <Button

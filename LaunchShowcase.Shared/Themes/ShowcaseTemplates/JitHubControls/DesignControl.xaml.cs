@@ -13,21 +13,21 @@ namespace LaunchShowcase.Themes.ShowcaseTemplates.JitHubControls
         public DesignControl()
         {
             this.InitializeComponent();
-            var images = new List<ImageSource>()
+            var images = new List<Uri>()
             {
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/repo-1.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/commits.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/commits-1.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/home.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/home-1.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/issues.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/issues-1.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/issues-2.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/new_issue.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/no_issues_found.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/repo.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/repo-1.png")),
-                new BitmapImage(new Uri("https://nerocui.files.wordpress.com/2021/08/commits.png")),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/repo-1.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/commits.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/commits-1.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/home.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/home-1.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/issues.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/issues-1.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/issues-2.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/new_issue.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/no_issues_found.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/repo.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/repo-1.png"),
+                new Uri("https://nerocui.files.wordpress.com/2021/08/commits.png"),
             };
             MyContent.Children.Add(new JitHubFlipView(images));
         }

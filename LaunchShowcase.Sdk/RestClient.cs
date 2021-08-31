@@ -10,11 +10,11 @@ namespace LaunchShowcase.Sdk
         private readonly Uri _baseUri;
         private readonly ISerializer _serializer;
 
-        public RestClient(Uri baseUri, ISerializer serializer)
+        public RestClient(Uri baseUri, ISerializer serializer, HttpClient httpClient)
         {
             _baseUri = baseUri;
             _serializer = serializer;
-            _client = new HttpClient();
+            _client = httpClient;
         }
 
         public RestClient(Uri baseUri, ISerializer serializer, HttpClientHandler handler)

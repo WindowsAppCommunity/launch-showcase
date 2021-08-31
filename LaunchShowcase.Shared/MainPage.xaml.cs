@@ -1,9 +1,11 @@
+using LaunchShowcase.Sdk.HttpClientHandlers;
 using LaunchShowcase.Sdk.ViewModels;
 using OwlCore.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -28,8 +30,6 @@ namespace LaunchShowcase
         public MainPage()
         {
             InitializeComponent();
-
-            MainViewModel.Instance.SetupCacheFolder(ApplicationData.Current.LocalFolder.Path);
 
             DataContext = MainViewModel.Instance;
         }

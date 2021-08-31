@@ -7,6 +7,7 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
+    xmlns:local="using:LaunchShowcase"
     xmlns:viewmodels="using:LaunchShowcase.Sdk.ViewModels">
 
 
@@ -82,7 +83,7 @@
                         Spacing="12">
                         <Border
                             CornerRadius="8">
-                            <Image
+                            <local:CachingImage
                                 Source="{Binding HeroImage}"
                                 HorizontalAlignment="Stretch"/>
                         </Border>
@@ -101,7 +102,7 @@
                             <HyperlinkButton
                                 HorizontalAlignment="Right"
                                 NavigateUri="https://www.microsoft.com/en-ca/p/jithub/9mxrbjbb552v">
-                                <Image
+                                <local:CachingImage
                                     Width="200"
                                     Source="https://developer.microsoft.com/en-us/microsoft-store/badges/images/English_get-it-from-MS.png"/>
                             </HyperlinkButton>
@@ -195,7 +196,7 @@
                                 Grid.Column="0"
                                 Margin="0 0 24 0"
                                 CornerRadius="80">
-                                <Image
+                                <local:CachingImage
                                     Width="160"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
@@ -221,7 +222,7 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 Text="Our design philosophy for the logo is the same as that of the app. We want it to be familiar for both GitHub users and Windows users. So, it has design elements from both products. The JitHub octopus represents the professional feature set with fast and fluid UI, and we got our inspiration for the color scheme from GitHub Desktop's logo. The JitHub logo also follows Fluent Design principles, making it feels like home on Windows."/>
-                            <Image
+                            <local:CachingImage
                                 Grid.Column="1"
                                 Width="160"
                                 HorizontalAlignment="Left"
@@ -251,7 +252,7 @@
                                 Grid.Column="0"
                                 Margin="0 0 24 0"
                                 CornerRadius="80">
-                                <Image
+                                <local:CachingImage
                                     Width="160"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,9 +39,9 @@ namespace LaunchShowcase.Sdk.ViewModels
             PopulateProjectsAsyncCommand = new AsyncRelayCommand(PopulateLaunchProjects);
         }
 
-        public void SetupCacheFolder(string cachePath)
+        public void SetupHttpClient(HttpClient httpClient)
         {
-            _backendService = new CommunityBackendService(cachePath);
+            _backendService = new CommunityBackendService(httpClient);
         }
 
         /// <inheritdoc/>

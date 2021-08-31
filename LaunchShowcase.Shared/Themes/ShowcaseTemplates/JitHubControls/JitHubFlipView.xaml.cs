@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Windows.UI.Xaml.Controls;
@@ -10,11 +11,11 @@ namespace LaunchShowcase.Themes.ShowcaseTemplates.JitHubControls
 {
     public sealed partial class JitHubFlipView : UserControl
     {
-        public IList<ImageSource> Images { get; }
+        public IList<Uri> Images { get; }
         public int Index = 0;
         public ICommand RightCommand { get; }
         public ICommand LeftCommand { get; }
-        public JitHubFlipView(IList<ImageSource> images)
+        public JitHubFlipView(IList<Uri> images)
         {
             this.InitializeComponent();
             Images = images;

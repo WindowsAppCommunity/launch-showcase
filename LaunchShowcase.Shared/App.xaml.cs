@@ -1,15 +1,19 @@
+using LaunchShowcase.Sdk.HttpClientHandlers;
+using LaunchShowcase.Sdk.ViewModels;
 using Microsoft.Extensions.Logging;
 using OwlCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -52,7 +56,7 @@ namespace LaunchShowcase
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -94,6 +98,15 @@ namespace LaunchShowcase
             {
                 if (rootFrame.Content == null)
                 {
+                    // ==============================================
+                    // Bad code zone. Don't do this.
+                    // ==============================================
+                    /**/var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("HttpCache", CreationCollisionOption.OpenIfExists);
+                    /**/var httpClient = new HttpClient(/*new CachedHttpClientHandler(folder)*/);
+                    /**/
+                    /**/MainViewModel.Instance.SetupHttpClient(httpClient);
+                    // ==============================================
+
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter

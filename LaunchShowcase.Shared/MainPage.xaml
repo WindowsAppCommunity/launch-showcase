@@ -210,9 +210,8 @@
                         <winui:ItemsRepeater.ItemTemplate>
                             <DataTemplate x:DataType="vms:ProjectViewModel">
                                 <StackPanel Spacing="8" Tapped="LaunchProjectsGrid_ItemClicked"
-                                            PointerEntered="LaunchProjectGrid_PointerOver" PointerExited="LaunchProjectGrid_PointerExited"
-                                            DataContext="{x:Bind}">
-                                    <Image Source="{x:Bind HeroImage}" Height="215" Width="375"
+                                            PointerEntered="LaunchProjectGrid_PointerOver" PointerExited="LaunchProjectGrid_PointerExited">
+                                    <local:CachingImage Source="{x:Bind HeroImage}" Height="215" Width="375"
                                            Stretch="UniformToFill" VerticalAlignment="Center" />
 
                                     <Grid HorizontalAlignment="Center">
@@ -225,7 +224,7 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Image Source="{x:Bind AppIcon}" Grid.RowSpan="2" Height="45" Width="45" Margin="0,0,15,0" />
+                                        <local:CachingImage Source="{x:Bind AppIcon}" Grid.RowSpan="2" Height="45" Width="45" Margin="0,0,15,0" />
 
                                         <TextBlock Text="{x:Bind AppName}" FontSize="18" TextTrimming="CharacterEllipsis" Width="300"
                                                    Grid.Column="1" />
@@ -251,14 +250,14 @@
 
                     <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" Spacing="10">
                         <StackPanel Orientation="Horizontal" Spacing="10">
-                            <Image Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/files/icon.png" Height="24" />
+                            <local:CachingImage Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/files/icon.png" Height="24" />
                             <TextBlock Text="Files" FontSize="20" />
                         </StackPanel>
 
                         <TextBlock Text="A file manager that leverages the latest features of the Windows platform. Whether you want a simplified experience or something new, Files is a one-stop solution for exploring your files on the fly."
                                    TextWrapping="WrapWholeWords"/>
 
-                        <Image Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/files/image.png" MaxHeight="500" />
+                        <local:CachingImage Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/files/image.png" MaxHeight="500" />
 
                         <toolkit:WrapPanel HorizontalSpacing="10">
                             <Border BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" CornerRadius="3" Padding="3">
@@ -294,7 +293,7 @@
 
                     <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" Spacing="10">
                         <StackPanel Orientation="Horizontal" Spacing="10">
-                            <Image Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/strixmusic/icon.png" Height="24" />
+                            <local:CachingImage Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/strixmusic/icon.png" Height="24" />
                             <TextBlock Text="Strix Music v2" FontSize="20" />
                         </StackPanel>
 
@@ -303,7 +302,7 @@
                         <TextBlock Text="See your entire music library in one place, across every possible music service. Customize the look with hand crafted skins. Listen anywhere, any time, on any platform."
                                    TextWrapping="WrapWholeWords"/>
 
-                        <Image Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/strixmusic/image.png" MaxHeight="500" Margin="25,25,25,0" />
+                        <local:CachingImage Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/strixmusic/image.png" MaxHeight="500" Margin="25,25,25,0" />
 
                         <HyperlinkButton HorizontalAlignment="Center" NavigateUri="https://www.youtube.com/playlist?list=PLkJxGhy7bOVieFOiZqUO4su0YITXgrlJP" Content="See demos"/>
 
