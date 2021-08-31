@@ -285,9 +285,10 @@
 
                         <TextBlock TextWrapping="WrapWholeWords" Text="Files v1 was released one year ago, and over the last year, we've been working on many improvements to the experience. The upcoming release of v2 has been tested by over 4,000 users and will be available for everyone starting October 4th." />
 
-                        <StackPanel Spacing="5">
+                        <StackPanel Spacing="2">
                             <HyperlinkButton Content="Home" NavigateUri="https://files-community.github.io/"/>
                             <HyperlinkButton Content="GitHub" NavigateUri="https://github.com/files-community/Files"/>
+                            <HyperlinkButton Content="Download" NavigateUri="https://www.microsoft.com/store/apps/9NGHP3DX8HDX"/>
                         </StackPanel>
                     </StackPanel>
 
@@ -326,12 +327,18 @@
 
                         <TextBlock TextWrapping="WrapWholeWords" Text="Music and music streaming is everywhere. Local files, cloud storage, media servers, Spotify, YouTube Music, SoundCloud, Pandora, and countless other services and standards exist just to listen to music." />
 
-                        <TextBlock TextWrapping="WrapWholeWords" Text="Strix Music v2 is an extremely ambitious project with a simple goal in mind: allow you to listen to all of your music, no matter where it's stored or what platform it's on, and all in one place. Make it easy, make it powerful. For the last year, we've worked hard to do just that." />
+                        <TextBlock TextWrapping="WrapWholeWords" Text="Strix Music v2 is an extremely ambitious project with a simple goal in mind: allow you to listen to all of your music, no matter where it's stored or what platform it's on. It should be simple, powerful, personal and impossibly useful. If you listen to music, you should want to use Strix. " />
 
                         <TextBlock TextWrapping="WrapWholeWords">
-                            <Run Text="This project has been in the works for well over a year, and Alpha builds will be going out to" />
+                            <Run Text="We've spent the last year planning and building this app. We plan to release Alpha builds to" />
                             <Hyperlink NavigateUri="https://www.patreon.com/arlodotexe">Patreons</Hyperlink>
-                            <Run Text="in mid to late september with support for local files and OneDrive."/>
+                            <Run Text="in mid-to-late September. This is prerelease software and will have a Zune Desktop and Groove shell, with support for local files and OneDrive streaming."/>
+                        </TextBlock>
+
+                        <TextBlock TextWrapping="WrapWholeWords">
+                            <Run Text="For project updates and a look at our development journey, visit my" />
+                            <Hyperlink NavigateUri="https://www.twitter.com/arlodottxt">Twitter.</Hyperlink>
+                            <Run Text=""/>
                         </TextBlock>
                     </StackPanel>
                 </StackPanel>
@@ -347,7 +354,7 @@
                         <TextBlock Text="Launch 2021 is the third annual Launch event where users, developers, beta testers and translators work together to bring their ideas to life, and Launch their projects as a community."
                                    FontSize="16" TextWrapping="WrapWholeWords" />
 
-                        <TextBlock Text="Participants are encouraged to tap into the power of the community we've built on Discord to collaborate in real time with each other to push and improve their projects."
+                        <TextBlock Text="Participants are encouraged to tap into the power of the community we've built on Discord to collaborate with each other in real time to push and improve their projects."
                                    FontSize="16" TextWrapping="WrapWholeWords" />
 
                         <TextBlock Text="As part of the annual event, 31 projects are being released as either new or vNext, and are all free for you to start using."
