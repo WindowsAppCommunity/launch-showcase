@@ -9,10 +9,10 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Imageixed >
+    <Image>
         <Image.Source>
             <BitmapImage UriSource="{x:Bind Source, Mode=OneWay}" />
         </Image.Source>
-    </Imageixed>
+    </Image>
 
 </UserControl>

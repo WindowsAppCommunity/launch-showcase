@@ -1,4 +1,3 @@
-using LaunchShowcase.Sdk.HttpClientHandlers;
 using LaunchShowcase.Sdk.ViewModels;
 using OwlCore.Extensions;
 using System;
