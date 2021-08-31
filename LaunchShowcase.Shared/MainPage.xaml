@@ -209,7 +209,7 @@
                                               ItemsSource="{x:Bind ViewModel.LaunchProjects, Mode=OneWay}">
                         <winui:ItemsRepeater.ItemTemplate>
                             <DataTemplate x:DataType="vms:ProjectViewModel">
-                                <StackPanel Spacing="8" Tapped="LaunchProjectsGrid_ItemClicked"
+                                <StackPanel Spacing="8" Tapped="LaunchProjectsGrid_ItemClicked" Tag="{x:Bind Id}"
                                             PointerEntered="LaunchProjectGrid_PointerOver" PointerExited="LaunchProjectGrid_PointerExited">
                                     <local:CachingImage Source="{x:Bind HeroImage}" Height="215" Width="375"
                                            Stretch="UniformToFill" VerticalAlignment="Center" />

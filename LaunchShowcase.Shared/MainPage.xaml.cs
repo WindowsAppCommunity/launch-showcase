@@ -36,8 +36,8 @@ namespace LaunchShowcase
 
         public async void LaunchProjectsGrid_ItemClicked(object sender, RoutedEventArgs e)
         {
-            var datacontext = sender.Cast<FrameworkElement>().DataContext;
-            var project = datacontext.Cast<ProjectViewModel>();
+            var projectId = sender.Cast<FrameworkElement>().Tag;
+            var project = ViewModel.LaunchProjects.First(x => (int)projectId == x.Id);
 
             await project.PopulateCollaborators();
 
