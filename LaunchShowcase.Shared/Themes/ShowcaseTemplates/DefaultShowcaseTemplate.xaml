@@ -215,7 +215,7 @@
                     </Border>
 
                     <local:CachingImage x:Name="PART_OverlayImage" Grid.Row="1"
-                           Source="{Binding ElementName=PART_Images, Path=SelectedItem}" Stretch="Uniform" />
+                           Source="{Binding ElementName=PART_Images, Path=SelectedItem}" />
                 </Grid>
             </Grid>
         </UserControl>

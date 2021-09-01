@@ -9,9 +9,9 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Image>
+    <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Image.Source>
-            <BitmapImage UriSource="{x:Bind Source, Mode=OneWay}" />
+            <BitmapImage UriSource="{x:Bind LocalSource, Mode=OneWay}" />
         </Image.Source>
     </Image>
 

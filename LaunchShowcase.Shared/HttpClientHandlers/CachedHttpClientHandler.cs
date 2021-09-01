@@ -32,7 +32,7 @@ namespace LaunchShowcase.Sdk.HttpClientHandlers
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // check if item is cached
-            var cachedEntry = await ReadCachedFile(_cacheFolder, request.RequestUri.AbsoluteUri);
+            var cachedEntry = await ReadCachedFile(_cacheFolder, request.RequestUri.OriginalString);
 
             var shouldUseCache = true;
 
@@ -48,9 +48,11 @@ namespace LaunchShowcase.Sdk.HttpClientHandlers
                 }
             }
 
+            // Code has been hacked and modified to always return data.
+            // This should never run, but is left as a backup.
             var result = await base.SendAsync(request, cancellationToken);
 
-            await WriteCachedFile(_cacheFolder, request.RequestUri.AbsoluteUri, result);
+            await WriteCachedFile(_cacheFolder, request.RequestUri.OriginalString, result);
 
             return result;
         }
@@ -64,7 +66,7 @@ namespace LaunchShowcase.Sdk.HttpClientHandlers
         /// <returns>Returns a <see cref="Task" /></returns>
         public static async Task WriteCachedFile(StorageFolder folder, string request, HttpResponseMessage response)
         {
-            var cachedFile = await GetCachedFile(folder, request);
+            var cachedFile = await GetCachedFile(request);
             var contentBytes = await response.Content.ReadAsByteArrayAsync();
 
             var cacheEntry = new CacheEntry
@@ -87,20 +89,21 @@ namespace LaunchShowcase.Sdk.HttpClientHandlers
         /// <returns>Information related to cache in a <see cref="CacheEntry"/></returns>
         private static async Task<CacheEntry> ReadCachedFile(StorageFolder folder, string request)
         {
-            var cachedFilePath = await GetCachedFile(folder, request);
+            var cachedFile = await GetCachedFile(request);
 
             CacheEntry cacheEntry = null;
-            bool fileExists = cachedFilePath == null;
+            bool fileExists = cachedFile == null;
+
 
             try
             {
-                var fileBytes = await FileIO.ReadTextAsync(cachedFilePath);
+                var fileBytes = await FileIO.ReadTextAsync(cachedFile);
                 cacheEntry = JsonSerializer.Deserialize<CacheEntry>(fileBytes);
             }
             catch (Exception ex)
             {
                 if (fileExists)
-                    Debug.WriteLine($"WARNING: Failed to read or deserialized the file at \"{cachedFilePath}\". The data will be discarded. ({ex})");
+                    Debug.WriteLine($"WARNING: Failed to read or deserialized the file at \"{cachedFile}\". The data will be discarded. ({ex})");
             }
 
             if (cacheEntry?.RequestUri is null)
@@ -119,15 +122,17 @@ namespace LaunchShowcase.Sdk.HttpClientHandlers
         /// <param name="folder">Path to the directory where the file is stored.</param>
         /// <param name="requestUri">The request uri.</param>
         /// <returns>The file path.</returns>
-        private static async Task<StorageFile> GetCachedFile(StorageFolder folder, string requestUri)
+        private static async Task<StorageFile> GetCachedFile(string requestUri)
         {
             var fileName = requestUri.HashMD5Fast() + ".cache";
 
             try
             {
-                return await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
+                var uri = new Uri("ms-appx:///Assets/HttpCache/" + fileName);
+                
+                return await StorageFile.GetFileFromApplicationUriAsync(uri);
             }
-            catch
+            catch (Exception ex)
             {
                 return null;
             }

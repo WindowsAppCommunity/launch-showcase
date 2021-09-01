@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -28,7 +29,7 @@ namespace LaunchShowcase
         private StorageFolder _cacheDir;
 
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register("Source", typeof(Uri), typeof(CachingImage), new PropertyMetadata(null));
+            DependencyProperty.Register("Source", typeof(Uri), typeof(CachingImage), new PropertyMetadata(null, (e,d) => e.Cast<CachingImage>().SetSource()));
 
         public static readonly DependencyProperty LocalSourceProperty =
             DependencyProperty.Register("LocalSource", typeof(Uri), typeof(CachingImage), new PropertyMetadata(null));
@@ -65,23 +66,33 @@ namespace LaunchShowcase
 
         private async void CachingImage_Loaded(object sender, RoutedEventArgs e)
         {
-            // Needed for later to cache and optimize launch images.
-            _cacheDir = await ApplicationData.Current.LocalFolder.CreateFolderAsync("CachedImages", CreationCollisionOption.OpenIfExists);
+            SetSource();
+        }
 
+        public void SetSource()
+        {
             if (Source is null)
                 return;
 
-            var ext = ".png" ; 
-            var file = await _cacheDir.CreateFileAsync(Source.AbsoluteUri.HashMD5Fast() + ext, CreationCollisionOption.ReplaceExisting);
+            var filePath = Path.Combine("ms-appx:///", "Assets", "CachedImages", Source.AbsoluteUri.HashMD5Fast() + ".png");
 
-            var request = await _client.GetAsync(Source);
-            if (!request.IsSuccessStatusCode)
-                return;
+            // Needed for later to cache and optimize launch images.
+            /* var request = await _client.GetAsync(Source);
+             if (!request.IsSuccessStatusCode)
+                 return;
 
-            var bytes = await request.Content.ReadAsByteArrayAsync();
-            await FileIO.WriteBytesAsync(file, bytes);
+             var bytes = await request.Content.ReadAsByteArrayAsync();
 
-            LocalSource = new Uri(file.Path);
+             try
+             {
+                 await FileIO.WriteBytesAsync(file, bytes);
+             }
+             catch (Exception ex)
+             {
+
+             }*/
+
+            LocalSource = new Uri(filePath);
         }
     }
 }

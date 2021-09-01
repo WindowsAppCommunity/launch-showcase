@@ -284,7 +284,7 @@
 
                         <TextBlock TextWrapping="WrapWholeWords" Text="Files v1 was released one year ago, and over the last year, we've been working on many improvements to the experience. The upcoming release of v2 has been tested by over 4,000 users and will be available for everyone starting October 4th." />
 
-                        <StackPanel Spacing="2">
+                        <StackPanel Spacing="8" Orientation="Horizontal">
                             <HyperlinkButton Content="Home" NavigateUri="https://files-community.github.io/"/>
                             <HyperlinkButton Content="GitHub" NavigateUri="https://github.com/files-community/Files"/>
                             <HyperlinkButton Content="Download" NavigateUri="https://www.microsoft.com/store/apps/9NGHP3DX8HDX"/>
@@ -302,9 +302,9 @@
                         <TextBlock Text="See your entire music library in one place, across every possible music service. Customize the look with hand crafted skins. Listen anywhere, any time, on any platform."
                                    TextWrapping="WrapWholeWords"/>
 
-                        <local:CachingImage Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/strixmusic/image.png" MaxHeight="500" Margin="25,25,25,0" />
-
                         <HyperlinkButton HorizontalAlignment="Center" NavigateUri="https://www.youtube.com/playlist?list=PLkJxGhy7bOVieFOiZqUO4su0YITXgrlJP" Content="See demos"/>
+
+                        <local:CachingImage Source="https://uwpcommunity.com/launch/2021/assets/honorablementions/strixmusic/image.png" MaxHeight="500" Margin="25,25,25,0" />
 
                         <toolkit:WrapPanel HorizontalSpacing="10">
                             <Border BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" CornerRadius="3" Padding="3">
@@ -361,9 +361,6 @@
 
                         <TextBlock Text="Our panel of judges has personally tried and scored each project in different categories, to help you sort through them.  "
                                    FontSize="16" TextWrapping="WrapWholeWords" />
-
-                        <TextBlock Text="Thanks to a sponsorship from Nventive's Uno Platform, the top 5 projects on Windows and top 5 cross-platform apps built on Uno will receive a prize for their work."
-                                   FontSize="16" TextWrapping="WrapWholeWords" />
                     </StackPanel>
 
                     <TextBlock Text="Scoring categories:"
@@ -411,6 +408,9 @@
                         <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
                             <Run Text="All of the developers and users in the UWP Community Discord server have been discussing, collaborating, translating, testing and trading feedback for months on the projects you see here today."/>
                         </TextBlock>
+                        <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                            <Run Text=""/>
+                        </TextBlock>
 
                         <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
                             <Run Text="These projects are the fruit of our efforts."/>
@@ -420,14 +420,27 @@
                     <TextBlock FontSize="20" Text="Sponsored by Uno Platform" Margin="0,10,0,0" />
 
                     <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" Spacing="10">
-                        <TextBlock Text="Uno Platform sponsored Launch this year, providing the prizes for our top projects."
+                        <TextBlock Text="Thanks to a sponsorship from Nventive's Uno Platform, the top 5 projects on Windows and top 5 cross-platform apps built on Uno will receive a prize for their work."
                                    FontSize="14" TextWrapping="WrapWholeWords" />
 
-                        <TextBlock Text="Lorep ipsum dolor sey manet."
+                        <TextBlock Text="Uno allows developers to bring their WinUI applications to every platform. Native, pixel perfect, and truly universal --  write your app once, and run on Windows, Linux, Android, WearOS, Tizen, iOS, MacOS, and in the browser. Open source and professionally supported."
                                    FontSize="14" TextWrapping="WrapWholeWords" />
 
-                        <TextBlock Text="Lorep ipsum has been the default placeholder text since the printing press was invented in 1604."
+                        <TextBlock Text="This showcase was built on the Uno Platform, allowing our developers to make each project showcase page their own."
                                    FontSize="14" TextWrapping="WrapWholeWords" />
+
+                        <TextBlock Text="The team is extremely responsive to feedback and always available on Discord. Give Uno a try!"
+                                   FontSize="14" TextWrapping="WrapWholeWords" />
+
+                        <StackPanel Spacing="8" Orientation="Horizontal">
+                            <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                                <Hyperlink NavigateUri="https://platform.uno/">Learn more about Uno</Hyperlink>
+                            </TextBlock>
+
+                            <TextBlock FontSize="14" TextWrapping="WrapWholeWords">
+                                <Hyperlink NavigateUri="https://discord.gg/eBHZSKG">Talk to the team on Discord</Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </Grid>

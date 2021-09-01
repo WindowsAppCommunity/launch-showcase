@@ -102,7 +102,7 @@ namespace LaunchShowcase
                     // Bad code zone. Don't do this.
                     // ==============================================
                     /**/var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("HttpCache", CreationCollisionOption.OpenIfExists);
-                    /**/var httpClient = new HttpClient(/*new CachedHttpClientHandler(folder)*/);
+                    /**/var httpClient = new HttpClient(new CachedHttpClientHandler(folder)); 
                     /**/
                     /**/MainViewModel.Instance.SetupHttpClient(httpClient);
                     // ==============================================
