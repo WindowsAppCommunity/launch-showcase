@@ -45,12 +45,14 @@ namespace LaunchShowcase.Sdk.ViewModels
         }
 
         /// <inheritdoc/>
-        public Task InitAsync()
+        public async Task InitAsync()
         {
+            await PopulateLaunchProjects();
+         
             IsInitialized = true;
-
-            return PopulateLaunchProjects();
         }
+
+        public event EventHandler? LaunchProjectsLoaded;
 
         /// <inheritdoc/>
         public bool IsInitialized { get; private set; }
@@ -126,7 +128,7 @@ namespace LaunchShowcase.Sdk.ViewModels
                 }
             }
 
-            await Task.Delay(2000);
+            LaunchProjectsLoaded?.Invoke(this, EventArgs.Empty);
         }
 
         private void ToggleProjectsSortingMode(LaunchScoringCategory category)

@@ -24,7 +24,7 @@
 
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="MainPageBackgroundBrush" Color="#f3efe8"/>
+                    <SolidColorBrush x:Key="MainPageBackgroundBrush" Color="WhiteSmoke"/>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush x:Key="MainPageBackgroundBrush" Color="#1E1E23"/>
@@ -93,8 +93,8 @@
                             <TextBlock Text="Learn, develop, launch" FontWeight="SemiLight" TextWrapping="WrapWholeWords"
                                        FontSize="18" HorizontalAlignment="Right" />
 
-                            <TextBlock Text="Users, developers, testers and translators work together to Launch and re-launch their projects."
-                                       MaxWidth="375"
+                            <TextBlock Text="The third annual event where users, developers, testers and translators work together to bring new ideas to life as a community."
+                                       MaxWidth="390"
                                        TextAlignment="Right" FontSize="16"
                                        TextWrapping="WrapWholeWords"
                                        Margin="0,25,0,0" HorizontalAlignment="Right" />
@@ -308,13 +308,13 @@
 
                         <toolkit:WrapPanel HorizontalSpacing="10">
                             <Border BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" CornerRadius="3" Padding="3">
-                                <TextBlock Text="Can support all music providers" />
+                                <TextBlock Text="Multiple music providers, one placeis" />
                             </Border>
                             <Border BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" CornerRadius="3" Padding="3">
                                 <TextBlock Text="Full skin support" />
                             </Border>
                             <Border BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" CornerRadius="3" Padding="3">
-                                <TextBlock Text="Plugin support" />
+                                <TextBlock Text="Use plugins for more music sources" />
                             </Border>
                             <Border BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" CornerRadius="3" Padding="3">
                                 <TextBlock Text="Cross Platform" />
@@ -326,10 +326,12 @@
 
                         <TextBlock TextWrapping="WrapWholeWords" Text="Music and music streaming is everywhere. Local files, cloud storage, media servers, Spotify, YouTube Music, SoundCloud, Pandora, and countless other services and standards exist just to listen to music." />
 
-                        <TextBlock TextWrapping="WrapWholeWords" Text="Strix Music v2 is an extremely ambitious project with a simple goal in mind: allow you to listen to all of your music, no matter where it's stored or what platform it's on. It should be simple, powerful, personal and impossibly useful. If you listen to music, you should want to use Strix. " />
+                        <TextBlock TextWrapping="WrapWholeWords" Text="Strix Music v2 is a hyper-ambitious project with a simple goal: let you listen to all of your music, no matter where it's stored or what platform it's on. " />
+
+                        <TextBlock TextWrapping="WrapWholeWords" Text="It should be simple, powerful, personal and impossibly useful. If you listen to music, you should want to use Strix." />
 
                         <TextBlock TextWrapping="WrapWholeWords">
-                            <Run Text="We've spent the last year planning and building this app. We plan to release Alpha builds to" />
+                            <Run Text="We plan to release Alpha builds to" />
                             <Hyperlink NavigateUri="https://www.patreon.com/arlodotexe">Patreons</Hyperlink>
                             <Run Text="in mid-to-late September. This is prerelease software and will have a Zune Desktop and Groove shell, with support for local files and OneDrive streaming."/>
                         </TextBlock>
@@ -356,7 +358,7 @@
                         <TextBlock Text="Participants are encouraged to tap into the power of the community we've built on Discord to collaborate with each other in real time to push and improve their projects."
                                    FontSize="16" TextWrapping="WrapWholeWords" />
 
-                        <TextBlock Text="As part of the annual event, more than 20 projects are being released as either new or vNext, and are all free for you to start using."
+                        <TextBlock Text="As part of the annual event, 23 projects are being released as new or vNext, and are all free for you to start using."
                                    FontSize="16" TextWrapping="WrapWholeWords" />
 
                         <TextBlock Text="Our panel of judges has personally tried and scored each project in different categories, to help you sort through them.  "
@@ -420,7 +422,7 @@
                     <TextBlock FontSize="20" Text="Sponsored by Uno Platform" Margin="0,10,0,0" />
 
                     <StackPanel BorderBrush="{ThemeResource SystemControlForegroundChromeGrayBrush}" BorderThickness="1" Padding="15" CornerRadius="3" Spacing="10">
-                        <TextBlock Text="Thanks to a sponsorship from Nventive's Uno Platform, the top 5 projects on Windows and top 5 cross-platform apps built on Uno will receive a prize for their work."
+                        <TextBlock Text="Thanks to a sponsorship from Nventive's Uno Platform, the top 3 projects on Windows and top 3 cross-platform apps built on Uno will receive a prize for their work."
                                    FontSize="14" TextWrapping="WrapWholeWords" />
 
                         <TextBlock Text="Uno allows developers to bring their WinUI applications to every platform. Native, pixel perfect, and truly universal --  write your app once, and run on Windows, Linux, Android, WearOS, Tizen, iOS, MacOS, and in the browser. Open source and professionally supported."

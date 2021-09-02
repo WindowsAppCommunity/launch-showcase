@@ -2,10 +2,12 @@ using LaunchShowcase.Sdk.ViewModels;
 using OwlCore.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -25,18 +27,51 @@ namespace LaunchShowcase
     public sealed partial class MainPage : Page
     {
         public MainViewModel ViewModel => (MainViewModel)DataContext;
+        private string _param;
 
         public MainPage()
         {
             InitializeComponent();
 
             DataContext = MainViewModel.Instance;
+
+            ViewModel.LaunchProjectsLoaded += ViewModel_Initialized;
+        }
+
+        private void ViewModel_Initialized(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(_param))
+            {
+                if (_param.Contains("project="))
+                {
+                    var idStr = _param.Replace("project=", "");
+
+                    if (!string.IsNullOrWhiteSpace(idStr) && int.TryParse(idStr, out var projectId))
+                    {
+                        _ = NavigateToProject(projectId);
+                    }
+                }
+            }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            _param = e.Parameter.ToString();
         }
 
         public async void LaunchProjectsGrid_ItemClicked(object sender, RoutedEventArgs e)
         {
             var projectId = sender.Cast<FrameworkElement>().Tag;
-            var project = ViewModel.LaunchProjects.First(x => (int)projectId == x.Id);
+            await NavigateToProject((int)projectId);
+        }
+
+        private async Task NavigateToProject(int projectId)
+        {
+            var project = ViewModel.LaunchProjects.FirstOrDefault(x => projectId == x.Id);
+            if (project is null)
+                return;
 
             await project.PopulateCollaborators();
 

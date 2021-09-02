@@ -29,7 +29,7 @@ namespace LaunchShowcase
         private StorageFolder _cacheDir;
 
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register("Source", typeof(Uri), typeof(CachingImage), new PropertyMetadata(null, (e,d) => e.Cast<CachingImage>().SetSource()));
+            DependencyProperty.Register("Source", typeof(Uri), typeof(CachingImage), new PropertyMetadata(null, (e,d) => _ = e.Cast<CachingImage>().SetSource()));
 
         public static readonly DependencyProperty LocalSourceProperty =
             DependencyProperty.Register("LocalSource", typeof(Uri), typeof(CachingImage), new PropertyMetadata(null));
@@ -66,10 +66,10 @@ namespace LaunchShowcase
 
         private async void CachingImage_Loaded(object sender, RoutedEventArgs e)
         {
-            SetSource();
+            await SetSource();
         }
 
-        public void SetSource()
+        public async Task SetSource()
         {
             if (Source is null)
                 return;
@@ -77,20 +77,24 @@ namespace LaunchShowcase
             var filePath = Path.Combine("ms-appx:///", "Assets", "CachedImages", Source.AbsoluteUri.HashMD5Fast() + ".png");
 
             // Needed for later to cache and optimize launch images.
-            /* var request = await _client.GetAsync(Source);
-             if (!request.IsSuccessStatusCode)
-                 return;
+            /*            var request = await _client.GetAsync(Source);
+                        if (!request.IsSuccessStatusCode)
+                            return;
 
-             var bytes = await request.Content.ReadAsByteArrayAsync();
+                        var bytes = await request.Content.ReadAsByteArrayAsync();
 
-             try
-             {
-                 await FileIO.WriteBytesAsync(file, bytes);
-             }
-             catch (Exception ex)
-             {
+                        try
+                        {
+                            var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("CachedImages", CreationCollisionOption.OpenIfExists);
+                            var file = await folder.CreateFileAsync(Source.AbsoluteUri.HashMD5Fast() + ".png");
+                            await FileIO.WriteBytesAsync(file, bytes);
 
-             }*/
+                            LocalSource = new Uri(file.Path);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }*/
 
             LocalSource = new Uri(filePath);
         }
