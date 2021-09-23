@@ -180,7 +180,7 @@
 
                         <Button.Flyout>
                             <MenuFlyout>
-                                <ToggleMenuFlyoutItem Margin="10,2" Text="Ascending" 
+                                <ToggleMenuFlyoutItem Margin="10,2" Text="Highest score first" 
                                                       IsChecked="{x:Bind ViewModel.IsAscendingSortingDirection, Mode=OneWay}"
                                                       Command="{x:Bind ViewModel.SetSortingDirectionCommand}">
                                     <ToggleMenuFlyoutItem.CommandParameter>
@@ -188,7 +188,7 @@
                                     </ToggleMenuFlyoutItem.CommandParameter>
                                 </ToggleMenuFlyoutItem>
 
-                                <ToggleMenuFlyoutItem Margin="10,2" Text="Descending" 
+                                <ToggleMenuFlyoutItem Margin="10,2" Text="Lowest score first" 
                                                       IsChecked="{x:Bind ViewModel.IsDescendingSortingDirection, Mode=OneWay}"
                                                       Command="{x:Bind ViewModel.SetSortingDirectionCommand}">
                                     <ToggleMenuFlyoutItem.CommandParameter>

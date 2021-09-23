@@ -48,7 +48,7 @@ namespace LaunchShowcase.Sdk.ViewModels
         public async Task InitAsync()
         {
             await PopulateLaunchProjects();
-         
+
             IsInitialized = true;
         }
 
@@ -124,8 +124,17 @@ namespace LaunchShowcase.Sdk.ViewModels
                 using (Threading.PrimaryContext)
                 {
                     _unsortedLaunchProjects.Add(project);
-                    LaunchProjects.Add(project);
                 }
+            }
+
+            using (Threading.PrimaryContext)
+            {
+                ToggleProjectsSortingMode(LaunchScoringCategory.Beauty |
+                                      LaunchScoringCategory.Accessiblity |
+                                      LaunchScoringCategory.Empathy |
+                                      LaunchScoringCategory.Flexibility |
+                                      LaunchScoringCategory.Originality |
+                                      LaunchScoringCategory.Potential);
             }
 
             LaunchProjectsLoaded?.Invoke(this, EventArgs.Empty);
